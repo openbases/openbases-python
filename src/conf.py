@@ -131,6 +131,11 @@ latex_elements = {
     # 'figure_align': 'htbp',
 }
 
+# Github!
+display_github = True
+github_user = "openbases"
+github_repo = "whedon-python"
+
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass
 # [howto, manual, or own class]).
