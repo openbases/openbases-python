@@ -26,6 +26,10 @@ def get_parser():
                         help="show whedon python version", 
                         default=False, action='store_true')
 
+    parser.add_argument("sep", default=",",
+                        help="separator for printing lists, etc. (default ,)", 
+                        type=str)
+
     subparsers = parser.add_subparsers(help='description',
                                        title='actions',
                                        description='actions for py-whedon',
@@ -40,6 +44,7 @@ def get_parser():
     paper.add_argument("cmd", nargs="*",
                         help="paper markdown file to parse", 
                         type=str)
+
 
     shell = subparsers.add_parser("shell",
                                    help="start an interactive shell with whedon")

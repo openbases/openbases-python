@@ -10,14 +10,28 @@ def main(args, options, parser):
     
     command = args.cmd
     cli = get_client()
+    quiet = not args.debug or args.silent
 
-    if command[0] == 'pdf':
+    # Minimum required is <action> paper.md
+    if len(command) < 2:
+        bot.exit('''Please provide the paper.md file after an action 
+                    py-whedon <action> paper.md)''')
 
-        # Minimum required is paper.md
-        if len(command) < 2:
-            bot.exit('Please provide the paper.md file after pdf.')
-        paper = cli.paper(command[1])
+    # If no arguments, show all fields and exit
+    if len(command) <=2:
+        paper = cli.paper(command[1], quiet=False)
+
+    else:
+        action = command[0]
+        paper = cli.paper(command[1], quiet=quiet)
+
+        if action == 'pdf':
+            print('render pdf here')
         
-        # For remainder of arguments, get key
-        for arg in command[1:]:
-            print(arg)
+        elif action == 'get':
+
+            # For remainder of arguments, get key
+            for arg in command[1:]:
+
+                # If the arg is of format arg:field will return field from list
+                paper.get(arg, sep=args.sep)

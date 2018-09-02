@@ -26,10 +26,10 @@ class Author:
 
 class Paper:
 
-    def __init__(self, filename):
+    def __init__(self, filename, quiet=False):
 
         self._check_inputs(filename)
-        self.metadata = read_yaml(filename)
+        self.metadata = read_yaml(filename, quiet=quiet)
 
     def __str__(self):
         return "<paper.md: %s>" % self.filename
@@ -53,6 +53,13 @@ class Paper:
            exist. If the yaml item is a list with different subfields, then
            field must also be defined.
         '''
+        # If the arg is of format arg:field will return field from list
+        key = key.split(':')
+        if len(key) > 1:
+            field = key[1]
+
+        key=key[0]
+
         if key in self.metadata:
     
             value = self.metadata[key]
@@ -64,7 +71,7 @@ class Paper:
                     values = []
 
                     for entry in value:
-                        if field in entry:
+                        if field in entry and field is not None:
                             if entry[field]:
                                 values.append(entry[field])
                     value = values
