@@ -4,6 +4,16 @@ This is a small module with helper functions for using Whedon. Please contribute
 [openbases/python-whedon](https://www.github.com/openbases/whedon-python) on
 Github.
 
+**Inspiration**
+
+> Just... no!
+
+![docs/img/whedon-no.png](docs/img/whedon-no.png)
+
+> Better!
+
+![docs/img/whedon-upgrade.png](docs/img/whedon-upgrade.png)
+
 **under development**
 
 # Installation
