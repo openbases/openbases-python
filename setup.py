@@ -22,7 +22,7 @@ def get_lookup():
     return lookup
 
 # Read in requirements
-def get_requirements(lookup=None):
+def get_requirements(lookup=None, key):
     '''get_requirements reads in requirements and versions from
     the lookup obtained with get_lookup'''
 
@@ -30,7 +30,7 @@ def get_requirements(lookup=None):
         lookup = get_lookup()
 
     install_requires = []
-    for module in lookup['INSTALL_REQUIRES']:
+    for module in lookup[key]:
         module_name = module[0]
         module_meta = module[1]
         if "exact_version" in module_meta:
@@ -69,7 +69,8 @@ with open('README.md') as filey:
 
 if __name__ == "__main__":
 
-    INSTALL_REQUIRES = get_requirements(lookup)
+    INSTALL_REQUIRES = get_requirements(lookup, 'INSTALL_REQUIRES')
+    TEST_REQUIRES = get_requirements(lookup, 'TEST_REQUIRES')
 
     setup(name=NAME,
           version=VERSION,
@@ -86,7 +87,6 @@ if __name__ == "__main__":
           long_description=LONG_DESCRIPTION,
           keywords=KEYWORDS,
           setup_requires=["pytest-runner"],
-          tests_require=["pytest"],
           install_requires = INSTALL_REQUIRES,
           tests_require = TEST_REQUIRES,
           classifiers=[
