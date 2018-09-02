@@ -37,7 +37,7 @@ def get_parser():
     paper = subparsers.add_parser("paper",
                                    help="extract values from a paper.md")
 
-    paper.add_argument("markdown", nargs=1,
+    paper.add_argument("cmd", nargs="*",
                         help="paper markdown file to parse", 
                         type=str)
 
@@ -100,9 +100,6 @@ def main(main=None):
     if args.version is True:
         print(version())
         sys.exit(0)
-
-    # if environment logging variable not set, make silent
-    set_verbosity(args)
 
     # Does the user want help for a subcommand?
     if args.command == 'paper': from .paper import main 

@@ -1,1 +1,1 @@
-"""Top-level package for Whedon Python."""
+from .version import __version__

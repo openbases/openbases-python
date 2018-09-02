@@ -3,11 +3,7 @@
 #    https://www.github.com/openbases/whedon-python
 
 from whedon.main.base.logger import println
-from whedon.utils import ( 
-    run_command as run_cmd, 
-    check_install 
-)
-
+from whedon.utils import run_command as run_cmd
 from whedon.logger import bot
 
 import subprocess

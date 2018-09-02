@@ -3,7 +3,21 @@
 #    https://www.github.com/openbases/whedon-python
 
 import sys
+from whedon.main import get_client
+from whedon.logger import bot
 
 def main(args, options, parser):
-    print("not written yet!")
+    
+    command = args.cmd
+    cli = get_client()
 
+    if command[0] == 'pdf':
+
+        # Minimum required is paper.md
+        if len(command) < 2:
+            bot.exit('Please provide the paper.md file after pdf.')
+        paper = cli.paper(command[1])
+        
+        # For remainder of arguments, get key
+        for arg in command[1:]:
+            print(arg)

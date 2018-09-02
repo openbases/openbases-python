@@ -146,16 +146,24 @@ def read_json(filename, mode='r'):
 
 
 def read_yaml(filename, mode='r', quiet=False):
+    '''read a yaml file, only including sections between ---- 
+                                                         ----
+    '''
     metadata = {}
     with open(filename, mode) as stream:
-        docs = yaml.load_all(stream)
-        for doc in docs:
-            if isinstance(doc, dict):
-                for k,v in doc.items():
-                    if not quiet:
-                        print('%s: %s' %(k,v))
-                    metadata[k] = v
+        stream = stream.read()
+
+    # Read yaml section
+    section = stream.split('---')[1]
+    docs = yaml.load_all(section)
+    for doc in docs:
+        if isinstance(doc, dict):
+            for k,v in doc.items():
+                if not quiet:
+                    print('%s: %s' %(k,v))
+                metadata[k] = v
     return metadata
+
 
 
 
