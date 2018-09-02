@@ -166,14 +166,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="usage">
-<span id="usage"></span><h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
 <p>This is a temporary location to document usage (while I’m developing it).
 This will be served via a command line client <code class="docutils literal"><span class="pre">py-whedon</span></code> and also within
 python.</p>
 <div class="section" id="papers">
-<span id="papers"></span><h2>Papers<a class="headerlink" href="#papers" title="Permalink to this headline">¶</a></h2>
+<h2>Papers<a class="headerlink" href="#papers" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="command-line">
-<span id="command-line"></span><h3>Command Line<a class="headerlink" href="#command-line" title="Permalink to this headline">¶</a></h3>
+<h3>Command Line<a class="headerlink" href="#command-line" title="Permalink to this headline">¶</a></h3>
 <p>Load a paper, show all fields:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md
 title: The Experiment Factory: Reproducible Experiment Containers
@@ -185,36 +185,36 @@ bibliography: paper.bib
 </pre></div>
 </div>
 <p>Get a specific field</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md title
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md title
 The Experiment Factory: Reproducible Experiment Containers
 </pre></div>
 </div>
 <p>Get a list, render in comma separated list</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md tags
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md tags
 containers,docker,psychology,reproducibility,Docker
 </pre></div>
 </div>
 <p>Change the separator to space!</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ py-whedon --sep &quot; &quot; paper get paper.md  tags
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ py-whedon --sep <span class="s2">&quot; &quot;</span> paper get paper.md  tags
 containers docker psychology reproducibility Docker
 </pre></div>
 </div>
 <p>Get more than one at once:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md title tags
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md title tags
 The Experiment Factory: Reproducible Experiment Containers
 containers,docker,psychology,reproducibility,Docker
 </pre></div>
 </div>
 <p>Look up a subfield (e.g., authors –&gt; name)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md authors:name
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md authors:name
 Vanessa Sochat
 
 $ py-whedon paper get paper.md authors:orcid
-0000-0002-4387-3819
+<span class="m">0000</span>-0002-4387-3819
 </pre></div>
 </div>
 <p>All together now!</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md  tags authors:name title
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md  tags authors:name title
 containers,docker,psychology,reproducibility,Docker
 Vanessa Sochat
 The Experiment Factory: Reproducible Experiment Containers
@@ -223,35 +223,35 @@ The Experiment Factory: Reproducible Experiment Containers
 </div>
 </div>
 <div class="section" id="interactive">
-<span id="interactive"></span><h2>Interactive<a class="headerlink" href="#interactive" title="Permalink to this headline">¶</a></h2>
+<h2>Interactive<a class="headerlink" href="#interactive" title="Permalink to this headline">¶</a></h2>
 <p>A paper will be available both of these ways:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">whedon.main</span> <span class="k">import</span> <span class="n">Paper</span>
+<div class="highlight-guess"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">whedon.main</span> <span class="kn">import</span> <span class="n">Paper</span>
 <span class="n">paper</span> <span class="o">=</span> <span class="n">Paper</span><span class="p">(</span><span class="s2">&quot;paper.md&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>or via a client:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">whedon.main</span> <span class="k">import</span> <span class="n">get_client</span>
+<div class="highlight-guess"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">whedon.main</span> <span class="kn">import</span> <span class="n">get_client</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">get_client</span><span class="p">(</span><span class="s2">&quot;paper.md&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The output shows the parsed markdown with paper values</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">title</span><span class="p">:</span> <span class="n">The</span> <span class="n">Experiment</span> <span class="n">Factory</span><span class="p">:</span> <span class="n">Reproducible</span> <span class="n">Experiment</span> <span class="n">Containers</span>
-<span class="n">tags</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;containers&#39;</span><span class="p">,</span> <span class="s1">&#39;docker&#39;</span><span class="p">,</span> <span class="s1">&#39;psychology&#39;</span><span class="p">,</span> <span class="s1">&#39;reproducibility&#39;</span><span class="p">,</span> <span class="s1">&#39;Docker&#39;</span><span class="p">]</span>
-<span class="n">authors</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Vanessa Sochat&#39;</span><span class="p">,</span> <span class="s1">&#39;orcid&#39;</span><span class="p">:</span> <span class="s1">&#39;0000-0002-4387-3819&#39;</span><span class="p">,</span> <span class="s1">&#39;affiliation&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
-<span class="n">affiliations</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Stanford University Research Computing&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}]</span>
-<span class="n">date</span><span class="p">:</span> <span class="mi">28</span> <span class="n">November</span> <span class="mi">2017</span>
-<span class="n">bibliography</span><span class="p">:</span> <span class="n">paper</span><span class="o">.</span><span class="n">bib</span>
+<div class="highlight-guess"><div class="highlight"><pre><span></span><span class="n">title</span><span class="o">:</span> <span class="n">The</span> <span class="n">Experiment</span> <span class="n">Factory</span><span class="o">:</span> <span class="n">Reproducible</span> <span class="n">Experiment</span> <span class="n">Containers</span>
+<span class="n">tags</span><span class="o">:</span> <span class="o">[</span><span class="s1">&#39;containers&#39;</span><span class="o">,</span> <span class="s1">&#39;docker&#39;</span><span class="o">,</span> <span class="s1">&#39;psychology&#39;</span><span class="o">,</span> <span class="s1">&#39;reproducibility&#39;</span><span class="o">,</span> <span class="s1">&#39;Docker&#39;</span><span class="o">]</span>
+<span class="n">authors</span><span class="o">:</span> <span class="o">[{</span><span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Vanessa Sochat&#39;</span><span class="o">,</span> <span class="s1">&#39;orcid&#39;</span><span class="o">:</span> <span class="s1">&#39;0000-0002-4387-3819&#39;</span><span class="o">,</span> <span class="s1">&#39;affiliation&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="o">}]</span>
+<span class="n">affiliations</span><span class="o">:</span> <span class="o">[{</span><span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Stanford University Research Computing&#39;</span><span class="o">,</span> <span class="s1">&#39;index&#39;</span><span class="o">:</span> <span class="mi">1</span><span class="o">}]</span>
+<span class="n">date</span><span class="o">:</span> <span class="mi">28</span> <span class="n">November</span> <span class="mi">2017</span>
+<span class="n">bibliography</span><span class="o">:</span> <span class="n">paper</span><span class="o">.</span><span class="na">bib</span>
 </pre></div>
 </div>
 <p>Since we want to feed these into pandoc, there will be nice functions to return
 fields, and subfields, separated by a delimiter of choice.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Get sub fields from list</span>
-<span class="n">paper</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;authors&#39;</span><span class="p">,</span> <span class="n">field</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">)</span>
-<span class="n">Vanessa</span> <span class="n">Sochat</span>
+<div class="highlight-guess"><div class="highlight"><pre><span></span># Get sub fields from list
+paper.get(&#39;authors&#39;, field=&#39;name&#39;)
+Vanessa Sochat
 </pre></div>
 </div>
 <p>Command line will probably look like this</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>py-whedon paper get authors name
+<div class="highlight-guess"><div class="highlight"><pre><span></span>py-whedon paper get authors name
 authors=$(py-whedon paper get authors name)
 </pre></div>
 </div>

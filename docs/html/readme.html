@@ -88,12 +88,15 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Whedon Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#quick-start">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">whedon-python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributor’s Agreement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html#code-of-conduct">Code of Conduct</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="history.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="history.html">CHANGELOG</a></li>
 </ul>
 
             
@@ -160,66 +163,58 @@
             
   <div class="section" id="whedon-python">
 <h1>Whedon Python<a class="headerlink" href="#whedon-python" title="Permalink to this headline">¶</a></h1>
-<p># Whedon Python</p>
-<p>[![PyPI version](<a class="reference external" href="https://badge.fury.io/py/whedon.svg)](https://badge.fury.io/py/whedon">https://badge.fury.io/py/whedon.svg)](https://badge.fury.io/py/whedon</a>)
-[![CircleCI](<a class="reference external" href="https://circleci.com/gh/openbases/whedon-python.svg?style=svg)](https://circleci.com/gh/openbases/whedon-python">https://circleci.com/gh/openbases/whedon-python.svg?style=svg)](https://circleci.com/gh/openbases/whedon-python</a>)</p>
-<p>![docs/img/robot.png](<a class="reference external" href="https://github.com/openbases/whedon-python/raw/master/docs/img/robot.png">https://github.com/openbases/whedon-python/raw/master/docs/img/robot.png</a>)</p>
+<a class="reference external image-reference" href="https://badge.fury.io/py/whedon"><img alt="PyPI version" src="https://badge.fury.io/py/whedon.svg" /></a>
+<a class="reference external image-reference" href="https://circleci.com/gh/openbases/whedon-python"><img alt="CircleCI" src="https://circleci.com/gh/openbases/whedon-python.svg?style=svg" /></a>
+<a class="reference external image-reference" href="https://github.com/openbases/whedon-python/raw/master/docs/img/robot.png"><img alt="docs/img/robot.png" src="https://github.com/openbases/whedon-python/raw/master/docs/img/robot.png" /></a>
 <hr class="docutils" />
 <p>This is a small module with helper functions for using Whedon. Please contribute at
-[openbases/python-whedon](<a class="reference external" href="https://www.github.com/openbases/whedon-python">https://www.github.com/openbases/whedon-python</a>) on
+<a class="reference external" href="https://www.github.com/openbases/whedon-python">openbases/python-whedon</a> on
 Github.</p>
-<p>&gt; Just… no!</p>
-<p>![docs/img/whedon-before.png](docs/img/whedon-before.png)</p>
-<p>&gt; Better!</p>
-<p>![docs/img/whedon-upgrade.png](docs/img/whedon-upgrade.png)</p>
-<p># Quick Start</p>
+<blockquote>
+<div>Just… no!</div></blockquote>
+<a class="reference external image-reference" href="docs/img/whedon-before.png"><img alt="docs/img/whedon-before.png" src="docs/img/whedon-before.png" /></a>
+<blockquote>
+<div>Better!</div></blockquote>
+<a class="reference external image-reference" href="docs/img/whedon-upgrade.png"><img alt="docs/img/whedon-upgrade.png" src="docs/img/whedon-upgrade.png" /></a>
+</div>
+<div class="section" id="quick-start">
+<h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
 <p>To install</p>
-<p><code class="docutils literal"><span class="pre">`bash</span>
-<span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://www.github.com/openbases/whedon-python</span>
-<span class="pre">cd</span> <span class="pre">whedon-python</span>
-<span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span>
-<span class="pre">`</span></code>
-<code class="docutils literal"><span class="pre">`</span>
-<span class="pre">pip</span> <span class="pre">install</span> <span class="pre">whedon</span>
-<span class="pre">`</span></code></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>git clone https://www.github.com/openbases/whedon-python
+<span class="nb">cd</span> whedon-python
+python setup.py install
+</pre></div>
+</div>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>pip install whedon
+</pre></div>
+</div>
 <p>And then use:</p>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>bash
-$ py-whedon help</p>
-<p>Whedon Python [v0.0.0]</p>
-<p>usage: py-whedon [–debug] [–quiet] [–version] sep general usage …</p>
-<p>Whedon Python</p>
-<dl class="docutils">
-<dt>positional arguments:</dt>
-<dd>sep            separator for printing lists, etc. (default ,)</dd>
-<dt>optional arguments:</dt>
-<dd><table class="first last docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">--debug</span>, <span class="option">-d</span></kbd></td>
-<td>use verbose logging to debug.</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">--quiet</span>, <span class="option">-q</span></kbd></td>
-<td>suppress all normal output</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">--version</span></kbd></td>
-<td>show whedon python version</td></tr>
-</tbody>
-</table>
-</dd>
-<dt>actions:</dt>
-<dd><p class="first">actions for py-whedon</p>
-<dl class="last docutils">
-<dt>general usage  description</dt>
-<dd>paper        extract values from a paper.md
-shell        start an interactive shell with whedon</dd>
-</dl>
-</dd>
-</dl>
-<p><a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
-<p>For complete usage, please see our [documentation](<a class="reference external" href="https://openbases.github.io/whedon-python/">https://openbases.github.io/whedon-python/</a>)
-and implementation in [whedon docker](<a class="reference external" href="https://www.github.com/openbases/whedon/">https://www.github.com/openbases/whedon/</a>). Have fun!</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ py-whedon <span class="nb">help</span>
+
+Whedon Python <span class="o">[</span>v0.0.0<span class="o">]</span>
+
+usage: py-whedon <span class="o">[</span>--debug<span class="o">]</span> <span class="o">[</span>--quiet<span class="o">]</span> <span class="o">[</span>--version<span class="o">]</span> sep general usage ...
+
+Whedon Python
+
+positional arguments:
+  sep            separator <span class="k">for</span> printing lists, etc. <span class="o">(</span>default ,<span class="o">)</span>
+
+optional arguments:
+  --debug, -d    use verbose logging to debug.
+  --quiet, -q    suppress all normal output
+  --version      show whedon python version
+
+actions:
+  actions <span class="k">for</span> py-whedon
+
+  general usage  description
+    paper        extract values from a paper.md
+    shell        start an interactive shell with whedon
+</pre></div>
+</div>
+<p>For complete usage, please see our <a class="reference external" href="https://openbases.github.io/whedon-python/">documentation</a>
+and implementation in <a class="reference external" href="https://www.github.com/openbases/whedon/">whedon docker</a>. Have fun!</p>
 </div>
 
 

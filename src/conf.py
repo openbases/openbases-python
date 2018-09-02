@@ -33,7 +33,7 @@ import whedon
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode', 'm2r']
 
 
 # Add any paths that contain templates here, relative to this directory.
@@ -52,9 +52,9 @@ project = u'Whedon Python'
 copyright = u"2018, Vanessa Sochat"
 author = u"Vanessa Sochat"
 
-source_parsers = {
-   '.md': 'recommonmark.parser.CommonMarkParser',
-}
+#source_parsers = {
+#   '.md': 'recommonmark.parser.CommonMarkParser',
+#}
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout

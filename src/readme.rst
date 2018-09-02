@@ -1,4 +1,1 @@
-Whedon Python
-=============
-
-.. include:: ../README.md
+.. mdinclude:: ../README.md
