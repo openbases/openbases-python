@@ -15,8 +15,7 @@ import re
 
 
 def init_command(self, action, flags=None):
-    '''
-        return the initial Singularity command with any added flags.
+    ''' return the initial Singularity command with any added flags.
         
         Parameters
         ==========

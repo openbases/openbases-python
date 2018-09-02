@@ -16,7 +16,7 @@ import sys
 ################################################################################
 
 
-def check_install(software='singularity', quiet=True):
+def check_install(software='whedon', quiet=True):
     '''check_install will attempt to run the singularity command, and
        return True if installed. The command line utils will not run 
        without this check.
@@ -50,6 +50,7 @@ def get_installdir():
 def stream_command(cmd, no_newline_regexp="Progess", sudo=False):
     '''stream a command (yield) back to the user, as each line is available.
 
+       :: note
        # Example usage:
        results = []
        for line in stream_command(cmd):

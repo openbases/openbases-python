@@ -1,0 +1,277 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>whedon.utils package &#8212; Whedon Python 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="whedon.main.base package" href="whedon.main.base.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="whedon-utils-package">
+<h1>whedon.utils package<a class="headerlink" href="#whedon-utils-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-whedon.utils.fileio">
+<span id="whedon-utils-fileio-module"></span><h2>whedon.utils.fileio module<a class="headerlink" href="#module-whedon.utils.fileio" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="whedon.utils.fileio.convert2boolean">
+<code class="descclassname">whedon.utils.fileio.</code><code class="descname">convert2boolean</code><span class="sig-paren">(</span><em>arg</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/fileio.html#convert2boolean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.fileio.convert2boolean" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert2boolean is used for environmental variables
+that must be returned as boolean</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.fileio.copy_directory">
+<code class="descclassname">whedon.utils.fileio.</code><code class="descname">copy_directory</code><span class="sig-paren">(</span><em>src</em>, <em>dest</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/fileio.html#copy_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.fileio.copy_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy an entire directory recursively</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.fileio.find_directories">
+<code class="descclassname">whedon.utils.fileio.</code><code class="descname">find_directories</code><span class="sig-paren">(</span><em>root</em>, <em>fullpath=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/fileio.html#find_directories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.fileio.find_directories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return directories at one level specified by user
+(not recursive)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.fileio.find_subdirectories">
+<code class="descclassname">whedon.utils.fileio.</code><code class="descname">find_subdirectories</code><span class="sig-paren">(</span><em>basepath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/fileio.html#find_subdirectories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.fileio.find_subdirectories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return directories (and sub) starting from a base</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.fileio.get_installdir">
+<code class="descclassname">whedon.utils.fileio.</code><code class="descname">get_installdir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/fileio.html#get_installdir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.fileio.get_installdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.fileio.getenv">
+<code class="descclassname">whedon.utils.fileio.</code><code class="descname">getenv</code><span class="sig-paren">(</span><em>variable_key</em>, <em>default=None</em>, <em>required=False</em>, <em>silent=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/fileio.html#getenv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.fileio.getenv" title="Permalink to this definition">¶</a></dt>
+<dd><p>getenv will attempt to get an environment variable. If the variable
+is not found, None is returned.
+:param variable_key: the variable name
+:param required: exit with error if not found
+:param silent: Do not print debugging information for variable</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.fileio.mkdir_p">
+<code class="descclassname">whedon.utils.fileio.</code><code class="descname">mkdir_p</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/fileio.html#mkdir_p"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.fileio.mkdir_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>mkdir_p attempts to get the same functionality as mkdir -p
+:param path: the path to create.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.fileio.read_file">
+<code class="descclassname">whedon.utils.fileio.</code><code class="descname">read_file</code><span class="sig-paren">(</span><em>filename</em>, <em>mode='r'</em>, <em>readlines=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/fileio.html#read_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.fileio.read_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>write_file will open a file, “filename” and write content, “content”
+and properly close the file</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.fileio.read_json">
+<code class="descclassname">whedon.utils.fileio.</code><code class="descname">read_json</code><span class="sig-paren">(</span><em>filename</em>, <em>mode='r'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/fileio.html#read_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.fileio.read_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>read_json reads in a json file and returns
+the data structure as dict.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.fileio.read_yaml">
+<code class="descclassname">whedon.utils.fileio.</code><code class="descname">read_yaml</code><span class="sig-paren">(</span><em>filename</em>, <em>mode='r'</em>, <em>quiet=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/fileio.html#read_yaml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.fileio.read_yaml" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.fileio.write_file">
+<code class="descclassname">whedon.utils.fileio.</code><code class="descname">write_file</code><span class="sig-paren">(</span><em>filename</em>, <em>content</em>, <em>mode='w'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/fileio.html#write_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.fileio.write_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>write_file will open a file, “filename” and write content, “content”
+and properly close the file</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.fileio.write_json">
+<code class="descclassname">whedon.utils.fileio.</code><code class="descname">write_json</code><span class="sig-paren">(</span><em>json_obj</em>, <em>filename</em>, <em>mode='w'</em>, <em>print_pretty=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/fileio.html#write_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.fileio.write_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>write_json will (optionally,pretty print) a json object to file
+:param json_obj: the dict to print to json
+:param filename: the output file to write to
+:param pretty_print: if True, will use nicer formatting</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-whedon.utils.terminal">
+<span id="whedon-utils-terminal-module"></span><h2>whedon.utils.terminal module<a class="headerlink" href="#module-whedon.utils.terminal" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="whedon.utils.terminal.check_install">
+<code class="descclassname">whedon.utils.terminal.</code><code class="descname">check_install</code><span class="sig-paren">(</span><em>software='whedon'</em>, <em>quiet=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/terminal.html#check_install"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.terminal.check_install" title="Permalink to this definition">¶</a></dt>
+<dd><p>check_install will attempt to run the singularity command, and
+return True if installed. The command line utils will not run 
+without this check.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.terminal.get_installdir">
+<code class="descclassname">whedon.utils.terminal.</code><code class="descname">get_installdir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/terminal.html#get_installdir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.terminal.get_installdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_installdir returns the installation directory of the application</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.terminal.run_command">
+<code class="descclassname">whedon.utils.terminal.</code><code class="descname">run_command</code><span class="sig-paren">(</span><em>cmd</em>, <em>sudo=False</em>, <em>capture=True</em>, <em>no_newline_regexp='Progess'</em>, <em>quiet=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/terminal.html#run_command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.terminal.run_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>run_command uses subprocess to send a command to the terminal. If
+capture is True, we use the parent stdout, so the progress bar (and
+other commands of interest) are piped to the user. This means we 
+don’t return the output to parse.</p>
+<p>cmd: the command to send, should be a list for subprocess
+sudo: if needed, add to start of command
+no_newline_regexp: the regular expression to determine skipping a</p>
+<blockquote>
+<div>newline. Defaults to finding Progress</div></blockquote>
+<dl class="docutils">
+<dt>capture: if True, don’t set stdout and have it go to console. This</dt>
+<dd>option can print a progress bar, but won’t return the lines
+as output.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.terminal.stream_command">
+<code class="descclassname">whedon.utils.terminal.</code><code class="descname">stream_command</code><span class="sig-paren">(</span><em>cmd</em>, <em>no_newline_regexp='Progess'</em>, <em>sudo=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/terminal.html#stream_command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.terminal.stream_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>stream a command (yield) back to the user, as each line is available.</p>
+<p>:: note
+# Example usage:
+results = []
+for line in stream_command(cmd):</p>
+<blockquote>
+<div>print(line, end=”“)
+results.append(line)</div></blockquote>
+<p>cmd: the command to send, should be a list for subprocess
+no_newline_regexp: the regular expression to determine skipping a</p>
+<blockquote>
+<div>newline. Defaults to finding Progress</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="module-whedon.utils.web">
+<span id="whedon-utils-web-module"></span><h2>whedon.utils.web module<a class="headerlink" href="#module-whedon.utils.web" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="whedon.utils.web.clone">
+<code class="descclassname">whedon.utils.web.</code><code class="descname">clone</code><span class="sig-paren">(</span><em>url</em>, <em>tmpdir=None</em>, <em>branch='master'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/web.html#clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.web.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>clone a repository from Github</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="whedon.utils.web.get_post_fields">
+<code class="descclassname">whedon.utils.web.</code><code class="descname">get_post_fields</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/utils/web.html#get_post_fields"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.utils.web.get_post_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>parse through a request, and return fields from post in a dictionary</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-whedon.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-whedon.utils" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/robot.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">whedon.utils package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-whedon.utils.fileio">whedon.utils.fileio module</a></li>
+<li><a class="reference internal" href="#module-whedon.utils.terminal">whedon.utils.terminal module</a></li>
+<li><a class="reference internal" href="#module-whedon.utils.web">whedon.utils.web module</a></li>
+<li><a class="reference internal" href="#module-whedon.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">whedon-python</a><ul>
+  <li><a href="whedon.html">whedon package</a><ul>
+      <li>Previous: <a href="whedon.main.base.html" title="previous chapter">whedon.main.base package</a></li>
+      <li>Next: <a href="contributing.html" title="next chapter">Contributing</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/whedon.utils.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Vanessa Sochat.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/whedon.utils.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
