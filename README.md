@@ -13,11 +13,11 @@ Github.
 
 > Just... no!
 
-![docs/img/whedon-before.png](docs/img/whedon-before.png)
+![docs/img/whedon-before.png](https://github.com/openbases/whedon-python/raw/master/docs/img/whedon-before.png)
 
 > Better!
 
-![docs/img/whedon-upgrade.png](docs/img/whedon-upgrade.png)
+![docs/img/whedon-upgrade.png](https://github.com/openbases/whedon-python/raw/master/docs/img/whedon-upgrade.png)
 
 # Quick Start
 
