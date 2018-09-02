@@ -14,3 +14,8 @@ LICENSE = "LICENSE"
 INSTALL_REQUIRES = (
     ('pyaml', {'min_version': '17.12.1'}),
 )
+
+TEST_REQUIRES = (
+    ('pytest', {'min_version': None}),
+)
+

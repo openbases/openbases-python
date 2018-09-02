@@ -88,6 +88,7 @@ if __name__ == "__main__":
           setup_requires=["pytest-runner"],
           tests_require=["pytest"],
           install_requires = INSTALL_REQUIRES,
+          tests_require = TEST_REQUIRES,
           classifiers=[
               'Intended Audience :: Science/Research',
               'Intended Audience :: Developers',
