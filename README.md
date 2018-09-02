@@ -1,10 +1,10 @@
 # Whedon Python
 
+[![CircleCI](https://circleci.com/gh/openbases/whedon-python.svg?style=svg)](https://circleci.com/gh/openbases/whedon-python)
+
 This is a small module with helper functions for using Whedon. Please contribute at
 [openbases/python-whedon](https://www.github.com/openbases/whedon-python) on
 Github.
-
-**Inspiration**
 
 > Just... no!
 
