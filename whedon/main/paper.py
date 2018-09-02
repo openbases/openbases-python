@@ -8,7 +8,7 @@ import os
 import re
 import sys
   
-class Journal(Enum):
+class Journal:
     joss = 'joss'
     rse = 'rse'
 
