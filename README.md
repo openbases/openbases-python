@@ -1,5 +1,6 @@
 # Whedon Python
 
+[![PyPI version](https://badge.fury.io/py/whedon.svg)](https://badge.fury.io/py/whedon)
 [![CircleCI](https://circleci.com/gh/openbases/whedon-python.svg?style=svg)](https://circleci.com/gh/openbases/whedon-python)
 
 This is a small module with helper functions for using Whedon. Please contribute at
