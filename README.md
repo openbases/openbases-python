@@ -1,5 +1,7 @@
 # Whedon Python
 
+![docs/img/robot.png](docs/img/robot.png)
+
 [![PyPI version](https://badge.fury.io/py/whedon.svg)](https://badge.fury.io/py/whedon)
 [![CircleCI](https://circleci.com/gh/openbases/whedon-python.svg?style=svg)](https://circleci.com/gh/openbases/whedon-python)
 
