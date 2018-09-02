@@ -59,5 +59,10 @@ actions:
     shell        start an interactive shell with whedon
 ```
 
-For complete usage, please see our [documentation](https://openbases.github.io/whedon-python/)
-and implementation in [whedon docker](https://www.github.com/openbases/whedon/). Have fun!
+For complete usage, please see:
+
+ - [usage documentation](https://openbases.github.io/whedon-python/html/usage.html) 
+ - [documentation](https://openbases.github.io/whedon-python/)
+ - implementation in [whedon docker](https://www.github.com/openbases/whedon/). 
+
+Have fun!
