@@ -1,9 +1,11 @@
 # Whedon Python
 
-![docs/img/robot.png](docs/img/robot.png)
-
 [![PyPI version](https://badge.fury.io/py/whedon.svg)](https://badge.fury.io/py/whedon)
 [![CircleCI](https://circleci.com/gh/openbases/whedon-python.svg?style=svg)](https://circleci.com/gh/openbases/whedon-python)
+
+![docs/img/robot.png](https://github.com/openbases/whedon-python/raw/master/docs/img/robot.png)
+
+-------------------------------------------------------------------------------
 
 This is a small module with helper functions for using Whedon. Please contribute at
 [openbases/python-whedon](https://www.github.com/openbases/whedon-python) on
