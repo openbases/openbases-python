@@ -37,6 +37,9 @@ class Paper:
     def __repr__(self):
         return self.__str__()
 
+    def __contains__(self, value):
+        return value in self.metadata
+
     def _check_inputs(self, filename):
         '''check to make sure that filename exists
            Parameters
