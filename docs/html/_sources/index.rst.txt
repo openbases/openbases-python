@@ -13,11 +13,19 @@ Welcome to Whedon Python!
    authors
    changelog
 
+|
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Links:
+
+   Github <https://www.github.com/openbases/whedon-python>
+   Open Bases <https://openbases.github.io>
+   Issues <https://www.github.com/openbases/whedon-python/issues>
+
+
 Indices and tables
 ==================
-* Github <https://www.github.com/openbases/whedon-python>
-* Open Bases <https://openbases.github.io>
-* Issues <https://www.github.com/openbases/whedon-python/issues>
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
