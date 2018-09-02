@@ -15,6 +15,9 @@ Welcome to Whedon Python!
 
 Indices and tables
 ==================
+* Github <https://www.github.com/openbases/whedon-python>
+* Open Bases <https://openbases.github.io>
+* Issues <https://www.github.com/openbases/whedon-python/issues>
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
