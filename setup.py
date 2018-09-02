@@ -22,7 +22,7 @@ def get_lookup():
     return lookup
 
 # Read in requirements
-def get_requirements(lookup=None, key):
+def get_requirements(lookup=None, key="INSTALL_REQUIRES"):
     '''get_requirements reads in requirements and versions from
     the lookup obtained with get_lookup'''
 
@@ -69,7 +69,7 @@ with open('README.md') as filey:
 
 if __name__ == "__main__":
 
-    INSTALL_REQUIRES = get_requirements(lookup, 'INSTALL_REQUIRES')
+    INSTALL_REQUIRES = get_requirements(lookup)
     TEST_REQUIRES = get_requirements(lookup, 'TEST_REQUIRES')
 
     setup(name=NAME,
