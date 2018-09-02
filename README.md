@@ -8,7 +8,7 @@ Github.
 
 > Just... no!
 
-![docs/img/whedon-no.png](docs/img/whedon-no.png)
+![docs/img/whedon-before.png](docs/img/whedon-before.png)
 
 > Better!
 
