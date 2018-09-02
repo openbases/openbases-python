@@ -26,7 +26,7 @@ def get_parser():
                         help="show whedon python version", 
                         default=False, action='store_true')
 
-    parser.add_argument("sep", default=",",
+    parser.add_argument("--sep", default=",",
                         help="separator for printing lists, etc. (default ,)", 
                         type=str)
 
