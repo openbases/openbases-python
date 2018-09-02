@@ -11,7 +11,7 @@ Welcome to Whedon Python!
    modules
    contributing
    authors
-   history
+   changelog
 
 Indices and tables
 ==================
