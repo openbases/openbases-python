@@ -12,4 +12,5 @@ DESCRIPTION = "whedon python helper functions for https://openbases.github.io"
 LICENSE = "LICENSE"
 
 INSTALL_REQUIRES = (
+    ('pyaml', {'min_version': '17.12.1'}),
 )
