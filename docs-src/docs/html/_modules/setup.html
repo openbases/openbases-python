@@ -1,0 +1,190 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>setup &#8212; Whedon Python 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for setup</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) 2018, Vanessa Sochat All rights reserved.</span>
+<span class="c1"># See the LICENSE in the main repository at:</span>
+<span class="c1">#    https://www.github.com/openbases/whedon-python</span>
+
+<span class="kn">from</span> <span class="nn">setuptools</span> <span class="k">import</span> <span class="n">setup</span><span class="p">,</span> <span class="n">find_packages</span>
+<span class="kn">import</span> <span class="nn">codecs</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1"># HELPER FUNCTIONS #############################################################</span>
+<span class="c1">################################################################################</span>
+
+<div class="viewcode-block" id="get_lookup"><a class="viewcode-back" href="../setup.html#setup.get_lookup">[docs]</a><span class="k">def</span> <span class="nf">get_lookup</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;get version by way of singularity.version, returns a </span>
+<span class="sd">    lookup dictionary with several global variables without</span>
+<span class="sd">    needing to import singularity</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">lookup</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">version_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;whedon&#39;</span><span class="p">,</span> <span class="s1">&#39;version.py&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">version_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">filey</span><span class="p">:</span>
+        <span class="n">exec</span><span class="p">(</span><span class="n">filey</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span> <span class="n">lookup</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">lookup</span></div>
+
+<span class="c1"># Read in requirements</span>
+<div class="viewcode-block" id="get_requirements"><a class="viewcode-back" href="../setup.html#setup.get_requirements">[docs]</a><span class="k">def</span> <span class="nf">get_requirements</span><span class="p">(</span><span class="n">lookup</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;INSTALL_REQUIRES&quot;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;get_requirements reads in requirements and versions from</span>
+<span class="sd">    the lookup obtained with get_lookup&#39;&#39;&#39;</span>
+
+    <span class="k">if</span> <span class="n">lookup</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">lookup</span> <span class="o">=</span> <span class="n">get_lookup</span><span class="p">()</span>
+
+    <span class="n">install_requires</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">lookup</span><span class="p">[</span><span class="n">key</span><span class="p">]:</span>
+        <span class="n">module_name</span> <span class="o">=</span> <span class="n">module</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">module_meta</span> <span class="o">=</span> <span class="n">module</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="s2">&quot;exact_version&quot;</span> <span class="ow">in</span> <span class="n">module_meta</span><span class="p">:</span>
+            <span class="n">dependency</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">==</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span><span class="n">module_meta</span><span class="p">[</span><span class="s1">&#39;exact_version&#39;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="s2">&quot;min_version&quot;</span> <span class="ow">in</span> <span class="n">module_meta</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">module_meta</span><span class="p">[</span><span class="s1">&#39;min_version&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">dependency</span> <span class="o">=</span> <span class="n">module_name</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">dependency</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">&gt;=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">module_name</span><span class="p">,</span><span class="n">module_meta</span><span class="p">[</span><span class="s1">&#39;min_version&#39;</span><span class="p">])</span>
+        <span class="n">install_requires</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dependency</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">install_requires</span></div>
+
+
+
+<span class="c1"># Make sure everything is relative to setup.py</span>
+<span class="n">install_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span> 
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">install_path</span><span class="p">)</span>
+
+<span class="c1"># Get version information from the lookup</span>
+<span class="n">lookup</span> <span class="o">=</span> <span class="n">get_lookup</span><span class="p">()</span>
+<span class="n">VERSION</span> <span class="o">=</span> <span class="n">lookup</span><span class="p">[</span><span class="s1">&#39;__version__&#39;</span><span class="p">]</span>
+<span class="n">NAME</span> <span class="o">=</span> <span class="n">lookup</span><span class="p">[</span><span class="s1">&#39;NAME&#39;</span><span class="p">]</span>
+<span class="n">AUTHOR</span> <span class="o">=</span> <span class="n">lookup</span><span class="p">[</span><span class="s1">&#39;AUTHOR&#39;</span><span class="p">]</span>
+<span class="n">AUTHOR_EMAIL</span> <span class="o">=</span> <span class="n">lookup</span><span class="p">[</span><span class="s1">&#39;AUTHOR_EMAIL&#39;</span><span class="p">]</span>
+<span class="n">PACKAGE_URL</span> <span class="o">=</span> <span class="n">lookup</span><span class="p">[</span><span class="s1">&#39;PACKAGE_URL&#39;</span><span class="p">]</span>
+<span class="n">KEYWORDS</span> <span class="o">=</span> <span class="n">lookup</span><span class="p">[</span><span class="s1">&#39;KEYWORDS&#39;</span><span class="p">]</span>
+<span class="n">DESCRIPTION</span> <span class="o">=</span> <span class="n">lookup</span><span class="p">[</span><span class="s1">&#39;DESCRIPTION&#39;</span><span class="p">]</span>
+<span class="n">LICENSE</span> <span class="o">=</span> <span class="n">lookup</span><span class="p">[</span><span class="s1">&#39;LICENSE&#39;</span><span class="p">]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;README.md&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">filey</span><span class="p">:</span>
+    <span class="n">LONG_DESCRIPTION</span> <span class="o">=</span> <span class="n">filey</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1"># MAIN #########################################################################</span>
+<span class="c1">################################################################################</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="n">INSTALL_REQUIRES</span> <span class="o">=</span> <span class="n">get_requirements</span><span class="p">(</span><span class="n">lookup</span><span class="p">)</span>
+    <span class="n">TEST_REQUIRES</span> <span class="o">=</span> <span class="n">get_requirements</span><span class="p">(</span><span class="n">lookup</span><span class="p">,</span> <span class="s1">&#39;TEST_REQUIRES&#39;</span><span class="p">)</span>
+
+    <span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">NAME</span><span class="p">,</span>
+          <span class="n">version</span><span class="o">=</span><span class="n">VERSION</span><span class="p">,</span>
+          <span class="n">author</span><span class="o">=</span><span class="n">AUTHOR</span><span class="p">,</span>
+          <span class="n">author_email</span><span class="o">=</span><span class="n">AUTHOR_EMAIL</span><span class="p">,</span>
+          <span class="n">maintainer</span><span class="o">=</span><span class="n">AUTHOR</span><span class="p">,</span>
+          <span class="n">maintainer_email</span><span class="o">=</span><span class="n">AUTHOR_EMAIL</span><span class="p">,</span>
+          <span class="n">packages</span><span class="o">=</span><span class="n">find_packages</span><span class="p">(),</span> 
+          <span class="n">include_package_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+          <span class="n">zip_safe</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">url</span><span class="o">=</span><span class="n">PACKAGE_URL</span><span class="p">,</span>
+          <span class="n">license</span><span class="o">=</span><span class="n">LICENSE</span><span class="p">,</span>
+          <span class="n">description</span><span class="o">=</span><span class="n">DESCRIPTION</span><span class="p">,</span>
+          <span class="n">long_description</span><span class="o">=</span><span class="n">LONG_DESCRIPTION</span><span class="p">,</span>
+          <span class="n">keywords</span><span class="o">=</span><span class="n">KEYWORDS</span><span class="p">,</span>
+          <span class="n">setup_requires</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pytest-runner&quot;</span><span class="p">],</span>
+          <span class="n">install_requires</span> <span class="o">=</span> <span class="n">INSTALL_REQUIRES</span><span class="p">,</span>
+          <span class="n">tests_require</span> <span class="o">=</span> <span class="n">TEST_REQUIRES</span><span class="p">,</span>
+          <span class="n">classifiers</span><span class="o">=</span><span class="p">[</span>
+              <span class="s1">&#39;Intended Audience :: Science/Research&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Intended Audience :: Developers&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Programming Language :: Python&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Topic :: Software Development&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Topic :: Scientific/Engineering&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Operating System :: Unix&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Programming Language :: Python :: 2.7&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;Programming Language :: Python :: 3&#39;</span><span class="p">,</span>
+          <span class="p">],</span>
+
+          <span class="n">entry_points</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;py-whedon=whedon.cli:main&#39;</span> <span class="p">]</span> <span class="p">})</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../_static/robot.png" alt="Logo"/>
+            </a></p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Vanessa Sochat.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,207 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>whedon.cli &#8212; Whedon Python 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for whedon.cli</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright (c) 2018, Vanessa Sochat All rights reserved.</span>
+<span class="c1"># See the LICENSE in the main repository at:</span>
+<span class="c1">#    https://www.github.com/openbases/whedon-python</span>
+
+<span class="kn">import</span> <span class="nn">argparse</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<div class="viewcode-block" id="get_parser"><a class="viewcode-back" href="../../whedon.cli.html#whedon.cli.get_parser">[docs]</a><span class="k">def</span> <span class="nf">get_parser</span><span class="p">():</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Whedon Python&quot;</span><span class="p">,</span>
+                                <span class="n">formatter_class</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">RawTextHelpFormatter</span><span class="p">,</span>
+                                <span class="n">add_help</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Global Options</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--debug&#39;</span><span class="p">,</span><span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;debug&quot;</span><span class="p">,</span> 
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;use verbose logging to debug.&quot;</span><span class="p">,</span> 
+                        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--quiet&#39;</span><span class="p">,</span><span class="s1">&#39;-q&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;quiet&quot;</span><span class="p">,</span> 
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;suppress all normal output&quot;</span><span class="p">,</span> 
+                        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--version&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;version&quot;</span><span class="p">,</span> 
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;show whedon python version&quot;</span><span class="p">,</span> 
+                        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;sep&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;separator for printing lists, etc. (default ,)&quot;</span><span class="p">,</span> 
+                        <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+
+    <span class="n">subparsers</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">add_subparsers</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s1">&#39;description&#39;</span><span class="p">,</span>
+                                       <span class="n">title</span><span class="o">=</span><span class="s1">&#39;actions&#39;</span><span class="p">,</span>
+                                       <span class="n">description</span><span class="o">=</span><span class="s1">&#39;actions for py-whedon&#39;</span><span class="p">,</span>
+                                       <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;command&quot;</span><span class="p">,</span> <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;general usage&#39;</span><span class="p">)</span>
+
+          
+    <span class="c1"># Paper Parsing</span>
+
+    <span class="n">paper</span> <span class="o">=</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="s2">&quot;paper&quot;</span><span class="p">,</span>
+                                   <span class="n">help</span><span class="o">=</span><span class="s2">&quot;extract values from a paper.md&quot;</span><span class="p">)</span>
+
+    <span class="n">paper</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;cmd&quot;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;paper markdown file to parse&quot;</span><span class="p">,</span> 
+                        <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+
+
+    <span class="n">shell</span> <span class="o">=</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="s2">&quot;shell&quot;</span><span class="p">,</span>
+                                   <span class="n">help</span><span class="o">=</span><span class="s2">&quot;start an interactive shell with whedon&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">parser</span></div>
+
+
+<div class="viewcode-block" id="get_subparsers"><a class="viewcode-back" href="../../whedon.cli.html#whedon.cli.get_subparsers">[docs]</a><span class="k">def</span> <span class="nf">get_subparsers</span><span class="p">(</span><span class="n">parser</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;get_subparser will get a dictionary of subparsers, to help with printing help</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="n">actions</span> <span class="o">=</span> <span class="p">[</span><span class="n">action</span> <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">parser</span><span class="o">.</span><span class="n">_actions</span> 
+               <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">argparse</span><span class="o">.</span><span class="n">_SubParsersAction</span><span class="p">)]</span>
+
+    <span class="n">subparsers</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">actions</span><span class="p">:</span>
+        <span class="c1"># get all subparsers and print help</span>
+        <span class="k">for</span> <span class="n">choice</span><span class="p">,</span> <span class="n">subparser</span> <span class="ow">in</span> <span class="n">action</span><span class="o">.</span><span class="n">choices</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">subparsers</span><span class="p">[</span><span class="n">choice</span><span class="p">]</span> <span class="o">=</span> <span class="n">subparser</span>
+
+    <span class="k">return</span> <span class="n">subparsers</span>
+
+    <span class="c1"># Import logger to set</span>
+    <span class="kn">from</span> <span class="nn">whedon.logger</span> <span class="k">import</span> <span class="n">bot</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Logging level </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="n">level</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">whedon</span>
+
+    <span class="n">bot</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Whedon Python Version: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">whedon</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="version"><a class="viewcode-back" href="../../whedon.cli.html#whedon.cli.version">[docs]</a><span class="k">def</span> <span class="nf">version</span><span class="p">():</span>
+    <span class="sd">&#39;&#39;&#39;version prints the version, both for the user and help output</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="kn">import</span> <span class="nn">whedon</span>
+    <span class="k">return</span> <span class="n">whedon</span><span class="o">.</span><span class="n">__version__</span></div>
+    
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../whedon.cli.html#whedon.cli.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">main</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">get_parser</span><span class="p">()</span>
+    <span class="n">subparsers</span> <span class="o">=</span> <span class="n">get_subparsers</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">help</span><span class="p">(</span><span class="n">return_code</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;print help, including the software version and exit</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">version</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Whedon Python [v</span><span class="si">%s</span><span class="s2">]</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+        <span class="n">parser</span><span class="o">.</span><span class="n">print_help</span><span class="p">()</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">return_code</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">help</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># We capture all primary arguments, and take secondary to pass on</span>
+        <span class="n">args</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># If the user wants the version</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">version</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">version</span><span class="p">())</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Does the user want help for a subcommand?</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">command</span> <span class="o">==</span> <span class="s1">&#39;paper&#39;</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">.paper</span> <span class="k">import</span> <span class="n">main</span> 
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">command</span> <span class="o">==</span> <span class="s1">&#39;shell&#39;</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">.shell</span> <span class="k">import</span> <span class="n">main</span> 
+    <span class="k">else</span><span class="p">:</span> <span class="n">help</span><span class="p">()</span>
+
+    <span class="c1"># Pass on to the correct parser</span>
+    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">command</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span> <span class="n">parser</span><span class="o">=</span><span class="n">parser</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../index.html">
+              <img class="logo" src="../../_static/robot.png" alt="Logo"/>
+            </a></p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Vanessa Sochat.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
