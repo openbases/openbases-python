@@ -4,8 +4,6 @@
 
 from whedon.logger import bot
 from whedon.utils import read_yaml
-from typing import List
-from enum import Enum
 import os
 import re
 import sys
