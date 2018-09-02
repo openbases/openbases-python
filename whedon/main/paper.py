@@ -17,11 +17,12 @@ class Journal(Enum):
 class Author:
     '''an Author holds a name, orcid id, and affiliation'''
     def __init__(self, 
-                 name: str, 
-                 orcid: str, 
-                 affiliation: str):
-
+                 name, 
+                 orcid, 
+                 affiliation):
         self.name = name
+        self.orcid = orcid
+        self.affiliation = affiliation
 
 
 class Paper:
