@@ -16,4 +16,5 @@ Critical items to know are:
 versions here coincide with releases on pypi.
 
 ## [master](https://github.com/openbases/whedon-python/tree/master)
+ - added base functions to get fields from paper markdown and tests  (0.0.1)
  - package registration (still under development)  (0.0.0)
