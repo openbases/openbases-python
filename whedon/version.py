@@ -2,7 +2,7 @@
 # See the LICENSE in the main repository at:
 #    https://www.github.com/openbases/whedon-python
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 AUTHOR = 'Vanessa Sochat'
 AUTHOR_EMAIL = 'vsochat@stanford.edu'
 NAME = 'whedon'
