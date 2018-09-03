@@ -6,7 +6,7 @@ import sys
 from whedon.main import get_client
 from whedon.logger import bot
 
-def main(args, options, parser):
+def main(args, options, parser, sep=","):
     
     command = args.cmd
     cli = get_client()
@@ -34,4 +34,4 @@ def main(args, options, parser):
             for arg in command[1:]:
 
                 # If the arg is of format arg:field will return field from list
-                paper.get(arg, sep=args.sep)
+                paper.get(arg, sep=sep)

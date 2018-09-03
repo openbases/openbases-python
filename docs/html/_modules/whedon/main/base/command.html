@@ -185,16 +185,14 @@
 
 
 <div class="viewcode-block" id="init_command"><a class="viewcode-back" href="../../../../whedon.main.base.html#whedon.main.base.command.init_command">[docs]</a><span class="k">def</span> <span class="nf">init_command</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39; return the initial Singularity command with any added flags.</span>
+    <span class="sd">&#39;&#39;&#39;return the initial Singularity command with any added flags.</span>
 <span class="sd">        </span>
-<span class="sd">        Parameters</span>
-<span class="sd">        ==========</span>
-<span class="sd">        action: the main action to perform (e.g., build)</span>
-<span class="sd">        flags: one or more additional flags (e.g, volumes) </span>
-<span class="sd">               not implemented yet.</span>
-
+<span class="sd">       Parameters</span>
+<span class="sd">       ==========</span>
+<span class="sd">       action: the main action to perform (e.g., build)</span>
+<span class="sd">       flags: one or more additional flags (e.g, volumes) </span>
+<span class="sd">              not implemented yet.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-
     <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;singularity&#39;</span><span class="p">,</span> <span class="n">action</span> <span class="p">]</span>
 
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">quiet</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>

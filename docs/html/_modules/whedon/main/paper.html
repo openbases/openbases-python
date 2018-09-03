@@ -172,24 +172,23 @@
 
 <span class="kn">from</span> <span class="nn">whedon.logger</span> <span class="k">import</span> <span class="n">bot</span>
 <span class="kn">from</span> <span class="nn">whedon.utils</span> <span class="k">import</span> <span class="n">read_yaml</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span>
-<span class="kn">from</span> <span class="nn">enum</span> <span class="k">import</span> <span class="n">Enum</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">sys</span>
   
-<div class="viewcode-block" id="Journal"><a class="viewcode-back" href="../../../whedon.main.html#whedon.main.paper.Journal">[docs]</a><span class="k">class</span> <span class="nc">Journal</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="Journal"><a class="viewcode-back" href="../../../whedon.main.html#whedon.main.paper.Journal">[docs]</a><span class="k">class</span> <span class="nc">Journal</span><span class="p">:</span>
     <span class="n">joss</span> <span class="o">=</span> <span class="s1">&#39;joss&#39;</span>
     <span class="n">rse</span> <span class="o">=</span> <span class="s1">&#39;rse&#39;</span></div>
 
 <div class="viewcode-block" id="Author"><a class="viewcode-back" href="../../../whedon.main.html#whedon.main.paper.Author">[docs]</a><span class="k">class</span> <span class="nc">Author</span><span class="p">:</span>
     <span class="sd">&#39;&#39;&#39;an Author holds a name, orcid id, and affiliation&#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
-                 <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
-                 <span class="n">orcid</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
-                 <span class="n">affiliation</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span></div>
+                 <span class="n">name</span><span class="p">,</span> 
+                 <span class="n">orcid</span><span class="p">,</span> 
+                 <span class="n">affiliation</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">orcid</span> <span class="o">=</span> <span class="n">orcid</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">affiliation</span> <span class="o">=</span> <span class="n">affiliation</span></div>
 
 
 <div class="viewcode-block" id="Paper"><a class="viewcode-back" href="../../../whedon.main.html#whedon.main.paper.Paper">[docs]</a><span class="k">class</span> <span class="nc">Paper</span><span class="p">:</span>

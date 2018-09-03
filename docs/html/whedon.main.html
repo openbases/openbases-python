@@ -88,6 +88,7 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="readme.html">Whedon Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#quick-start">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">whedon-python</a><ul class="current">
@@ -106,9 +107,17 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributor’s Agreement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html#code-of-conduct">Code of Conduct</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="history.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Links:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.github.com/openbases/whedon-python">Github</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://openbases.github.io">Open Bases</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.github.com/openbases/whedon-python/issues">Issues</a></li>
 </ul>
 
             
@@ -202,7 +211,7 @@
 <span id="whedon-main-paper-module"></span><h2>whedon.main.paper module<a class="headerlink" href="#module-whedon.main.paper" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="whedon.main.paper.Author">
-<em class="property">class </em><code class="descclassname">whedon.main.paper.</code><code class="descname">Author</code><span class="sig-paren">(</span><em>name: str</em>, <em>orcid: str</em>, <em>affiliation: str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/main/paper.html#Author"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.main.paper.Author" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">whedon.main.paper.</code><code class="descname">Author</code><span class="sig-paren">(</span><em>name</em>, <em>orcid</em>, <em>affiliation</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/whedon/main/paper.html#Author"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.main.paper.Author" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>an Author holds a name, orcid id, and affiliation</p>
 </dd></dl>
@@ -210,8 +219,7 @@
 <dl class="class">
 <dt id="whedon.main.paper.Journal">
 <em class="property">class </em><code class="descclassname">whedon.main.paper.</code><code class="descname">Journal</code><a class="reference internal" href="_modules/whedon/main/paper.html#Journal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#whedon.main.paper.Journal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">enum.Enum</span></code></p>
-<p>An enumeration.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <dl class="attribute">
 <dt id="whedon.main.paper.Journal.joss">
 <code class="descname">joss</code><em class="property"> = 'joss'</em><a class="headerlink" href="#whedon.main.paper.Journal.joss" title="Permalink to this definition">¶</a></dt>

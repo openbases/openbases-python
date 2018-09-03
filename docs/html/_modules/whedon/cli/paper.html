@@ -174,7 +174,7 @@
 <span class="kn">from</span> <span class="nn">whedon.main</span> <span class="k">import</span> <span class="n">get_client</span>
 <span class="kn">from</span> <span class="nn">whedon.logger</span> <span class="k">import</span> <span class="n">bot</span>
 
-<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../whedon.cli.html#whedon.cli.paper.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../whedon.cli.html#whedon.cli.paper.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
     
     <span class="n">command</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">cmd</span>
     <span class="n">cli</span> <span class="o">=</span> <span class="n">get_client</span><span class="p">()</span>
@@ -202,7 +202,7 @@
             <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">command</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
 
                 <span class="c1"># If the arg is of format arg:field will return field from list</span>
-                <span class="n">paper</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span></div>
+                <span class="n">paper</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
