@@ -8,13 +8,13 @@ Installation
 Stable release
 --------------
 
-To install Whedon Python, run this command in your terminal:
+To install OpenBases Python, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install whedon
+    $ pip install openbases
 
-This is the preferred method to install Whedon Python, as it will always install the most recent stable release.
+This is the preferred method to install openbases Python, as it will always install the most recent stable release.
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -26,19 +26,19 @@ you through the process.
 From sources
 ------------
 
-The sources for Whedon Python can be downloaded from the `Github repo`_.
+The sources for openbases Python can be downloaded from the `Github repo`_.
 
 You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/vsoch/whedon
+    $ git clone git://github.com/openbases/openbases-python
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/vsoch/whedon/tarball/master
+    $ curl  -OL https://github.com/openbases/openbases-python/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -46,6 +46,5 @@ Once you have a copy of the source, you can install it with:
 
     $ python setup.py install
 
-
-.. _Github repo: https://github.com/vsoch/whedon
-.. _tarball: https://github.com/vsoch/whedon/tarball/master
+.. _Github repo: https://github.com/openbases/openbases-python
+.. _tarball: https://github.com/vsoch/openbases/tarball/master

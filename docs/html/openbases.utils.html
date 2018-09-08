@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>openbases.utils package &mdash; openbases Python 0.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributor’s Agreement" href="contributing.html" />
+    <link rel="prev" title="openbases.main.base package" href="openbases.main.base.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> openbases Python
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">OpenBases Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#quick-start">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">openbases-python</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="openbases.html">openbases package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="openbases.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="openbases.cli.html">openbases.cli package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="openbases.logger.html">openbases.logger package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="openbases.main.html">openbases.main package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">openbases.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="openbases.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="openbases.html#module-openbases.version">openbases.version module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="openbases.html#module-openbases">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributor’s Agreement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Links:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.github.com/openbases/openbases-python">Github</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://openbases.github.io">Open Bases</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.github.com/openbases/openbases-python/issues">Issues</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">openbases Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">openbases-python</a> &raquo;</li>
+        
+          <li><a href="openbases.html">openbases package</a> &raquo;</li>
+        
+      <li>openbases.utils package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/openbases.utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="openbases-utils-package">
+<h1>openbases.utils package<a class="headerlink" href="#openbases-utils-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openbases.utils.fileio">
+<span id="openbases-utils-fileio-module"></span><h2>openbases.utils.fileio module<a class="headerlink" href="#module-openbases.utils.fileio" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="openbases.utils.fileio.convert2boolean">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">convert2boolean</code><span class="sig-paren">(</span><em>arg</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#convert2boolean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.convert2boolean" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert2boolean is used for environmental variables
+that must be returned as boolean</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.fileio.copy_directory">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">copy_directory</code><span class="sig-paren">(</span><em>src</em>, <em>dest</em>, <em>force=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#copy_directory"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.copy_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy an entire directory recursively</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.fileio.find_directories">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">find_directories</code><span class="sig-paren">(</span><em>root</em>, <em>fullpath=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#find_directories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.find_directories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return directories at one level specified by user
+(not recursive)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.fileio.find_subdirectories">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">find_subdirectories</code><span class="sig-paren">(</span><em>basepath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#find_subdirectories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.find_subdirectories" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return directories (and sub) starting from a base</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.fileio.get_installdir">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">get_installdir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#get_installdir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.get_installdir" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.fileio.getenv">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">getenv</code><span class="sig-paren">(</span><em>variable_key</em>, <em>default=None</em>, <em>required=False</em>, <em>silent=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#getenv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.getenv" title="Permalink to this definition">¶</a></dt>
+<dd><p>getenv will attempt to get an environment variable. If the variable
+is not found, None is returned.
+:param variable_key: the variable name
+:param required: exit with error if not found
+:param silent: Do not print debugging information for variable</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.fileio.mkdir_p">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">mkdir_p</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#mkdir_p"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.mkdir_p" title="Permalink to this definition">¶</a></dt>
+<dd><p>mkdir_p attempts to get the same functionality as mkdir -p
+:param path: the path to create.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.fileio.read_file">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">read_file</code><span class="sig-paren">(</span><em>filename</em>, <em>mode='r'</em>, <em>readlines=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#read_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.read_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>write_file will open a file, “filename” and write content, “content”
+and properly close the file</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.fileio.read_json">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">read_json</code><span class="sig-paren">(</span><em>filename</em>, <em>mode='r'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#read_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.read_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>read_json reads in a json file and returns
+the data structure as dict.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.fileio.read_yaml">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">read_yaml</code><span class="sig-paren">(</span><em>filename</em>, <em>mode='r'</em>, <em>quiet=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#read_yaml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.read_yaml" title="Permalink to this definition">¶</a></dt>
+<dd><p>read a yaml file, only including sections between dashes</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.fileio.write_file">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">write_file</code><span class="sig-paren">(</span><em>filename</em>, <em>content</em>, <em>mode='w'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#write_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.write_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>write_file will open a file, “filename” and write content, “content”
+and properly close the file</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.fileio.write_json">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">write_json</code><span class="sig-paren">(</span><em>json_obj</em>, <em>filename</em>, <em>mode='w'</em>, <em>print_pretty=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#write_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.write_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>write_json will (optionally,pretty print) a json object to file
+:param json_obj: the dict to print to json
+:param filename: the output file to write to
+:param pretty_print: if True, will use nicer formatting</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-openbases.utils.terminal">
+<span id="openbases-utils-terminal-module"></span><h2>openbases.utils.terminal module<a class="headerlink" href="#module-openbases.utils.terminal" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="openbases.utils.terminal.check_install">
+<code class="descclassname">openbases.utils.terminal.</code><code class="descname">check_install</code><span class="sig-paren">(</span><em>software=None</em>, <em>quiet=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/terminal.html#check_install"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.terminal.check_install" title="Permalink to this definition">¶</a></dt>
+<dd><p>check_install will attempt to run some command, and
+return True if installed. The command line utils will not run 
+without this check.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.terminal.get_installdir">
+<code class="descclassname">openbases.utils.terminal.</code><code class="descname">get_installdir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/terminal.html#get_installdir"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.terminal.get_installdir" title="Permalink to this definition">¶</a></dt>
+<dd><p>get_installdir returns the installation directory of the application</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.terminal.run_command">
+<code class="descclassname">openbases.utils.terminal.</code><code class="descname">run_command</code><span class="sig-paren">(</span><em>cmd</em>, <em>sudo=False</em>, <em>capture=True</em>, <em>no_newline_regexp='Progess'</em>, <em>quiet=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/terminal.html#run_command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.terminal.run_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>run_command uses subprocess to send a command to the terminal. If
+capture is True, we use the parent stdout, so the progress bar (and
+other commands of interest) are piped to the user. This means we 
+don’t return the output to parse.</p>
+<p>cmd: the command to send, should be a list for subprocess
+sudo: if needed, add to start of command
+no_newline_regexp: the regular expression to determine skipping a</p>
+<blockquote>
+<div>newline. Defaults to finding Progress</div></blockquote>
+<dl class="docutils">
+<dt>capture: if True, don’t set stdout and have it go to console. This</dt>
+<dd>option can print a progress bar, but won’t return the lines
+as output.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.terminal.stream_command">
+<code class="descclassname">openbases.utils.terminal.</code><code class="descname">stream_command</code><span class="sig-paren">(</span><em>cmd</em>, <em>no_newline_regexp='Progess'</em>, <em>sudo=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/terminal.html#stream_command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.terminal.stream_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>stream a command (yield) back to the user, as each line is available.</p>
+<p>:: note
+# Example usage:
+results = []
+for line in stream_command(cmd):</p>
+<blockquote>
+<div>print(line, end=”“)
+results.append(line)</div></blockquote>
+<p>cmd: the command to send, should be a list for subprocess
+no_newline_regexp: the regular expression to determine skipping a</p>
+<blockquote>
+<div>newline. Defaults to finding Progress</div></blockquote>
+</dd></dl>
+
+</div>
+<div class="section" id="module-openbases.utils.web">
+<span id="openbases-utils-web-module"></span><h2>openbases.utils.web module<a class="headerlink" href="#module-openbases.utils.web" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="openbases.utils.web.clone">
+<code class="descclassname">openbases.utils.web.</code><code class="descname">clone</code><span class="sig-paren">(</span><em>url</em>, <em>tmpdir=None</em>, <em>branch='master'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/web.html#clone"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.web.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>clone a repository from Github</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.web.get_post_fields">
+<code class="descclassname">openbases.utils.web.</code><code class="descname">get_post_fields</code><span class="sig-paren">(</span><em>request</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/web.html#get_post_fields"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.web.get_post_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>parse through a request, and return fields from post in a dictionary</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-openbases.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-openbases.utils" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="contributing.html" class="btn btn-neutral float-right" title="Contributor’s Agreement" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="openbases.main.base.html" class="btn btn-neutral" title="openbases.main.base package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Vanessa Sochat.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-Welcome to Whedon Python!
+Welcome to OpenBases Python!
 =========================
 
 .. toctree::
@@ -19,9 +19,9 @@ Welcome to Whedon Python!
    :maxdepth: 2
    :caption: Links:
 
-   Github <https://www.github.com/openbases/whedon-python>
+   Github <https://www.github.com/openbases/openbases-python>
    Open Bases <https://openbases.github.io>
-   Issues <https://www.github.com/openbases/whedon-python/issues>
+   Issues <https://www.github.com/openbases/openbases-python/issues>
 
 
 Indices and tables

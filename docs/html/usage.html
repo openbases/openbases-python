@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; Whedon Python 0.0.2 documentation</title>
+  <title>Usage &mdash; openbases Python 0.0.0 documentation</title>
   
 
   
@@ -24,11 +24,11 @@
 
   
 
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="whedon-python" href="modules.html" />
+    <link rel="next" title="openbases-python" href="modules.html" />
     <link rel="prev" title="Installation" href="installation.html" /> 
 
   
@@ -48,12 +48,12 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Whedon Python
+            <a href="index.html" class="icon icon-home"> openbases Python
           
 
           
             
-            <img src="_static/robot.png" class="logo" alt="Logo"/>
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.2
+                0.0.0
               </div>
             
           
@@ -87,7 +87,7 @@
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="readme.html">Whedon Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">OpenBases Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="readme.html#quick-start">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
@@ -98,7 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#interactive">Interactive</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">whedon-python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">openbases-python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributor’s Agreement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html#contributing">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html#code-of-conduct">Code of Conduct</a></li>
@@ -107,9 +107,9 @@
 </ul>
 <p class="caption"><span class="caption-text">Links:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference external" href="https://www.github.com/openbases/whedon-python">Github</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.github.com/openbases/openbases-python">Github</a></li>
 <li class="toctree-l1"><a class="reference external" href="https://openbases.github.io">Open Bases</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://www.github.com/openbases/whedon-python/issues">Issues</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.github.com/openbases/openbases-python/issues">Issues</a></li>
 </ul>
 
             
@@ -124,7 +124,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Whedon Python</a>
+          <a href="index.html">openbases Python</a>
         
       </nav>
 
@@ -177,14 +177,14 @@
   <div class="section" id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
 <p>This is a temporary location to document usage (while I’m developing it).
-This will be served via a command line client <code class="docutils literal"><span class="pre">py-whedon</span></code> and also within
+This will be served via a command line client <code class="docutils literal"><span class="pre">openbases</span></code> and also within
 python.</p>
 <div class="section" id="papers">
 <h2>Papers<a class="headerlink" href="#papers" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="command-line">
 <h3>Command Line<a class="headerlink" href="#command-line" title="Permalink to this headline">¶</a></h3>
 <p>Load a paper, show all fields:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ openbases paper get paper.md
 title: The Experiment Factory: Reproducible Experiment Containers
 tags: <span class="o">[</span><span class="s1">&#39;containers&#39;</span>, <span class="s1">&#39;docker&#39;</span>, <span class="s1">&#39;psychology&#39;</span>, <span class="s1">&#39;reproducibility&#39;</span>, <span class="s1">&#39;Docker&#39;</span><span class="o">]</span>
 authors: <span class="o">[{</span><span class="s1">&#39;name&#39;</span>: <span class="s1">&#39;Vanessa Sochat&#39;</span>, <span class="s1">&#39;orcid&#39;</span>: <span class="s1">&#39;0000-0002-4387-3819&#39;</span>, <span class="s1">&#39;affiliation&#39;</span>: <span class="m">1</span><span class="o">}]</span>
@@ -194,36 +194,36 @@ bibliography: paper.bib
 </pre></div>
 </div>
 <p>Get a specific field</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md title
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ openbases paper get paper.md title
 The Experiment Factory: Reproducible Experiment Containers
 </pre></div>
 </div>
 <p>Get a list, render in comma separated list</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md tags
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ openbases paper get paper.md tags
 containers,docker,psychology,reproducibility,Docker
 </pre></div>
 </div>
 <p>Change the separator to space!</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>$ py-whedon --sep <span class="s2">&quot; &quot;</span> paper get paper.md  tags
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ openbases --sep <span class="s2">&quot; &quot;</span> paper get paper.md  tags
 containers docker psychology reproducibility Docker
 </pre></div>
 </div>
 <p>Get more than one at once:</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md title tags
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ openbases paper get paper.md title tags
 The Experiment Factory: Reproducible Experiment Containers
 containers,docker,psychology,reproducibility,Docker
 </pre></div>
 </div>
 <p>Look up a subfield (e.g., authors –&gt; name)</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md authors:name
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ openbases paper get paper.md authors:name
 Vanessa Sochat
 
-$ py-whedon paper get paper.md authors:orcid
+$ openbases paper get paper.md authors:orcid
 <span class="m">0000</span>-0002-4387-3819
 </pre></div>
 </div>
 <p>All together now!</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>$ py-whedon paper get paper.md  tags authors:name title
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ openbases paper get paper.md  tags authors:name title
 containers,docker,psychology,reproducibility,Docker
 Vanessa Sochat
 The Experiment Factory: Reproducible Experiment Containers
@@ -234,12 +234,12 @@ The Experiment Factory: Reproducible Experiment Containers
 <div class="section" id="interactive">
 <h2>Interactive<a class="headerlink" href="#interactive" title="Permalink to this headline">¶</a></h2>
 <p>A paper will be available both of these ways:</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">whedon.main</span> <span class="kn">import</span> <span class="n">Paper</span>
+<div class="highlight-guess"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openbases.main</span> <span class="kn">import</span> <span class="n">Paper</span>
 <span class="n">paper</span> <span class="o">=</span> <span class="n">Paper</span><span class="p">(</span><span class="s2">&quot;paper.md&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>or via a client:</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">whedon.main</span> <span class="kn">import</span> <span class="n">get_client</span>
+<div class="highlight-guess"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openbases.main</span> <span class="kn">import</span> <span class="n">get_client</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">get_client</span><span class="p">(</span><span class="s2">&quot;paper.md&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -260,8 +260,8 @@ Vanessa Sochat
 </pre></div>
 </div>
 <p>Command line will probably look like this</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>py-whedon paper get authors name
-authors=$(py-whedon paper get authors name)
+<div class="highlight-guess"><div class="highlight"><pre><span></span>openbases paper get authors name
+authors=$(openbases paper get authors name)
 </pre></div>
 </div>
 <p><strong>under development</strong></p>
@@ -277,7 +277,7 @@ authors=$(py-whedon paper get authors name)
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="modules.html" class="btn btn-neutral float-right" title="whedon-python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="openbases-python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="installation.html" class="btn btn-neutral" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -311,7 +311,7 @@ authors=$(py-whedon paper get authors name)
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.2',
+            VERSION:'0.0.0',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

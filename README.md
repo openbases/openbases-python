@@ -1,68 +1,65 @@
-# Whedon Python
+# OpenBases Python
 
-[![PyPI version](https://badge.fury.io/py/whedon.svg)](https://badge.fury.io/py/whedon)
-[![CircleCI](https://circleci.com/gh/openbases/whedon-python.svg?style=svg)](https://circleci.com/gh/openbases/whedon-python)
+[![PyPI version](https://badge.fury.io/py/openbases.svg)](https://badge.fury.io/py/openbases)
+[![CircleCI](https://circleci.com/gh/openbases/openbases-python.svg?style=svg)](https://circleci.com/gh/openbases/openbases-python)
 
-![docs/img/robot.png](https://github.com/openbases/whedon-python/raw/master/docs/img/robot.png)
+![docs/img/robot.png](https://github.com/openbases/openbases-python/raw/master/docs/img/robot.png)
 
 -------------------------------------------------------------------------------
 
-This is a small module with helper functions for using Whedon. Please contribute at
-[openbases/python-whedon](https://www.github.com/openbases/whedon-python) on
+This is a small module with helper functions and scripts for using Open Bases tools. 
+Please contribute at [openbases/openbases-python](https://www.github.com/openbases/openbases-python) on
 Github.
 
 > Just... no!
 
-![docs/img/whedon-before.png](https://github.com/openbases/whedon-python/raw/master/docs/img/whedon-before.png)
+![docs/img/before.png](https://github.com/openbases/openbases-python/raw/master/docs/img/before.png)
 
 > Better!
 
-![docs/img/whedon-upgrade.png](https://github.com/openbases/whedon-python/raw/master/docs/img/whedon-upgrade.png)
+![docs/img/upgrade.png](https://github.com/openbases/openbases-python/raw/master/docs/img/upgrade.png)
 
 # Quick Start
 
 To install
 
 ```bash
-git clone https://www.github.com/openbases/whedon-python
-cd whedon-python
+git clone https://www.github.com/openbases/openbases-python
+cd openbases-python
 python setup.py install
 ```
 ```
-pip install whedon
+pip install openbases
 ```
 
 And then use:
 
 ```bash
-$ py-whedon help
+$ ob help
 
-Whedon Python [v0.0.0]
+Open Bases Python [v0.0.0]
 
-usage: py-whedon [--debug] [--quiet] [--version] sep general usage ...
+usage: openbases [--debug] [--quiet] [--version] general usage ...
 
-Whedon Python
-
-positional arguments:
-  sep            separator for printing lists, etc. (default ,)
+OpenBases Python
 
 optional arguments:
   --debug, -d    use verbose logging to debug.
   --quiet, -q    suppress all normal output
-  --version      show whedon python version
+  --version      show openbases python version
 
 actions:
-  actions for py-whedon
+  actions for openbases
 
   general usage  description
     paper        extract values from a paper.md
-    shell        start an interactive shell with whedon
+    shell        start an interactive shell with openbases
 ```
 
 For complete usage, please see:
 
- - [usage documentation](https://openbases.github.io/whedon-python/html/usage.html) 
- - [documentation](https://openbases.github.io/whedon-python/)
- - implementation in [whedon docker](https://www.github.com/openbases/whedon/). 
+ - [usage documentation](https://openbases.github.io/openbases-python/html/usage.html) 
+ - [documentation](https://openbases.github.io/openbases-python/)
+ - implementation in [openbases-pdf](https://www.github.com/openbases/openbases-pdf/) and [builder-pdf](https://www.github.com/openbases/builder-pdf/)
 
 Have fun!

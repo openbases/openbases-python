@@ -1,6 +1,6 @@
 # Copyright (c) 2018, Vanessa Sochat All rights reserved.
 # See the LICENSE in the main repository at:
-#    https://www.github.com/openbases/whedon-python
+#    https://www.github.com/openbases/openbases-python
 
 from setuptools import setup, find_packages
 import codecs
@@ -16,7 +16,7 @@ def get_lookup():
     needing to import singularity
     '''
     lookup = dict()
-    version_file = os.path.join('whedon', 'version.py')
+    version_file = os.path.join('openbases', 'version.py')
     with open(version_file) as filey:
         exec(filey.read(), lookup)
     return lookup
@@ -100,4 +100,4 @@ if __name__ == "__main__":
               'Programming Language :: Python :: 3',
           ],
 
-          entry_points = {'console_scripts': [ 'py-whedon=whedon.cli:main' ] })
+          entry_points = {'console_scripts': [ 'ob=openbases.cli:main' ] })

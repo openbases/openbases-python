@@ -1,7 +1,7 @@
-whedon-python
-=============
+openbases-python
+================
 
 .. toctree::
    :maxdepth: 4
 
-   whedon
+   openbases

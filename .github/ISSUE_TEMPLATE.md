@@ -1,4 +1,4 @@
-* Whedon Python version:
+* OpenBases Python version:
 * Python version:
 * Operating System:
 

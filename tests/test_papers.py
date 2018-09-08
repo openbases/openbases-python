@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Tests for `whedon` package."""
+"""Tests for `openbases` package."""
 
 
 import unittest
 import os
 import sys
 
-from whedon.main import Client
+from openbases.main import Client
 test_dir = os.path.abspath(os.path.dirname(__file__))
 
-class TestWhedon(unittest.TestCase):
-    """Tests for `whedon` package."""
+class TestOpenBases(unittest.TestCase):
+    """Tests for `openbases` package."""
 
     def setUp(self):
         self.cli = Client
