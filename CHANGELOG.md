@@ -16,5 +16,6 @@ Critical items to know are:
 versions here coincide with releases on pypi.
 
 ## [master](https://github.com/openbases/openbases-python/tree/master)
+ - adding icons endpoint `ob-icons` (0.0.1)
  - added base functions to get fields from paper markdown and tests (0.0.0)
  - package registration (still under development)

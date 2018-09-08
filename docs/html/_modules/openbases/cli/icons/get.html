@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>openbases.main.base.flags &mdash; openbases Python 0.0.1 documentation</title>
+  <title>openbases.cli.icons.get &mdash; openbases Python 0.0.1 documentation</title>
   
 
   
@@ -148,11 +148,11 @@
         
           <li><a href="../../../index.html">Module code</a> &raquo;</li>
         
-          <li><a href="../../main.html">openbases.main</a> &raquo;</li>
+          <li><a href="../../cli.html">openbases.cli</a> &raquo;</li>
         
-          <li><a href="../base.html">openbases.main.base</a> &raquo;</li>
+          <li><a href="../icons.html">openbases.cli.icons</a> &raquo;</li>
         
-      <li>openbases.main.base.flags</li>
+      <li>openbases.cli.icons.get</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -167,33 +167,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for openbases.main.base.flags</h1><div class="highlight"><pre>
+  <h1>Source code for openbases.cli.icons.get</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Copyright (c) 2018, Vanessa Sochat All rights reserved.</span>
 <span class="c1"># See the LICENSE in the main repository at:</span>
 <span class="c1">#    https://www.github.com/openbases/openbases-python</span>
 
-<div class="viewcode-block" id="parse_verbosity"><a class="viewcode-back" href="../../../../openbases.main.base.html#openbases.main.base.flags.parse_verbosity">[docs]</a><span class="k">def</span> <span class="nf">parse_verbosity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;parse_verbosity will take an argument object, and return the args</span>
-<span class="sd">       passed (from a dictionary) to a list</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">openbases.main</span> <span class="k">import</span> <span class="n">get_client</span>
+<span class="kn">from</span> <span class="nn">openbases.logger</span> <span class="k">import</span> <span class="n">bot</span>
 
-<span class="sd">       Parameters</span>
-<span class="sd">       ==========</span>
-<span class="sd">       args: the argparse argument objects</span>
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../../openbases.cli.icons.html#openbases.cli.icons.get.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+    
+    <span class="n">command</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">cmd</span>
+    <span class="n">cli</span> <span class="o">=</span> <span class="n">get_client</span><span class="p">()</span>
+    <span class="n">quiet</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">debug</span> <span class="ow">or</span> <span class="n">args</span><span class="o">.</span><span class="n">silent</span>
 
-<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="c1"># Minimum required is &lt;action&gt; paper.md</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">command</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">bot</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;Please provide the paper.md file after an action </span>
+<span class="s1">                    ob-paper get paper.md)&#39;&#39;&#39;</span><span class="p">)</span>
 
-    <span class="n">flags</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># If no arguments, show all fields and exit</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">command</span><span class="p">)</span> <span class="o">&lt;=</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">paper</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">paper</span><span class="p">(</span><span class="n">command</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">silent</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-       <span class="n">flags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--silent&#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">quiet</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">flags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--quiet&#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">debug</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-       <span class="n">flags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;--debug&#39;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">verbose</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-       <span class="n">flags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="s1">&#39;v&#39;</span> <span class="o">*</span> <span class="n">args</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">paper</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">paper</span><span class="p">(</span><span class="n">command</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">flags</span></div>
+        <span class="c1"># For remainder of arguments, get key</span>
+        <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">command</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+
+            <span class="c1"># If the arg is of format arg:field will return field from list</span>
+            <span class="n">paper</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="n">sep</span><span class="p">)</span></div>
 </pre></div>
 
            </div>
