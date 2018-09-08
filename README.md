@@ -3,7 +3,7 @@
 [![PyPI version](https://badge.fury.io/py/openbases.svg)](https://badge.fury.io/py/openbases)
 [![CircleCI](https://circleci.com/gh/openbases/openbases-python.svg?style=svg)](https://circleci.com/gh/openbases/openbases-python)
 
-![docs/img/robot.png](https://github.com/openbases/openbases-python/raw/master/docs/img/robot.png)
+![docs/img/logo.png](https://github.com/openbases/openbases-python/raw/master/docs/img/logo.png)
 
 -------------------------------------------------------------------------------
 
