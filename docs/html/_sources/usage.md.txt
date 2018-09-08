@@ -12,23 +12,30 @@ selected icon:
 
 ```bash
 $ ob-icons
-https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/fish.svg
+https://openbases.github.io/openbases-icons/ic/flaticon/sea-life-collection/grampus.png
 ```
 
 You can ask for more than 1, of course:
 
 ```bash
 $ ob-icons --n 2
-https://openbases.github.io/openbases-icons/flaticon/in-the-zoo/hedgehog.svg
-https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/fish1.svg
+https://openbases.github.io/openbases-icons/ic/flaticon/in-the-zoo/butterfly.png
+https://openbases.github.io/openbases-icons/ic/flaticon/in-the-zoo/penguin.png
 ```
 
 You can also filter the search to some term you like (regular expression):
 
-```
+```bash
 $ ob-icons --n 2 --regexp fish
-https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/fish0.svg
-https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/fish.svg
+https://openbases.github.io/openbases-icons/ic/flaticon/sea-life-collection/fish.png
+https://openbases.github.io/openbases-icons/ic/flaticon/sea-life-collection/fish1.png
+```
+
+If you know the name of your logo, that would be how to find it!
+
+```bash
+$ ob-icons --n 2 --regexp joss
+https://openbases.github.io/openbases-icons/ic/openjournals/joss-logo.png
 ```
 
 ### Papers

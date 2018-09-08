@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; openbases Python 0.0.1 documentation</title>
+  <title>Usage &mdash; openbases Python 0.0.2 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.1
+                0.0.2
               </div>
             
           
@@ -190,19 +190,24 @@ python functions for interacting with the set of openbases tools.</p>
 <p>You can use open bases python to easily get an icon! Here is how to get one randomly
 selected icon:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-icons
-https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/fish.svg
+https://openbases.github.io/openbases-icons/ic/flaticon/sea-life-collection/grampus.png
 </pre></div>
 </div>
 <p>You can ask for more than 1, of course:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-icons --n <span class="m">2</span>
-https://openbases.github.io/openbases-icons/flaticon/in-the-zoo/hedgehog.svg
-https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/fish1.svg
+https://openbases.github.io/openbases-icons/ic/flaticon/in-the-zoo/butterfly.png
+https://openbases.github.io/openbases-icons/ic/flaticon/in-the-zoo/penguin.png
 </pre></div>
 </div>
 <p>You can also filter the search to some term you like (regular expression):</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>$ ob-icons --n <span class="m">2</span> --regexp fish
-https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/fish0.svg
-https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/fish.svg
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-icons --n <span class="m">2</span> --regexp fish
+https://openbases.github.io/openbases-icons/ic/flaticon/sea-life-collection/fish.png
+https://openbases.github.io/openbases-icons/ic/flaticon/sea-life-collection/fish1.png
+</pre></div>
+</div>
+<p>If you know the name of your logo, that would be how to find it!</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-icons --n <span class="m">2</span> --regexp joss
+https://openbases.github.io/openbases-icons/ic/openjournals/joss-logo.png
 </pre></div>
 </div>
 </div>
@@ -349,7 +354,7 @@ Vanessa Sochat
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.1',
+            VERSION:'0.0.2',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
