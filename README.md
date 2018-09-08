@@ -3,7 +3,8 @@
 [![PyPI version](https://badge.fury.io/py/openbases.svg)](https://badge.fury.io/py/openbases)
 [![CircleCI](https://circleci.com/gh/openbases/openbases-python.svg?style=svg)](https://circleci.com/gh/openbases/openbases-python)
 
-![docs/img/logo.png](https://github.com/openbases/openbases-python/raw/master/docs/img/logo.png)
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/openbases/openbases-python/raw/master/docs/img/logo.png"><img src="https://github.com/openbases/openbases-python/raw/master/docs/img/logo.png" alt="docs/img/logo.png" style="max-width:50%;"></a>
+
 
 -------------------------------------------------------------------------------
 
