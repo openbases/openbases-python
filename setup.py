@@ -100,4 +100,4 @@ if __name__ == "__main__":
               'Programming Language :: Python :: 3',
           ],
 
-          entry_points = {'console_scripts': [ 'ob=openbases.cli:main' ] })
+          entry_points = {'console_scripts': [ 'ob-paper=openbases.cli.paper:main' ] })

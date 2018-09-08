@@ -34,14 +34,16 @@ pip install openbases
 
 And then use:
 
+## Open Bases Paper
+
 ```bash
-$ ob help
+$ ob-paper help
 
-Open Bases Python [v0.0.0]
+Open Bases Paper Python [v0.0.0]
 
-usage: openbases [--debug] [--quiet] [--version] general usage ...
+usage: ob-paper [--debug] [--quiet] [--version] general usage ...
 
-OpenBases Python
+OpenBases Python Paper
 
 optional arguments:
   --debug, -d    use verbose logging to debug.
@@ -52,8 +54,8 @@ actions:
   actions for openbases
 
   general usage  description
-    paper        extract values from a paper.md
-    shell        start an interactive shell with openbases
+    get          extract values from a paper.md
+    shell        start an interactive shell with openbases paper
 ```
 
 For complete usage, please see:

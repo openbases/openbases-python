@@ -12,26 +12,21 @@ def main(args, options, parser, sep=","):
     cli = get_client()
     quiet = not args.debug or args.silent
 
+    
     # Minimum required is <action> paper.md
-    if len(command) < 2:
+    if len(command) < 1:
         bot.exit('''Please provide the paper.md file after an action 
-                    openbases <action> paper.md)''')
+                    ob-paper get paper.md)''')
 
     # If no arguments, show all fields and exit
-    if len(command) <=2:
-        paper = cli.paper(command[1], quiet=False)
+    if len(command) <=1:
+        paper = cli.paper(command[0], quiet=False)
 
     else:
-        action = command[0]
-        paper = cli.paper(command[1], quiet=quiet)
+        paper = cli.paper(command[0], quiet=quiet)
 
-        if action == 'pdf':
-            print('render pdf here')
-        
-        elif action == 'get':
+        # For remainder of arguments, get key
+        for arg in command[1:]:
 
-            # For remainder of arguments, get key
-            for arg in command[1:]:
-
-                # If the arg is of format arg:field will return field from list
-                paper.get(arg, sep=sep)
+            # If the arg is of format arg:field will return field from list
+            paper.get(arg, sep=sep)
