@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; openbases Python 0.0.0 documentation</title>
+  <title>Usage &mdash; openbases Python 0.0.1 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.0
+                0.0.1
               </div>
             
           
@@ -91,11 +91,16 @@
 <li class="toctree-l1"><a class="reference internal" href="readme.html#quick-start">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#papers">Papers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#command-line">Command Line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#command-line">Command Line</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#icons">Icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#papers">Papers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#interactive">Interactive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python-client">Python Client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Papers</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">openbases-python</a></li>
@@ -176,15 +181,39 @@
             
   <div class="section" id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
-<p>This is a temporary location to document usage (while I’m developing it).
-This will be served via a command line client <code class="docutils literal"><span class="pre">openbases</span></code> and also within
-python.</p>
-<div class="section" id="papers">
-<h2>Papers<a class="headerlink" href="#papers" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal"><span class="pre">openbases</span></code>  python module serves several command line utils along with
+python functions for interacting with the set of openbases tools.</p>
 <div class="section" id="command-line">
-<h3>Command Line<a class="headerlink" href="#command-line" title="Permalink to this headline">¶</a></h3>
-<p>Load a paper, show all fields:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ openbases paper get paper.md
+<h2>Command Line<a class="headerlink" href="#command-line" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="icons">
+<h3>Icons<a class="headerlink" href="#icons" title="Permalink to this headline">¶</a></h3>
+<p>You can use open bases python to easily get an icon! Here is how to get one randomly
+selected icon:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-icons
+https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/fish.svg
+</pre></div>
+</div>
+<p>You can ask for more than 1, of course:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-icons --n <span class="m">2</span>
+https://openbases.github.io/openbases-icons/flaticon/in-the-zoo/hedgehog.svg
+https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/fish1.svg
+</pre></div>
+</div>
+<p>You can also filter the search to some term you like (regular expression):</p>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ ob-icons --n <span class="m">2</span> --regexp fish
+https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/fish0.svg
+https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/fish.svg
+</pre></div>
+</div>
+</div>
+<div class="section" id="papers">
+<h3>Papers<a class="headerlink" href="#papers" title="Permalink to this headline">¶</a></h3>
+<p>Here is a paper.md you can play with:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/openbases/openbases-python/master/tests/paper/paper.md
+</pre></div>
+</div>
+<p>Load the paper, show all fields:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-paper get paper.md
 title: The Experiment Factory: Reproducible Experiment Containers
 tags: <span class="o">[</span><span class="s1">&#39;containers&#39;</span>, <span class="s1">&#39;docker&#39;</span>, <span class="s1">&#39;psychology&#39;</span>, <span class="s1">&#39;reproducibility&#39;</span>, <span class="s1">&#39;Docker&#39;</span><span class="o">]</span>
 authors: <span class="o">[{</span><span class="s1">&#39;name&#39;</span>: <span class="s1">&#39;Vanessa Sochat&#39;</span>, <span class="s1">&#39;orcid&#39;</span>: <span class="s1">&#39;0000-0002-4387-3819&#39;</span>, <span class="s1">&#39;affiliation&#39;</span>: <span class="m">1</span><span class="o">}]</span>
@@ -194,36 +223,31 @@ bibliography: paper.bib
 </pre></div>
 </div>
 <p>Get a specific field</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>$ openbases paper get paper.md title
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ ob-paper get paper.md title
 The Experiment Factory: Reproducible Experiment Containers
 </pre></div>
 </div>
 <p>Get a list, render in comma separated list</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>$ openbases paper get paper.md tags
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ ob-paper get paper.md tags
 containers,docker,psychology,reproducibility,Docker
 </pre></div>
 </div>
-<p>Change the separator to space!</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>$ openbases --sep <span class="s2">&quot; &quot;</span> paper get paper.md  tags
-containers docker psychology reproducibility Docker
-</pre></div>
-</div>
 <p>Get more than one at once:</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>$ openbases paper get paper.md title tags
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ ob-paper get paper.md title tags
 The Experiment Factory: Reproducible Experiment Containers
 containers,docker,psychology,reproducibility,Docker
 </pre></div>
 </div>
 <p>Look up a subfield (e.g., authors –&gt; name)</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>$ openbases paper get paper.md authors:name
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ ob-paper get paper.md authors:name
 Vanessa Sochat
 
-$ openbases paper get paper.md authors:orcid
+$ ob-paper get paper.md authors:orcid
 <span class="m">0000</span>-0002-4387-3819
 </pre></div>
 </div>
 <p>All together now!</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>$ openbases paper get paper.md  tags authors:name title
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ ob-paper get paper.md tags authors:name title
 containers,docker,psychology,reproducibility,Docker
 Vanessa Sochat
 The Experiment Factory: Reproducible Experiment Containers
@@ -231,16 +255,37 @@ The Experiment Factory: Reproducible Experiment Containers
 </div>
 </div>
 </div>
-<div class="section" id="interactive">
-<h2>Interactive<a class="headerlink" href="#interactive" title="Permalink to this headline">¶</a></h2>
-<p>A paper will be available both of these ways:</p>
+<div class="section" id="python-client">
+<h2>Python Client<a class="headerlink" href="#python-client" title="Permalink to this headline">¶</a></h2>
+<p>You can access the same functions from within Python!</p>
+<div class="section" id="id1">
+<h3>Icons<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>The default function returns one randomly selected icon:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openbases.main.icons</span> <span class="kn">import</span> <span class="n">get_icons</span>
+<span class="n">get_icons</span><span class="p">()</span>
+<span class="p">[</span><span class="s1">&#39;https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/squid.svg&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>You can specify a number, or filter</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">get_icons</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/seahorse.svg&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/stingray.svg&#39;</span><span class="p">]</span>
+
+<span class="n">get_icons</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">regexp</span><span class="o">=</span><span class="s2">&quot;fish&quot;</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/fish2.svg&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/fish.svg&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Papers<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-guess"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openbases.main</span> <span class="kn">import</span> <span class="n">Paper</span>
 <span class="n">paper</span> <span class="o">=</span> <span class="n">Paper</span><span class="p">(</span><span class="s2">&quot;paper.md&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>or via a client:</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openbases.main</span> <span class="kn">import</span> <span class="n">get_client</span>
-<span class="n">client</span> <span class="o">=</span> <span class="n">get_client</span><span class="p">(</span><span class="s2">&quot;paper.md&quot;</span><span class="p">)</span>
+<p>or the same function via the client:</p>
+<div class="highlight-guess"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openbases.main</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="n">paper</span> <span class="o">=</span> <span class="n">Client</span><span class="o">.</span><span class="n">paper</span><span class="p">(</span><span class="s2">&quot;paper.md&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The output shows the parsed markdown with paper values</p>
@@ -252,20 +297,13 @@ The Experiment Factory: Reproducible Experiment Containers
 <span class="n">bibliography</span><span class="o">:</span> <span class="n">paper</span><span class="o">.</span><span class="na">bib</span>
 </pre></div>
 </div>
-<p>Since we want to feed these into pandoc, there will be nice functions to return
-fields, and subfields, separated by a delimiter of choice.</p>
 <div class="highlight-guess"><div class="highlight"><pre><span></span># Get sub fields from list
 paper.get(&#39;authors&#39;, field=&#39;name&#39;)
 Vanessa Sochat
 </pre></div>
 </div>
 <p>Command line will probably look like this</p>
-<div class="highlight-guess"><div class="highlight"><pre><span></span>openbases paper get authors name
-authors=$(openbases paper get authors name)
-</pre></div>
 </div>
-<p><strong>under development</strong></p>
-<p>!! This is fun :)</p>
 </div>
 </div>
 
@@ -311,7 +349,7 @@ authors=$(openbases paper get authors name)
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.0',
+            VERSION:'0.0.1',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

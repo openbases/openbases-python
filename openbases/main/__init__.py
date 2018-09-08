@@ -17,9 +17,8 @@ def get_client(quiet=False, debug=False):
     Client.quiet = quiet
     Client.debug = debug
 
+    # Paper
     from .paper import Paper
-
-    # Actions
     Client.paper = Paper
 
     # Initialize
