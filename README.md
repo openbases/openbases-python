@@ -32,9 +32,11 @@ python setup.py install
 pip install openbases
 ```
 
-And then use:
+There are different console entry points depending on the kind of functions that you need.
 
 ## Open Bases Paper
+
+`ob-paper` is the console entry point for interacting with a paper, typically a paper.md.
 
 ```bash
 $ ob-paper help
