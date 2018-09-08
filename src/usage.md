@@ -7,8 +7,9 @@ python functions for interacting with the set of openbases tools.
 
 ### Icons
 
-You can use open bases python to easily get an icon! Here is how to get one randomly
-selected icon:
+You can use open bases python to easily get an icon! For a preview of the set you are 
+choosing from, see [here](https://openbases.github.io/openbases-icons/preview). 
+Here is how to get one randomly selected icon:
 
 ```bash
 $ ob-icons
