@@ -9,7 +9,8 @@
 
 This is a small module with helper functions and scripts for using Open Bases tools. 
 Please contribute at [openbases/openbases-python](https://www.github.com/openbases/openbases-python) on
-Github.
+Github. Documentation is [here](https://openbases.github.io/openbases-python/html/usage.html) 
+
 
 > Just... no!
 
@@ -33,6 +34,33 @@ pip install openbases
 ```
 
 There are different console entry points depending on the kind of functions that you need.
+
+## Open Bases Icons
+
+Get an icon from [openbases-icons](https://www.github.com/openbases/openbases-icons)
+
+```bash
+$ ob-icons
+https://openbases.github.io/openbases-icons/flaticon/sea-life-collection/squid.svg
+```
+```bash
+$ ob-icons --help
+
+Open Bases Icons [v0.0.1]
+
+usage: ob-icons [--version] [--regexp REGEXP] [--help] [--url URL] [--n N]
+                [--sep SEP]
+
+OpenBases Python Icons
+
+optional arguments:
+  --version        show openbases python version
+  --regexp REGEXP  regular expression filter for icon name
+  --help           show openbases icons help
+  --url URL        complete url for json list of icons
+  --n N, --N N     number of icons to return
+  --sep SEP        separator to print icons to screen (default newline)
+```
 
 ## Open Bases Paper
 

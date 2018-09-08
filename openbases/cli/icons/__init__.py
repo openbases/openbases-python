@@ -22,6 +22,10 @@ def get_parser():
                         help="regular expression filter for icon name", 
                         type=str)
 
+    parser.add_argument('--help', dest="help", 
+                        help="show openbases icons help", 
+                        default=False, action='store_true')
+
     parser.add_argument("--url", dest="url", 
                         default="https://openbases.github.io/openbases-icons/icons.json",
                         help="complete url for json list of icons",
@@ -68,6 +72,11 @@ def main(main=None):
         # We capture all primary arguments, and take secondary to pass on
         args, options = parser.parse_known_args()
     except:
+        sys.exit(0)
+
+    # Does the user just want help?
+    if args.help:
+        help()
         sys.exit(0)
 
     # If the user wants the version
