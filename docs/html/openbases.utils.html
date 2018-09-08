@@ -94,7 +94,6 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">openbases-python</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="openbases.html">openbases package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="openbases.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="openbases.cli.html">openbases.cli package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="openbases.logger.html">openbases.logger package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="openbases.main.html">openbases.main package</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">openbases.utils package</a></li>
@@ -300,34 +299,35 @@ without this check.</p>
 <dd><p>run_command uses subprocess to send a command to the terminal. If
 capture is True, we use the parent stdout, so the progress bar (and
 other commands of interest) are piped to the user. This means we 
-don’t return the output to parse.</p>
-<p>cmd: the command to send, should be a list for subprocess
+don’t return the output to parse.
+Parameters
+==========
+cmd: the command to send, should be a list for subprocess
 sudo: if needed, add to start of command
 no_newline_regexp: the regular expression to determine skipping a</p>
 <blockquote>
 <div>newline. Defaults to finding Progress</div></blockquote>
-<dl class="docutils">
-<dt>capture: if True, don’t set stdout and have it go to console. This</dt>
-<dd>option can print a progress bar, but won’t return the lines
-as output.</dd>
-</dl>
+<p>capture: if True, don’t set stdout and have it go to console. This
+option can print a progress bar, but won’t return the lines
+as output.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="openbases.utils.terminal.stream_command">
 <code class="descclassname">openbases.utils.terminal.</code><code class="descname">stream_command</code><span class="sig-paren">(</span><em>cmd</em>, <em>no_newline_regexp='Progess'</em>, <em>sudo=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/terminal.html#stream_command"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.terminal.stream_command" title="Permalink to this definition">¶</a></dt>
-<dd><p>stream a command (yield) back to the user, as each line is available.</p>
-<p>:: note
-# Example usage:
+<dd><p>stream a command (yield) back to the user, as each line is available.
+:: note</p>
+<blockquote>
+<div><p># Example usage:
 results = []
 for line in stream_command(cmd):</p>
 <blockquote>
 <div>print(line, end=”“)
 results.append(line)</div></blockquote>
+</div></blockquote>
 <p>cmd: the command to send, should be a list for subprocess
-no_newline_regexp: the regular expression to determine skipping a</p>
-<blockquote>
-<div>newline. Defaults to finding Progress</div></blockquote>
+no_newline_regexp: the regular expression to determine skipping a
+newline. Defaults to finding Progress</p>
 </dd></dl>
 
 </div>

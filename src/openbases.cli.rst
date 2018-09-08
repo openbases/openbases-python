@@ -1,25 +1,12 @@
 openbases\.cli package
 ======================
 
-Submodules
-----------
+Subpackages
+-----------
 
-openbases\.cli\.paper module
-----------------------------
+.. toctree::
 
-.. automodule:: openbases.cli.paper
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-openbases\.cli\.shell module
-----------------------------
-
-.. automodule:: openbases.cli.shell
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
+    openbases.cli.paper
 
 Module contents
 ---------------

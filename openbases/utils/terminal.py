@@ -51,19 +51,17 @@ def get_installdir():
 
 def stream_command(cmd, no_newline_regexp="Progess", sudo=False):
     '''stream a command (yield) back to the user, as each line is available.
-
        :: note
-       # Example usage:
-       results = []
-       for line in stream_command(cmd):
-           print(line, end="")
-           results.append(line)
-
+           # Example usage:
+           results = []
+           for line in stream_command(cmd):
+               print(line, end="")
+               results.append(line)
        Parameters
        ==========
        cmd: the command to send, should be a list for subprocess
        no_newline_regexp: the regular expression to determine skipping a
-                          newline. Defaults to finding Progress
+       newline. Defaults to finding Progress
     '''
     if sudo is True:
         cmd = ['sudo'] + cmd
@@ -90,7 +88,6 @@ def run_command(cmd,
        capture is True, we use the parent stdout, so the progress bar (and
        other commands of interest) are piped to the user. This means we 
        don't return the output to parse.
-
        Parameters
        ==========
        cmd: the command to send, should be a list for subprocess
@@ -98,8 +95,8 @@ def run_command(cmd,
        no_newline_regexp: the regular expression to determine skipping a
                           newline. Defaults to finding Progress
        capture: if True, don't set stdout and have it go to console. This
-                option can print a progress bar, but won't return the lines
-                as output.
+       option can print a progress bar, but won't return the lines
+       as output.
     '''
 
     if sudo is True:

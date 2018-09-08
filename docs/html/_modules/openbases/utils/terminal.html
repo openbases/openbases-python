@@ -217,19 +217,17 @@
 
 <div class="viewcode-block" id="stream_command"><a class="viewcode-back" href="../../../openbases.utils.html#openbases.utils.terminal.stream_command">[docs]</a><span class="k">def</span> <span class="nf">stream_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">no_newline_regexp</span><span class="o">=</span><span class="s2">&quot;Progess&quot;</span><span class="p">,</span> <span class="n">sudo</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;stream a command (yield) back to the user, as each line is available.</span>
-
 <span class="sd">       :: note</span>
-<span class="sd">       # Example usage:</span>
-<span class="sd">       results = []</span>
-<span class="sd">       for line in stream_command(cmd):</span>
-<span class="sd">           print(line, end=&quot;&quot;)</span>
-<span class="sd">           results.append(line)</span>
-
+<span class="sd">           # Example usage:</span>
+<span class="sd">           results = []</span>
+<span class="sd">           for line in stream_command(cmd):</span>
+<span class="sd">               print(line, end=&quot;&quot;)</span>
+<span class="sd">               results.append(line)</span>
 <span class="sd">       Parameters</span>
 <span class="sd">       ==========</span>
 <span class="sd">       cmd: the command to send, should be a list for subprocess</span>
 <span class="sd">       no_newline_regexp: the regular expression to determine skipping a</span>
-<span class="sd">                          newline. Defaults to finding Progress</span>
+<span class="sd">       newline. Defaults to finding Progress</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="n">sudo</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">cmd</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sudo&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">cmd</span>
@@ -256,7 +254,6 @@
 <span class="sd">       capture is True, we use the parent stdout, so the progress bar (and</span>
 <span class="sd">       other commands of interest) are piped to the user. This means we </span>
 <span class="sd">       don&#39;t return the output to parse.</span>
-
 <span class="sd">       Parameters</span>
 <span class="sd">       ==========</span>
 <span class="sd">       cmd: the command to send, should be a list for subprocess</span>
@@ -264,8 +261,8 @@
 <span class="sd">       no_newline_regexp: the regular expression to determine skipping a</span>
 <span class="sd">                          newline. Defaults to finding Progress</span>
 <span class="sd">       capture: if True, don&#39;t set stdout and have it go to console. This</span>
-<span class="sd">                option can print a progress bar, but won&#39;t return the lines</span>
-<span class="sd">                as output.</span>
+<span class="sd">       option can print a progress bar, but won&#39;t return the lines</span>
+<span class="sd">       as output.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">if</span> <span class="n">sudo</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>

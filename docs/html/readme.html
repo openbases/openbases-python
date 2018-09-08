@@ -88,7 +88,10 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">OpenBases Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#quick-start">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#quick-start">Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#open-bases-paper">Open Bases Paper</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">openbases-python</a></li>
@@ -194,14 +197,17 @@ python setup.py install
 <div class="highlight-guess"><div class="highlight"><pre><span></span>pip install openbases
 </pre></div>
 </div>
-<p>And then use:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob <span class="nb">help</span>
+<p>There are different console entry points depending on the kind of functions that you need.</p>
+<div class="section" id="open-bases-paper">
+<h2>Open Bases Paper<a class="headerlink" href="#open-bases-paper" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">ob-paper</span></code> is the console entry point for interacting with a paper, typically a paper.md.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-paper <span class="nb">help</span>
 
-Open Bases Python <span class="o">[</span>v0.0.0<span class="o">]</span>
+Open Bases Paper Python <span class="o">[</span>v0.0.0<span class="o">]</span>
 
-usage: openbases <span class="o">[</span>--debug<span class="o">]</span> <span class="o">[</span>--quiet<span class="o">]</span> <span class="o">[</span>--version<span class="o">]</span> general usage ...
+usage: ob-paper <span class="o">[</span>--debug<span class="o">]</span> <span class="o">[</span>--quiet<span class="o">]</span> <span class="o">[</span>--version<span class="o">]</span> general usage ...
 
-OpenBases Python
+OpenBases Python Paper
 
 optional arguments:
   --debug, -d    use verbose logging to debug.
@@ -212,8 +218,8 @@ actions:
   actions <span class="k">for</span> openbases
 
   general usage  description
-    paper        extract values from a paper.md
-    shell        start an interactive shell with openbases
+    get          extract values from a paper.md
+    shell        start an interactive shell with openbases paper
 </pre></div>
 </div>
 <p>For complete usage, please see:</p>
@@ -223,6 +229,7 @@ actions:
 <li>implementation in <a class="reference external" href="https://www.github.com/openbases/openbases-pdf/">openbases-pdf</a> and <a class="reference external" href="https://www.github.com/openbases/builder-pdf/">builder-pdf</a></li>
 </ul>
 <p>Have fun!</p>
+</div>
 </div>
 
 

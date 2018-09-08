@@ -21,7 +21,7 @@ def init_command(self, action, flags=None):
        ==========
        action: the main action to perform (e.g., build)
        flags: one or more additional flags (e.g, volumes) 
-              not implemented yet.
+       not implemented yet.
     '''
     cmd = ['singularity', action ]
 
@@ -44,7 +44,6 @@ def run_command(self, cmd, sudo=False, capture=True):
        cmd: the command to run
        sudo: does the command require sudo?
        On success, returns result. Otherwise, exists on error
-
     '''
     result = run_cmd(cmd, sudo=sudo, capture=capture, quiet=self.quiet)
     message = result['message']
@@ -58,4 +57,3 @@ def run_command(self, cmd, sudo=False, capture=True):
     if self.quiet is False:
         bot.error("Return Code %s: %s" %(return_code,
                                          message))
-
