@@ -13,7 +13,7 @@ def get_parser():
 
     parser = argparse.ArgumentParser(description="OpenBases Python Badges",
                                 formatter_class=argparse.RawTextHelpFormatter,
-                                add_help=True)
+                                add_help=False)
 
     # Global Options
     parser.add_argument('--version', dest="version", 
@@ -29,8 +29,8 @@ def get_parser():
     view = subparsers.add_parser("view",
                                  help="view options for style, labels, etc.")
 
-    view.add_argument('choice', nargs=1,
-                      default="types",
+    view.add_argument('choice', nargs="?",
+                      default="labels",
                       choices=['labels','styles'])
 
     create = subparsers.add_parser("create",
@@ -40,7 +40,7 @@ def get_parser():
                         help="enable long cache for badge. Default False", 
                         default=False, action='store_true')
 
-    create.add_argument('names', nargs=2, 
+    create.add_argument('names', nargs="*", 
                         help="label followed by name")
 
     create.add_argument("--link", dest="link", 
@@ -83,10 +83,8 @@ def version():
 
 def main(main=None):
 
-
     parser = get_parser()
     subparsers = get_subparsers(parser)
-
 
     def help(return_code=0):
         '''print help, including the software version and exit
@@ -96,8 +94,6 @@ def main(main=None):
         parser.print_help()
         sys.exit(return_code)
     
-    if len(sys.argv) == 1:
-        help()
     try:
         # We capture all primary arguments, and take secondary to pass on
         args, options = parser.parse_known_args()
@@ -111,7 +107,7 @@ def main(main=None):
 
     # Does the user want help for a subcommand?
     if args.command == 'create': from .create import main 
-    if args.command == 'view': from .view import main 
+    elif args.command == 'view': from .view import main 
     else: help()
 
     # Pass on to the correct parser

@@ -10,9 +10,7 @@ from openbases.main.defaults import (
 
 def main(args, options):
     
-    if "label" in args.choice[0].lower():
+    if args.choice.lower() == "labels":
         print(' '.join(BADGE_LABELS))
-    elif "style" in args.choice[0].lower():
+    elif args.choice.lower() == "styles":
         print(' '.join(BADGE_STYLES))
-    else:
-        print(BADGE_BASE)
