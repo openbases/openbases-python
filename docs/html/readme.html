@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>OpenBases Python &mdash; openbases Python 0.0.2 documentation</title>
+  <title>OpenBases Python &mdash; openbases Python 0.0.3 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.2
+                0.0.3
               </div>
             
           
@@ -90,6 +90,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">OpenBases Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#quick-start">Quick Start</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#open-bases-icons">Open Bases Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#open-base-badges">Open Base Badges</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#open-bases-paper">Open Bases Paper</a></li>
 </ul>
 </li>
@@ -224,6 +225,37 @@ optional arguments:
   --sep SEP        separator to print icons to screen <span class="o">(</span>default newline<span class="o">)</span>
 </pre></div>
 </div>
+<p><a class="reference external" href="https://openbases.github.io/openbases-python/html/usage.html#icons">icons usage</a></p>
+</div>
+<div class="section" id="open-base-badges">
+<h2>Open Base Badges<a class="headerlink" href="#open-base-badges" title="Permalink to this headline">¶</a></h2>
+<p>Generate badges and strings of badges with the <code class="docutils literal"><span class="pre">ob-badge</span></code> entrypoint</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-badge
+
+Open Bases Badges Python <span class="o">[</span>v0.0.3<span class="o">]</span>
+
+usage: ob-badge <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--version<span class="o">]</span> general usage ...
+
+OpenBases Python Badges
+
+optional arguments:
+  -h, --help     show this <span class="nb">help</span> message and <span class="nb">exit</span>
+  --version      show openbases python version
+
+actions:
+  actions <span class="k">for</span> openbases
+
+  general usage  description
+    view         view options <span class="k">for</span> style, labels, etc.
+    create       extract values from a paper.md
+</pre></div>
+</div>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ ob-badge create experiment labjs
+!<span class="o">[</span>https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style<span class="o">=</span>flat<span class="p">&amp;</span><span class="nv">link</span><span class="o">=</span>https%3A%2F%2Fopenbases.github.io<span class="o">](</span>https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style<span class="o">=</span>flat<span class="p">&amp;</span><span class="nv">link</span><span class="o">=</span>https%3A%2F%2Fopenbases.github.io<span class="o">)</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io"><img alt="https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io" src="https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io" /></a>
+<p><a class="reference external" href="https://openbases.github.io/openbases-python/html/usage.html#badges">badges usage</a></p>
 </div>
 <div class="section" id="open-bases-paper">
 <h2>Open Bases Paper<a class="headerlink" href="#open-bases-paper" title="Permalink to this headline">¶</a></h2>
@@ -301,7 +333,7 @@ actions:
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.2',
+            VERSION:'0.0.3',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

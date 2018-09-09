@@ -6,8 +6,9 @@ Subpackages
 
 .. toctree::
 
-    openbases.cli.paper
+    openbases.cli.badges
     openbases.cli.icons
+    openbases.cli.papers
 
 Module contents
 ---------------

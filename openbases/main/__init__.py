@@ -3,8 +3,9 @@
 #    https://www.github.com/openbases/openbases-python
 
 def get_client(quiet=False, debug=False):
-    '''
-       return the helper function client for OpenBases
+    '''return the helper function client for OpenBases.
+       This is a client that spans the different modules (papers, badges,
+       etc.) for interaction with functions from one interface.
 
        Parameters
        ==========
@@ -18,8 +19,12 @@ def get_client(quiet=False, debug=False):
     Client.debug = debug
 
     # Paper
-    from .paper import Paper
+    from openbases.main.papers import Paper
     Client.paper = Paper
+
+    # Badge
+    from openbases.main.badges import Badge
+    Client.badge = Badge
 
     # Initialize
     cli = Client()

@@ -62,6 +62,40 @@ optional arguments:
   --sep SEP        separator to print icons to screen (default newline)
 ```
 
+[icons usage](https://openbases.github.io/openbases-python/html/usage.html#icons) 
+
+## Open Base Badges
+
+Generate badges and strings of badges with the `ob-badge` entrypoint
+
+```bash
+$ ob-badge 
+
+Open Bases Badges Python [v0.0.3]
+
+usage: ob-badge [-h] [--version] general usage ...
+
+OpenBases Python Badges
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --version      show openbases python version
+
+actions:
+  actions for openbases
+
+  general usage  description
+    view         view options for style, labels, etc.
+    create       extract values from a paper.md
+```
+```
+$ ob-badge create experiment labjs
+![https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&link=https%3A%2F%2Fopenbases.github.io](https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&link=https%3A%2F%2Fopenbases.github.io)
+```
+![https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&link=https%3A%2F%2Fopenbases.github.io](https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&link=https%3A%2F%2Fopenbases.github.io)
+
+[badges usage](https://openbases.github.io/openbases-python/html/usage.html#badges) 
+
 ## Open Bases Paper
 
 `ob-paper` is the console entry point for interacting with a paper, typically a paper.md.

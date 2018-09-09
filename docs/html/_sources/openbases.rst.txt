@@ -6,10 +6,10 @@ Subpackages
 
 .. toctree::
 
-    openbases.cli
     openbases.logger
     openbases.main
     openbases.utils
+    openbases.cli
 
 Submodules
 ----------
