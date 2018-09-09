@@ -16,6 +16,7 @@ Critical items to know are:
 versions here coincide with releases on pypi.
 
 ## [master](https://github.com/openbases/openbases-python/tree/master)
+ - bug with name needing dashes replaced with underscores (0.0.x)
  - fixing bug with ob-badge (0.0.4)
  - adding badges module, and entry point ob-badge (0.0.3)
  - missing requests dependency (0.0.2)

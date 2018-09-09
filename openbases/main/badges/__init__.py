@@ -73,6 +73,12 @@ class Badge:
             
         # Look up the color based on the subject
         subject = subject.lower()
+        status = status.replace("-","_")
+
+        # Save parameters for later
+        self.name = subject
+        self.label = status
+
         color = BADGE_COLORS.get(subject, BADGE_COLORS["other"])
             
         # https://img.shields.io/badge/<SUBJECT>-<STATUS>-<COLOR>.sv
