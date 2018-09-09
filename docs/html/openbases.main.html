@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>openbases.main package &mdash; openbases Python 0.0.2 documentation</title>
+  <title>openbases.main package &mdash; openbases Python 0.0.3 documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="openbases.main.base package" href="openbases.main.base.html" />
+    <link rel="next" title="openbases.main.badges package" href="openbases.main.badges.html" />
     <link rel="prev" title="openbases.logger package" href="openbases.logger.html" /> 
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.2
+                0.0.3
               </div>
             
           
@@ -94,10 +94,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">openbases-python</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="openbases.html">openbases package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="openbases.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="openbases.cli.html">openbases.cli package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="openbases.logger.html">openbases.logger package</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">openbases.main package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="openbases.utils.html">openbases.utils package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="openbases.cli.html">openbases.cli package</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="openbases.html#submodules">Submodules</a></li>
@@ -192,6 +192,10 @@
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="openbases.main.badges.html">openbases.main.badges package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openbases.main.badges.html#module-openbases.main.badges">Module contents</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="openbases.main.base.html">openbases.main.base package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="openbases.main.base.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="openbases.main.base.html#module-openbases.main.base.command">openbases.main.base.command module</a></li>
@@ -201,49 +205,34 @@
 <li class="toctree-l2"><a class="reference internal" href="openbases.main.base.html#module-openbases.main.base">Module contents</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="openbases.main.papers.html">openbases.main.papers package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openbases.main.papers.html#module-openbases.main.papers">Module contents</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-openbases.main.paper">
-<span id="openbases-main-paper-module"></span><h2>openbases.main.paper module<a class="headerlink" href="#module-openbases.main.paper" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="openbases.main.paper.Author">
-<em class="property">class </em><code class="descclassname">openbases.main.paper.</code><code class="descname">Author</code><span class="sig-paren">(</span><em>name</em>, <em>orcid</em>, <em>affiliation</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/main/paper.html#Author"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.paper.Author" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<p>an Author holds a name, orcid id, and affiliation</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="openbases.main.paper.Journal">
-<em class="property">class </em><code class="descclassname">openbases.main.paper.</code><code class="descname">Journal</code><a class="reference internal" href="_modules/openbases/main/paper.html#Journal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.paper.Journal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<dl class="attribute">
-<dt id="openbases.main.paper.Journal.joss">
-<code class="descname">joss</code><em class="property"> = 'joss'</em><a class="headerlink" href="#openbases.main.paper.Journal.joss" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="openbases.main.paper.Journal.rse">
-<code class="descname">rse</code><em class="property"> = 'rse'</em><a class="headerlink" href="#openbases.main.paper.Journal.rse" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="openbases.main.paper.Paper">
-<em class="property">class </em><code class="descclassname">openbases.main.paper.</code><code class="descname">Paper</code><span class="sig-paren">(</span><em>filename</em>, <em>quiet=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/main/paper.html#Paper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.paper.Paper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<dl class="method">
-<dt id="openbases.main.paper.Paper.get">
-<code class="descname">get</code><span class="sig-paren">(</span><em>key</em>, <em>quiet=True</em>, <em>sep='</em>, <em>'</em>, <em>field=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/main/paper.html#Paper.get"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.paper.Paper.get" title="Permalink to this definition">¶</a></dt>
-<dd><p>return a key from the yaml, default is silent (no print) if doesn’t
-exist. If the yaml item is a list with different subfields, then
-field must also be defined.</p>
-</dd></dl>
-
+<div class="section" id="module-openbases.main.defaults">
+<span id="openbases-main-defaults-module"></span><h2>openbases.main.defaults module<a class="headerlink" href="#module-openbases.main.defaults" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-openbases.main.icons">
+<span id="openbases-main-icons-module"></span><h2>openbases.main.icons module<a class="headerlink" href="#module-openbases.main.icons" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="openbases.main.icons.get_icons">
+<code class="descclassname">openbases.main.icons.</code><code class="descname">get_icons</code><span class="sig-paren">(</span><em>url='https://openbases.github.io/openbases-icons/icons.json'</em>, <em>regexp=None</em>, <em>N=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/main/icons.html#get_icons"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.icons.get_icons" title="Permalink to this definition">¶</a></dt>
+<dd><p>get a number of icons from the openbases-icons repository, 
+and return a list.
+Parameters
+==========
+url: the openbases-icons json list (or other) of icons to choose from       
+regexp: a regular expression to filter by (default None, no filter)
+N: the number of icons to return (default is 1)
+Returns
+=======
+icons: a list of filtered (or not) icons</p>
 </dd></dl>
 
 </div>
@@ -252,7 +241,9 @@ field must also be defined.</p>
 <dl class="function">
 <dt id="openbases.main.get_client">
 <code class="descclassname">openbases.main.</code><code class="descname">get_client</code><span class="sig-paren">(</span><em>quiet=False</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/main.html#get_client"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.get_client" title="Permalink to this definition">¶</a></dt>
-<dd><p>return the helper function client for OpenBases</p>
+<dd><p>return the helper function client for OpenBases.
+This is a client that spans the different modules (papers, badges,
+etc.) for interaction with functions from one interface.</p>
 <p>quiet: if True, suppress most output about the client
 debug: turn on debugging mode</p>
 </dd></dl>
@@ -268,7 +259,7 @@ debug: turn on debugging mode</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="openbases.main.base.html" class="btn btn-neutral float-right" title="openbases.main.base package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="openbases.main.badges.html" class="btn btn-neutral float-right" title="openbases.main.badges package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="openbases.logger.html" class="btn btn-neutral" title="openbases.logger package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -302,7 +293,7 @@ debug: turn on debugging mode</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.2',
+            VERSION:'0.0.3',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

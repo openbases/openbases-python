@@ -39,6 +39,67 @@ $ ob-icons --n 2 --regexp joss
 https://openbases.github.io/openbases-icons/ic/openjournals/joss-logo.png
 ```
 
+### Badges
+
+The badges client is available as `ob-badges`. You minimally need to specify a base
+type (e.g., "experiment") and a name for it (e.g., "labjs"). The name is typically
+for you to decide for the base, but the base type, in that there are assigned colors
+for each, will be looked up. 
+
+The primary command you want to use is "create":
+
+```bash
+$ ob-badge create experiment labjs
+![https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&link=https%3A%2F%2Fopenbases.github.io](https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&link=https%3A%2F%2Fopenbases.github.io)
+```
+![https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&link=https%3A%2F%2Fopenbases.github.io](https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&link=https%3A%2F%2Fopenbases.github.io)
+
+Notice if we change the base type, we get a different color:
+
+```bash
+$ ob-badge create submission labjs
+```
+
+![https://img.shields.io/badge/submission-labjs-green.svg?style=flat&link=https%3A%2F%2Fopenbases.github.io](https://img.shields.io/badge/submission-labjs-green.svg?style=flat&link=https%3A%2F%2Fopenbases.github.io)
+
+If you specify a base type that does not exist, a grey badge will be returned.
+```bash
+$ ob-badge create pancakes labjs
+```
+![https://img.shields.io/badge/pancakes-labjs-lightgrey.svg?style=flat&link=https%3A%2F%2Fopenbases.github.io](https://img.shields.io/badge/pancakes-labjs-lightgrey.svg?style=flat&link=https%3A%2F%2Fopenbases.github.io)
+
+You likely want the link for the badge to be the URL that corresponds with your resource!
+
+```bash
+$ ob-badge create library labjs --link https://labjs.readthedocs.io
+```
+![https://img.shields.io/badge/library-labjs-%23ff69b4.svg?style=flat&link=https%3A%2F%2Flabjs.readthedocs.io](https://img.shields.io/badge/library-labjs-%23ff69b4.svg?style=flat&link=https%3A%2F%2Flabjs.readthedocs.io)
+
+or instead of a markdown, you can also output svg (for embedding in other places)
+
+```bash
+$ ob-badge create data dinosaur-dataset --fmt svg
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="132" height="20"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="132" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path fill="#555" d="M0 0h31v20H0z"/><path fill="#e05d44" d="M31 0h101v20H31z"/><path fill="url(#b)" d="M0 0h132v20H0z"/></g><g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="110"> <text x="165" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="210">404</text><text x="165" y="140" transform="scale(.1)" textLength="210">404</text><text x="805" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="910">badge not found</text><text x="805" y="140" transform="scale(.1)" textLength="910">badge not found</text></g><a target="_blank" xlink:href="https://openbases.github.io"><path fill="rgba(0,0,0,0)" d="M0 0h31v20H0z"/></a> <a target="_blank" xlink:href="https://openbases.github.io"><path fill="rgba(0,0,0,0)" d="M31 0h101v20H31z"/></a></svg>
+```
+
+Or change the style
+
+```bash
+$ ob-badge create resource myresource --style for-the-badge
+```
+
+![https://img.shields.io/badge/resources-myresource-blue.svg?style=for-the-badge&link=https%3A%2F%2Fopenbases.github.io](https://img.shields.io/badge/resources-myresource-blue.svg?style=for-the-badge&link=https%3A%2F%2Fopenbases.github.io)
+
+You can also view labels and styles, if you aren't sure about those to choose from:
+
+```bash
+$ ob-badge view styles
+plastic flat flat-square for-the-badge popout popout-square social
+
+$ ob-badge view labels
+submission experiment builder openbases testing data library resource paper other
+```
+
 ### Papers
 
 Here is a paper.md you can play with:

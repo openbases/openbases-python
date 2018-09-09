@@ -15,13 +15,11 @@ def get_icons(url="https://openbases.github.io/openbases-icons/icons.json",
               N=1):
     '''get a number of icons from the openbases-icons repository, 
        and return a list.
-
        Parameters
        ==========
        url: the openbases-icons json list (or other) of icons to choose from       
        regexp: a regular expression to filter by (default None, no filter)
        N: the number of icons to return (default is 1)
-
        Returns
        =======
        icons: a list of filtered (or not) icons      

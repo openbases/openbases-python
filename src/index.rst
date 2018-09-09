@@ -1,5 +1,5 @@
 Welcome to OpenBases Python!
-=========================
+============================
 
 .. toctree::
    :maxdepth: 2

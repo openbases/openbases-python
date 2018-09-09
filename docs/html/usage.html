@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; openbases Python 0.0.2 documentation</title>
+  <title>Usage &mdash; openbases Python 0.0.3 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.2
+                0.0.3
               </div>
             
           
@@ -93,6 +93,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#command-line">Command Line</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#icons">Icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#badges">Badges</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#papers">Papers</a></li>
 </ul>
 </li>
@@ -209,6 +210,52 @@ https://openbases.github.io/openbases-icons/ic/flaticon/sea-life-collection/fish
 <p>If you know the name of your logo, that would be how to find it!</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-icons --n <span class="m">2</span> --regexp joss
 https://openbases.github.io/openbases-icons/ic/openjournals/joss-logo.png
+</pre></div>
+</div>
+</div>
+<div class="section" id="badges">
+<h3>Badges<a class="headerlink" href="#badges" title="Permalink to this headline">¶</a></h3>
+<p>The badges client is available as <code class="docutils literal"><span class="pre">ob-badges</span></code>. You minimally need to specify a base
+type (e.g., “experiment”) and a name for it (e.g., “labjs”). The name is typically
+for you to decide for the base, but the base type, in that there are assigned colors
+for each, will be looked up.</p>
+<p>The primary command you want to use is “create”:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-badge create experiment labjs
+!<span class="o">[</span>https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style<span class="o">=</span>flat<span class="p">&amp;</span><span class="nv">link</span><span class="o">=</span>https%3A%2F%2Fopenbases.github.io<span class="o">](</span>https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style<span class="o">=</span>flat<span class="p">&amp;</span><span class="nv">link</span><span class="o">=</span>https%3A%2F%2Fopenbases.github.io<span class="o">)</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io"><img alt="https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io" src="https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io" /></a>
+<p>Notice if we change the base type, we get a different color:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-badge create submission labjs
+</pre></div>
+</div>
+<a class="reference external image-reference" href="https://img.shields.io/badge/submission-labjs-green.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io"><img alt="https://img.shields.io/badge/submission-labjs-green.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io" src="https://img.shields.io/badge/submission-labjs-green.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io" /></a>
+<p>If you specify a base type that does not exist, a grey badge will be returned.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-badge create pancakes labjs
+</pre></div>
+</div>
+<a class="reference external image-reference" href="https://img.shields.io/badge/pancakes-labjs-lightgrey.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io"><img alt="https://img.shields.io/badge/pancakes-labjs-lightgrey.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io" src="https://img.shields.io/badge/pancakes-labjs-lightgrey.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io" /></a>
+<p>You likely want the link for the badge to be the URL that corresponds with your resource!</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-badge create library labjs --link https://labjs.readthedocs.io
+</pre></div>
+</div>
+<a class="reference external image-reference" href="https://img.shields.io/badge/library-labjs-%23ff69b4.svg?style=flat&amp;link=https%3A%2F%2Flabjs.readthedocs.io"><img alt="https://img.shields.io/badge/library-labjs-%23ff69b4.svg?style=flat&amp;link=https%3A%2F%2Flabjs.readthedocs.io" src="https://img.shields.io/badge/library-labjs-%23ff69b4.svg?style=flat&amp;link=https%3A%2F%2Flabjs.readthedocs.io" /></a>
+<p>or instead of a markdown, you can also output svg (for embedding in other places)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-badge create data dinosaur-dataset --fmt svg
+&lt;svg <span class="nv">xmlns</span><span class="o">=</span><span class="s2">&quot;http://www.w3.org/2000/svg&quot;</span> xmlns:xlink<span class="o">=</span><span class="s2">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="nv">width</span><span class="o">=</span><span class="s2">&quot;132&quot;</span> <span class="nv">height</span><span class="o">=</span><span class="s2">&quot;20&quot;</span>&gt;&lt;linearGradient <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;b&quot;</span> <span class="nv">x2</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="nv">y2</span><span class="o">=</span><span class="s2">&quot;100%&quot;</span>&gt;&lt;stop <span class="nv">offset</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> stop-color<span class="o">=</span><span class="s2">&quot;#bbb&quot;</span> stop-opacity<span class="o">=</span><span class="s2">&quot;.1&quot;</span>/&gt;&lt;stop <span class="nv">offset</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> stop-opacity<span class="o">=</span><span class="s2">&quot;.1&quot;</span>/&gt;&lt;/linearGradient&gt;&lt;clipPath <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;a&quot;</span>&gt;&lt;rect <span class="nv">width</span><span class="o">=</span><span class="s2">&quot;132&quot;</span> <span class="nv">height</span><span class="o">=</span><span class="s2">&quot;20&quot;</span> <span class="nv">rx</span><span class="o">=</span><span class="s2">&quot;3&quot;</span> <span class="nv">fill</span><span class="o">=</span><span class="s2">&quot;#fff&quot;</span>/&gt;&lt;/clipPath&gt;&lt;g clip-path<span class="o">=</span><span class="s2">&quot;url(#a)&quot;</span>&gt;&lt;path <span class="nv">fill</span><span class="o">=</span><span class="s2">&quot;#555&quot;</span> <span class="nv">d</span><span class="o">=</span><span class="s2">&quot;M0 0h31v20H0z&quot;</span>/&gt;&lt;path <span class="nv">fill</span><span class="o">=</span><span class="s2">&quot;#e05d44&quot;</span> <span class="nv">d</span><span class="o">=</span><span class="s2">&quot;M31 0h101v20H31z&quot;</span>/&gt;&lt;path <span class="nv">fill</span><span class="o">=</span><span class="s2">&quot;url(#b)&quot;</span> <span class="nv">d</span><span class="o">=</span><span class="s2">&quot;M0 0h132v20H0z&quot;</span>/&gt;&lt;/g&gt;&lt;g <span class="nv">fill</span><span class="o">=</span><span class="s2">&quot;#fff&quot;</span> text-anchor<span class="o">=</span><span class="s2">&quot;middle&quot;</span> font-family<span class="o">=</span><span class="s2">&quot;DejaVu Sans,Verdana,Geneva,sans-serif&quot;</span> font-size<span class="o">=</span><span class="s2">&quot;110&quot;</span>&gt; &lt;text <span class="nv">x</span><span class="o">=</span><span class="s2">&quot;165&quot;</span> <span class="nv">y</span><span class="o">=</span><span class="s2">&quot;150&quot;</span> <span class="nv">fill</span><span class="o">=</span><span class="s2">&quot;#010101&quot;</span> fill-opacity<span class="o">=</span><span class="s2">&quot;.3&quot;</span> <span class="nv">transform</span><span class="o">=</span><span class="s2">&quot;scale(.1)&quot;</span> <span class="nv">textLength</span><span class="o">=</span><span class="s2">&quot;210&quot;</span>&gt;404&lt;/text&gt;&lt;text <span class="nv">x</span><span class="o">=</span><span class="s2">&quot;165&quot;</span> <span class="nv">y</span><span class="o">=</span><span class="s2">&quot;140&quot;</span> <span class="nv">transform</span><span class="o">=</span><span class="s2">&quot;scale(.1)&quot;</span> <span class="nv">textLength</span><span class="o">=</span><span class="s2">&quot;210&quot;</span>&gt;404&lt;/text&gt;&lt;text <span class="nv">x</span><span class="o">=</span><span class="s2">&quot;805&quot;</span> <span class="nv">y</span><span class="o">=</span><span class="s2">&quot;150&quot;</span> <span class="nv">fill</span><span class="o">=</span><span class="s2">&quot;#010101&quot;</span> fill-opacity<span class="o">=</span><span class="s2">&quot;.3&quot;</span> <span class="nv">transform</span><span class="o">=</span><span class="s2">&quot;scale(.1)&quot;</span> <span class="nv">textLength</span><span class="o">=</span><span class="s2">&quot;910&quot;</span>&gt;badge not found&lt;/text&gt;&lt;text <span class="nv">x</span><span class="o">=</span><span class="s2">&quot;805&quot;</span> <span class="nv">y</span><span class="o">=</span><span class="s2">&quot;140&quot;</span> <span class="nv">transform</span><span class="o">=</span><span class="s2">&quot;scale(.1)&quot;</span> <span class="nv">textLength</span><span class="o">=</span><span class="s2">&quot;910&quot;</span>&gt;badge not found&lt;/text&gt;&lt;/g&gt;&lt;a <span class="nv">target</span><span class="o">=</span><span class="s2">&quot;_blank&quot;</span> xlink:href<span class="o">=</span><span class="s2">&quot;https://openbases.github.io&quot;</span>&gt;&lt;path <span class="nv">fill</span><span class="o">=</span><span class="s2">&quot;rgba(0,0,0,0)&quot;</span> <span class="nv">d</span><span class="o">=</span><span class="s2">&quot;M0 0h31v20H0z&quot;</span>/&gt;&lt;/a&gt; &lt;a <span class="nv">target</span><span class="o">=</span><span class="s2">&quot;_blank&quot;</span> xlink:href<span class="o">=</span><span class="s2">&quot;https://openbases.github.io&quot;</span>&gt;&lt;path <span class="nv">fill</span><span class="o">=</span><span class="s2">&quot;rgba(0,0,0,0)&quot;</span> <span class="nv">d</span><span class="o">=</span><span class="s2">&quot;M31 0h101v20H31z&quot;</span>/&gt;&lt;/a&gt;&lt;/svg&gt;
+</pre></div>
+</div>
+<p>Or change the style</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-badge create resource myresource --style <span class="k">for</span>-the-badge
+</pre></div>
+</div>
+<a class="reference external image-reference" href="https://img.shields.io/badge/resources-myresource-blue.svg?style=for-the-badge&amp;link=https%3A%2F%2Fopenbases.github.io"><img alt="https://img.shields.io/badge/resources-myresource-blue.svg?style=for-the-badge&amp;link=https%3A%2F%2Fopenbases.github.io" src="https://img.shields.io/badge/resources-myresource-blue.svg?style=for-the-badge&amp;link=https%3A%2F%2Fopenbases.github.io" /></a>
+<p>You can also view labels and styles, if you aren’t sure about those to choose from:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-badge view styles
+plastic flat flat-square <span class="k">for</span>-the-badge popout popout-square social
+
+$ ob-badge view labels
+submission experiment builder openbases testing data library resource paper other
 </pre></div>
 </div>
 </div>
@@ -355,7 +402,7 @@ Vanessa Sochat
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.2',
+            VERSION:'0.0.3',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

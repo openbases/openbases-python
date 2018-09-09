@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>openbases.main &mdash; openbases Python 0.0.2 documentation</title>
+  <title>openbases.main &mdash; openbases Python 0.0.3 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.0.2
+                0.0.3
               </div>
             
           
@@ -169,8 +169,9 @@
 <span class="c1">#    https://www.github.com/openbases/openbases-python</span>
 
 <div class="viewcode-block" id="get_client"><a class="viewcode-back" href="../../openbases.main.html#openbases.main.get_client">[docs]</a><span class="k">def</span> <span class="nf">get_client</span><span class="p">(</span><span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">       return the helper function client for OpenBases</span>
+    <span class="sd">&#39;&#39;&#39;return the helper function client for OpenBases.</span>
+<span class="sd">       This is a client that spans the different modules (papers, badges,</span>
+<span class="sd">       etc.) for interaction with functions from one interface.</span>
 
 <span class="sd">       Parameters</span>
 <span class="sd">       ==========</span>
@@ -184,8 +185,12 @@
     <span class="n">Client</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="n">debug</span>
 
     <span class="c1"># Paper</span>
-    <span class="kn">from</span> <span class="nn">.paper</span> <span class="k">import</span> <span class="n">Paper</span>
+    <span class="kn">from</span> <span class="nn">openbases.main.papers</span> <span class="k">import</span> <span class="n">Paper</span>
     <span class="n">Client</span><span class="o">.</span><span class="n">paper</span> <span class="o">=</span> <span class="n">Paper</span>
+
+    <span class="c1"># Badge</span>
+    <span class="kn">from</span> <span class="nn">openbases.main.badges</span> <span class="k">import</span> <span class="n">Badge</span>
+    <span class="n">Client</span><span class="o">.</span><span class="n">badge</span> <span class="o">=</span> <span class="n">Badge</span>
 
     <span class="c1"># Initialize</span>
     <span class="n">cli</span> <span class="o">=</span> <span class="n">Client</span><span class="p">()</span>
@@ -226,7 +231,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.0.2',
+            VERSION:'0.0.3',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

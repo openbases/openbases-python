@@ -2,47 +2,59 @@
 # See the LICENSE in the main repository at:
 #    https://www.github.com/openbases/openbases-python
 
+import requests
 import argparse
 import sys
 import os
 
-
 def get_parser():
 
-    parser = argparse.ArgumentParser(description="OpenBases Python Paper",
+    from openbases.main.defaults import BADGE_STYLES
+
+    parser = argparse.ArgumentParser(description="OpenBases Python Badges",
                                 formatter_class=argparse.RawTextHelpFormatter,
-                                add_help=False)
+                                add_help=True)
 
     # Global Options
-    parser.add_argument('--debug','-d', dest="debug", 
-                        help="use verbose logging to debug.", 
-                        default=False, action='store_true')
-
-    parser.add_argument('--quiet','-q', dest="quiet", 
-                        help="suppress all normal output", 
-                        default=False, action='store_true')
-
     parser.add_argument('--version', dest="version", 
                         help="show openbases python version", 
                         default=False, action='store_true')
+
 
     subparsers = parser.add_subparsers(help='description',
                                        title='actions',
                                        description='actions for openbases',
                                        dest="command", metavar='general usage')
 
-          
-    # Paper Parsing
+    view = subparsers.add_parser("view",
+                                 help="view options for style, labels, etc.")
 
-    paper = subparsers.add_parser("get",
-                                   help="extract values from a paper.md")
+    view.add_argument('choice', nargs=1,
+                      default="types",
+                      choices=['labels','styles'])
 
-    paper.add_argument("cmd", nargs="*",
-                        help="paper markdown file to parse", 
-                        type=str)
+    create = subparsers.add_parser("create",
+                                    help="extract values from a paper.md")
 
-    shell = subparsers.add_parser("shell",
-                                   help="start an interactive shell with openbases paper")
+    create.add_argument('--cache', dest="longCache", 
+                        help="enable long cache for badge. Default False", 
+                        default=False, action='store_true')
+
+    create.add_argument('names', nargs=2, 
+                        help="label followed by name")
+
+    create.add_argument("--link", dest="link", 
+                        default=None, type=str,
+                        help='badge link, defaults to openbases.github.io')
+
+    create.add_argument('--style',
+                        default="flat",
+                        choices=BADGE_STYLES, dest="style")
+
+    create.add_argument('--fmt',
+                        default="markdown",
+                        choices=["markdown", "svg"], dest="format")
+
     return parser
 
 
@@ -61,12 +73,6 @@ def get_subparsers(parser):
 
     return subparsers
 
-    # Import logger to set
-    from openbases.logger import bot
-    bot.debug('Logging level %s' %level)
-    import openbases
-
-    bot.debug("OpenBases Python Version: %s" % openbases.__version__)
 
 def version():
     '''version prints the version, both for the user and help output
@@ -77,14 +83,16 @@ def version():
 
 def main(main=None):
 
+
     parser = get_parser()
     subparsers = get_subparsers(parser)
+
 
     def help(return_code=0):
         '''print help, including the software version and exit
         '''
         v = version()
-        print("\nOpen Bases Paper Python [v%s]\n" %(v))
+        print("\nOpen Bases Badges Python [v%s]\n" %(v))
         parser.print_help()
         sys.exit(return_code)
     
@@ -102,13 +110,13 @@ def main(main=None):
         sys.exit(0)
 
     # Does the user want help for a subcommand?
-    if args.command == 'get': from .get import main 
-    elif args.command == 'shell': from .shell import main 
+    if args.command == 'create': from .create import main 
+    if args.command == 'view': from .view import main 
     else: help()
 
     # Pass on to the correct parser
     if args.command is not None:
-        main(args=args, options=options, parser=parser)
+        main(args=args, options=options)
 
 
 if __name__ == '__main__':
