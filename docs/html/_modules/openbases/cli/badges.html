@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>openbases.cli.badges &mdash; openbases Python 0.0.3 documentation</title>
+  <title>openbases.cli.badges &mdash; openbases Python 0.0.51 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.0.3
+                0.0.51
               </div>
             
           
@@ -177,11 +177,11 @@
 
 <div class="viewcode-block" id="get_parser"><a class="viewcode-back" href="../../../openbases.cli.badges.html#openbases.cli.badges.get_parser">[docs]</a><span class="k">def</span> <span class="nf">get_parser</span><span class="p">():</span>
 
-    <span class="kn">from</span> <span class="nn">openbases.main.defaults</span> <span class="k">import</span> <span class="n">BADGE_STYLES</span>
+    <span class="kn">from</span> <span class="nn">openbases.main.defaults</span> <span class="k">import</span> <span class="n">BADGE_STYLES</span><span class="p">,</span> <span class="n">BADGE_COLORS</span>
 
     <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;OpenBases Python Badges&quot;</span><span class="p">,</span>
                                 <span class="n">formatter_class</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">RawTextHelpFormatter</span><span class="p">,</span>
-                                <span class="n">add_help</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                                <span class="n">add_help</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="c1"># Global Options</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--version&#39;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;version&quot;</span><span class="p">,</span> 
@@ -197,9 +197,9 @@
     <span class="n">view</span> <span class="o">=</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="s2">&quot;view&quot;</span><span class="p">,</span>
                                  <span class="n">help</span><span class="o">=</span><span class="s2">&quot;view options for style, labels, etc.&quot;</span><span class="p">)</span>
 
-    <span class="n">view</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;choice&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                      <span class="n">default</span><span class="o">=</span><span class="s2">&quot;types&quot;</span><span class="p">,</span>
-                      <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">,</span><span class="s1">&#39;styles&#39;</span><span class="p">])</span>
+    <span class="n">view</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;choice&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;?&quot;</span><span class="p">,</span>
+                      <span class="n">default</span><span class="o">=</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span>
+                      <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">,</span> <span class="s1">&#39;styles&#39;</span><span class="p">,</span> <span class="s1">&#39;colors&#39;</span><span class="p">])</span>
 
     <span class="n">create</span> <span class="o">=</span> <span class="n">subparsers</span><span class="o">.</span><span class="n">add_parser</span><span class="p">(</span><span class="s2">&quot;create&quot;</span><span class="p">,</span>
                                     <span class="n">help</span><span class="o">=</span><span class="s2">&quot;extract values from a paper.md&quot;</span><span class="p">)</span>
@@ -208,7 +208,7 @@
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;enable long cache for badge. Default False&quot;</span><span class="p">,</span> 
                         <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">)</span>
 
-    <span class="n">create</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;names&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+    <span class="n">create</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;names&#39;</span><span class="p">,</span> <span class="n">nargs</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> 
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;label followed by name&quot;</span><span class="p">)</span>
 
     <span class="n">create</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--link&quot;</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;link&quot;</span><span class="p">,</span> 
@@ -218,6 +218,10 @@
     <span class="n">create</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--style&#39;</span><span class="p">,</span>
                         <span class="n">default</span><span class="o">=</span><span class="s2">&quot;flat&quot;</span><span class="p">,</span>
                         <span class="n">choices</span><span class="o">=</span><span class="n">BADGE_STYLES</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;style&quot;</span><span class="p">)</span>
+
+    <span class="n">create</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--color&#39;</span><span class="p">,</span>
+                        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                        <span class="n">choices</span><span class="o">=</span><span class="n">BADGE_COLORS</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;color&quot;</span><span class="p">)</span>
 
     <span class="n">create</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--fmt&#39;</span><span class="p">,</span>
                         <span class="n">default</span><span class="o">=</span><span class="s2">&quot;markdown&quot;</span><span class="p">,</span>
@@ -251,10 +255,8 @@
 
 <div class="viewcode-block" id="main"><a class="viewcode-back" href="../../../openbases.cli.badges.html#openbases.cli.badges.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">main</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 
-
     <span class="n">parser</span> <span class="o">=</span> <span class="n">get_parser</span><span class="p">()</span>
     <span class="n">subparsers</span> <span class="o">=</span> <span class="n">get_subparsers</span><span class="p">(</span><span class="n">parser</span><span class="p">)</span>
-
 
     <span class="k">def</span> <span class="nf">help</span><span class="p">(</span><span class="n">return_code</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&#39;&#39;&#39;print help, including the software version and exit</span>
@@ -264,8 +266,6 @@
         <span class="n">parser</span><span class="o">.</span><span class="n">print_help</span><span class="p">()</span>
         <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">return_code</span><span class="p">)</span>
     
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">help</span><span class="p">()</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># We capture all primary arguments, and take secondary to pass on</span>
         <span class="n">args</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_known_args</span><span class="p">()</span>
@@ -279,7 +279,7 @@
 
     <span class="c1"># Does the user want help for a subcommand?</span>
     <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">command</span> <span class="o">==</span> <span class="s1">&#39;create&#39;</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">.create</span> <span class="k">import</span> <span class="n">main</span> 
-    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">command</span> <span class="o">==</span> <span class="s1">&#39;view&#39;</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">.view</span> <span class="k">import</span> <span class="n">main</span> 
+    <span class="k">elif</span> <span class="n">args</span><span class="o">.</span><span class="n">command</span> <span class="o">==</span> <span class="s1">&#39;view&#39;</span><span class="p">:</span> <span class="kn">from</span> <span class="nn">.view</span> <span class="k">import</span> <span class="n">main</span> 
     <span class="k">else</span><span class="p">:</span> <span class="n">help</span><span class="p">()</span>
 
     <span class="c1"># Pass on to the correct parser</span>
@@ -323,7 +323,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.3',
+            VERSION:'0.0.51',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

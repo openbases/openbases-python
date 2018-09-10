@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; openbases Python 0.0.3 documentation</title>
+  <title>Usage &mdash; openbases Python 0.0.51 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.3
+                0.0.51
               </div>
             
           
@@ -250,12 +250,29 @@ for each, will be looked up.</p>
 </pre></div>
 </div>
 <a class="reference external image-reference" href="https://img.shields.io/badge/resources-myresource-blue.svg?style=for-the-badge&amp;link=https%3A%2F%2Fopenbases.github.io"><img alt="https://img.shields.io/badge/resources-myresource-blue.svg?style=for-the-badge&amp;link=https%3A%2F%2Fopenbases.github.io" src="https://img.shields.io/badge/resources-myresource-blue.svg?style=for-the-badge&amp;link=https%3A%2F%2Fopenbases.github.io" /></a>
-<p>You can also view labels and styles, if you aren’t sure about those to choose from:</p>
+<p>Or set your own color (and override the label assignments)</p>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ ob-badge create experiment labjs --color pink
+!<span class="o">[</span>https://img.shields.io/badge/experiment-labjs-pink.svg?style<span class="o">=</span>flat<span class="p">&amp;</span><span class="nv">link</span><span class="o">=</span>https%3A%2F%2Fopenbases.github.io<span class="o">](</span>https://img.shields.io/badge/experiment-labjs-pink.svg?style<span class="o">=</span>flat<span class="p">&amp;</span><span class="nv">link</span><span class="o">=</span>https%3A%2F%2Fopenbases.github.io<span class="o">)</span>
+</pre></div>
+</div>
+<p>You can also view labels, styles, and colors, if you aren’t sure about those to choose from:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-badge view styles
 plastic flat flat-square <span class="k">for</span>-the-badge popout popout-square social
 
 $ ob-badge view labels
 submission experiment builder openbases testing data library resource paper other
+
+$ ob-badge view colors
+black
+dimgray
+dimgrey
+gray
+...
+lavenderblush
+palevioletred
+crimson
+pink
+lightpink
 </pre></div>
 </div>
 </div>
@@ -402,7 +419,7 @@ Vanessa Sochat
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.3',
+            VERSION:'0.0.51',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

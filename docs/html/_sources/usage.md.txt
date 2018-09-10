@@ -90,7 +90,14 @@ $ ob-badge create resource myresource --style for-the-badge
 
 ![https://img.shields.io/badge/resources-myresource-blue.svg?style=for-the-badge&link=https%3A%2F%2Fopenbases.github.io](https://img.shields.io/badge/resources-myresource-blue.svg?style=for-the-badge&link=https%3A%2F%2Fopenbases.github.io)
 
-You can also view labels and styles, if you aren't sure about those to choose from:
+Or set your own color (and override the label assignments)
+
+```
+$ ob-badge create experiment labjs --color pink
+![https://img.shields.io/badge/experiment-labjs-pink.svg?style=flat&link=https%3A%2F%2Fopenbases.github.io](https://img.shields.io/badge/experiment-labjs-pink.svg?style=flat&link=https%3A%2F%2Fopenbases.github.io)
+```
+
+You can also view labels, styles, and colors, if you aren't sure about those to choose from:
 
 ```bash
 $ ob-badge view styles
@@ -98,6 +105,18 @@ plastic flat flat-square for-the-badge popout popout-square social
 
 $ ob-badge view labels
 submission experiment builder openbases testing data library resource paper other
+
+$ ob-badge view colors
+black
+dimgray
+dimgrey
+gray
+...
+lavenderblush
+palevioletred
+crimson
+pink
+lightpink
 ```
 
 ### Papers

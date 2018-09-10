@@ -17,6 +17,10 @@ def main(args, options):
                   link=args.link,
                   style=args.style)
 
+    # If the user provided a custom color, change it.
+    if args.color is not None:
+        badge.set_color(args.color)
+
     # Return the desired format to the user
     if args.format == "svg":
         print(badge.get_svg())
