@@ -4,12 +4,15 @@
 
 from openbases.main.defaults import (
     BADGE_BASE,
+    BADGE_COLORS,
     BADGE_LABELS,
     BADGE_STYLES
 )
 
 def main(args, options):
-    
+
+    if args.choice.lower() == "colors":
+        print('\n'.join(BADGE_COLORS))    
     if args.choice.lower() == "labels":
         print(' '.join(BADGE_LABELS))
     elif args.choice.lower() == "styles":

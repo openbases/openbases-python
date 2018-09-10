@@ -9,7 +9,7 @@ import os
 
 def get_parser():
 
-    from openbases.main.defaults import BADGE_STYLES
+    from openbases.main.defaults import BADGE_STYLES, BADGE_COLORS
 
     parser = argparse.ArgumentParser(description="OpenBases Python Badges",
                                 formatter_class=argparse.RawTextHelpFormatter,
@@ -31,7 +31,7 @@ def get_parser():
 
     view.add_argument('choice', nargs="?",
                       default="labels",
-                      choices=['labels','styles'])
+                      choices=['labels', 'styles', 'colors'])
 
     create = subparsers.add_parser("create",
                                     help="extract values from a paper.md")
@@ -50,6 +50,10 @@ def get_parser():
     create.add_argument('--style',
                         default="flat",
                         choices=BADGE_STYLES, dest="style")
+
+    create.add_argument('--color',
+                        default=None,
+                        choices=BADGE_COLORS, dest="color")
 
     create.add_argument('--fmt',
                         default="markdown",

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>openbases.main.badges package &mdash; openbases Python 0.0.3 documentation</title>
+  <title>openbases.main.badges package &mdash; openbases Python 0.0.51 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.3
+                0.0.51
               </div>
             
           
@@ -194,8 +194,13 @@
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-openbases.main.badges" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="openbases.main.badges.Badge">
-<em class="property">class </em><code class="descclassname">openbases.main.badges.</code><code class="descname">Badge</code><span class="sig-paren">(</span><em>label</em>, <em>name</em>, <em>link=None</em>, <em>longCache=True</em>, <em>style=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/main/badges.html#Badge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.badges.Badge" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">openbases.main.badges.</code><code class="descname">Badge</code><span class="sig-paren">(</span><em>label</em>, <em>name</em>, <em>link=None</em>, <em>color=None</em>, <em>longCache=True</em>, <em>style=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/main/badges.html#Badge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.badges.Badge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="openbases.main.badges.Badge.get_color">
+<code class="descname">get_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/main/badges.html#Badge.get_color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.badges.Badge.get_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="method">
 <dt id="openbases.main.badges.Badge.get_link">
 <code class="descname">get_link</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/main/badges.html#Badge.get_link"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.badges.Badge.get_link" title="Permalink to this definition">¶</a></dt>
@@ -224,9 +229,26 @@
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="openbases.main.badges.Badge.set_color">
+<code class="descname">set_color</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/main/badges.html#Badge.set_color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.badges.Badge.set_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openbases.main.badges.Badge.set_label">
+<code class="descname">set_label</code><span class="sig-paren">(</span><em>label</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/main/badges.html#Badge.set_label"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.badges.Badge.set_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>allow the user to set a custom label (first one on left)</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="openbases.main.badges.Badge.set_link">
 <code class="descname">set_link</code><span class="sig-paren">(</span><em>link</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/main/badges.html#Badge.set_link"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.badges.Badge.set_link" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="openbases.main.badges.Badge.set_name">
+<code class="descname">set_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/main/badges.html#Badge.set_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.badges.Badge.set_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>allow the user to set a custom name (second on right)</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="openbases.main.badges.Badge.set_style">
@@ -280,7 +302,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.3',
+            VERSION:'0.0.51',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

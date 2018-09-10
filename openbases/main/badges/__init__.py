@@ -11,6 +11,7 @@ import sys
 from openbases.main.defaults import (
     BADGE_BASE,
     BADGE_COLORS,
+    CUSTOM_COLORS,
     BADGE_LABELS,
     BADGE_STYLES
 )
@@ -26,6 +27,7 @@ class Badge:
                  label,
                  name, 
                  link=None, 
+                 color=None,
                  longCache=True,
                  style=None):
 
@@ -43,7 +45,7 @@ class Badge:
         self.params = {"style": "flat",
                        "link": "https://openbases.github.io"}
 
-        self._init_design(label, name)
+        self._init_design(label, name, color)
         self._init_cache(longCache)
         self.set_style(style)
         self.set_link(link)
@@ -54,15 +56,35 @@ class Badge:
     def get_link(self):
         return self.params["link"]
 
+    def get_color(self):
+        return self.color
+
     def set_style(self, style):
         if style in BADGE_STYLES:
             self.params["style"] = style
+
+    def set_color(self, color):
+        if color in BADGE_COLORS:
+            self.color = color
+            self._update_design() 
+        else:
+            bot.error("Color 404! Run ob-badge view colors.")
+ 
+    def set_label(self, label):
+        '''allow the user to set a custom label (first one on left)'''
+        self.label = label
+        self._update_design()
+
+    def set_name(self, name):
+        '''allow the user to set a custom name (second on right)'''
+        self.name = name
+        self._update_design()
 
     def set_link(self, link):
         if link is not None:
             self.params["link"] = link
 
-    def _init_design(self, subject, status):
+    def _init_design(self, subject, status, color=None):
         '''the base of the design is the subject, and status.
         
            Parameters
@@ -79,10 +101,18 @@ class Badge:
         self.name = subject
         self.label = status
 
-        color = BADGE_COLORS.get(subject, BADGE_COLORS["other"])
-            
+        if color is None:
+            color = CUSTOM_COLORS.get(subject, CUSTOM_COLORS["other"])
+        self.color = color   
+        self._update_design()
+
+    def _update_design(self):
+        '''update design will regenerate the baseurl depending on the color,
+           name, and label
+        '''      
+
         # https://img.shields.io/badge/<SUBJECT>-<STATUS>-<COLOR>.sv
-        self.baseurl = BADGE_BASE % (subject, status, color)
+        self.baseurl = BADGE_BASE % (self.name, self.label, self.color)
         bot.debug(self.baseurl)
         return self.baseurl
 

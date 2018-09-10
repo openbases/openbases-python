@@ -16,6 +16,7 @@ Critical items to know are:
 versions here coincide with releases on pypi.
 
 ## [master](https://github.com/openbases/openbases-python/tree/master)
+ - adding custom color specification (0.0.51)
  - bug with name needing dashes replaced with underscores (0.0.5)
  - fixing bug with ob-badge (0.0.4)
  - adding badges module, and entry point ob-badge (0.0.3)
