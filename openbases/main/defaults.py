@@ -6,6 +6,7 @@
 # The color needs to follow a # that is converted to %23
 
 CUSTOM_COLORS = {"submission":"green",
+                 "spec": "%23660000", # matches schema.org
                  "experiment": "%23eaab1b",
                  "builder": "orange",
                  "openbases": "%232196f3",
