@@ -148,11 +148,11 @@ def read_json(filename, mode='r'):
 ################################################################################
 
 
-def read_yaml(filename, mode='r'):
+def read_yaml(filename, mode='r', quiet=False):
     '''read a yaml file, only including sections between dashes
     '''
     stream = read_file(filename, mode, readlines=False)
-    return _read_yaml(stream)
+    return _read_yaml(stream, quiet=quiet)
 
 def write_yaml(yaml_dict, filename, mode="w"):
     '''write a dictionary to yaml file
@@ -187,14 +187,14 @@ def _read_yaml(section, quiet=False):
     return metadata
 
 
-def read_frontmatter(filename, mode='r'):
+def read_frontmatter(filename, mode='r', quiet=False):
     '''read a yaml file, only including sections between dashes
     '''
     stream = read_file(filename, mode, readlines=False)
 
     # The yml section always comes after the --- of the frontmatter
     section = stream.split('---')[1]
-    return _read_yaml(section)
+    return _read_yaml(section, quiet=quiet)
 
 
 def read_markdown(filename, mode='r'):
