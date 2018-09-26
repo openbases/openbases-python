@@ -26,4 +26,5 @@ class TestOpenBases(unittest.TestCase):
         """Test that the markdown is loaded fully"""
         fields = ['tags','authors','affiliations','date', 'bibliography']
         for field in fields:
+            print(field)
             assert (field in self.paper)
