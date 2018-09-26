@@ -238,4 +238,32 @@ paper.get('authors', field='name')
 Vanessa Sochat
 ```
 
-Command line will probably look like this
+### Validation
+
+Firstly, if you want to install the extra validation functions (namely the library
+to read in bibtex) you need to do that first:
+
+```bash
+pip install openbases[validate]
+```
+
+You should have your paper.md and paper.bib in the same folder.
+
+```
+$
+  paper.md
+  paper.bib
+```
+
+In an interactive Python session, import the `PaperValidator`
+
+```python
+from openbases.main.validate import PaperValidator
+
+infile = 'tests/paper/paper.md'
+validator = PaperValidator(infile)
+```
+
+If there isn't a paper.bib in the same folder, you will get an error. You
+should not have many cases when even a small software paper doesn't have
+references.

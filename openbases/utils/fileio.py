@@ -168,7 +168,7 @@ def write_yaml(yaml_dict, filename, mode="w"):
     return filename
 
    
-def _read_yaml(section)
+def _read_yaml(section, quiet=False):
     '''read yaml from a string, either read from file (read_frontmatter) or 
        from yml file proper (read_yaml)
 
@@ -186,6 +186,7 @@ def _read_yaml(section)
                 metadata[k] = v
     return metadata
 
+
 def read_frontmatter(filename, mode='r'):
     '''read a yaml file, only including sections between dashes
     '''
@@ -194,6 +195,31 @@ def read_frontmatter(filename, mode='r'):
     # The yml section always comes after the --- of the frontmatter
     section = stream.split('---')[1]
     return _read_yaml(section)
+
+
+def read_markdown(filename, mode='r'):
+    '''read the OTHER part of the markdown file (remove the frontend matter)
+    '''
+    stream = read_file(filename, mode, readlines=False)
+
+    # The yml section always comes after the --- of the frontmatter
+    return stream.split('---')[-1]
+
+
+################################################################################
+# bibtex
+################################################################################
+
+def read_bibtex(filename, mode='r'):
+    '''read a yaml file, only including sections between dashes
+    '''
+    from pybtex.database.input import bibtex
+    parser = bibtex.Parser()
+    try:
+        data = parser.parse_file(filename)
+        return data.entries
+    except Exception as e:
+        bot.error(e)
 
 
 ################################################################################

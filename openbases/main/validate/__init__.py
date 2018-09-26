@@ -74,9 +74,8 @@ class BasicValidator:
             print('Found %s, valid name' % infile)
             return os.path.abspath(infile)
 
-     
-
-class SpecValidator:
+    
+class PaperValidator:
     '''the spec validator can "sniff" a file based on extension, and validate
        the file based on the extension, or have one of the specific type 
        validators (html, yaml) called directly. There are two steps.
@@ -86,6 +85,8 @@ class SpecValidator:
     '''
 
     default_criteria = '%s/criteria/paper.yml' % here
+    folder = None
+    name = None
 
     def __str__(self):
         return '[paper-validator:%s]' % self.name
@@ -93,12 +94,14 @@ class SpecValidator:
     def __repr__(self):
         return self.__str__()
 
-    def __init__(self, infile):
-
+    def __init__(self, infile, bibfile=None):
         from openbases.main.base import RobotNamer
         self.load(infile)
         self.robot = RobotNamer()
 
+        # If there is an error or file not found, is None
+        self.bib = self.load_bib(bibfile)
+        
 # Loading
 
     def load(self, infile):
@@ -123,6 +126,27 @@ class SpecValidator:
             self.spec =  validate_loads(infile) # returns YamlManager
             if self.spec is not None:
                 return self.spec.load()
+
+    def load_bib(self, bibfile):
+        '''load the bibfile, and derive from the paper file if it was loaded
+           first. This means checking for the file's existence,
+           that it has a default extension, and loading it into the "spec"
+           
+           Parameters
+           ==========
+           infile: the input file to load
+        '''
+        # If the bibfile is None, then we try deriving based on paper.md
+        if bibfile is None:
+            if self.folder is not None:
+                bibfile = os.path.join(self.folder, 'paper.bib')
+    
+        self.bibfile = self.validate_exists(bibfile, extensions=['bib'])
+        if self.bibfile is not None:
+
+            # We show error to user, but don't exit here
+            from openbases.utils import read_bibtex
+            return read_bibtex(self.bibfile)
 
 # Validation
 

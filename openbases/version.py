@@ -16,6 +16,10 @@ INSTALL_REQUIRES = (
     ('requests', {'min_version': None})
 )
 
+VALIDATE_REQUIRES = (
+    ('pybtex', {'min_version': None}),
+)
+
 TEST_REQUIRES = (
     ('pytest', {'min_version': None}),
     ('requests', {'min_version': None})

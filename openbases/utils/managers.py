@@ -6,6 +6,7 @@ from openbases.logger import bot
 from openbases.utils import (
     read_file, 
     read_frontmatter,
+    read_markdown,
     read_yaml,
     write_yaml
 )
@@ -30,6 +31,7 @@ class YamlManager:
             infile: can be a yml file, a markdown file, or html (with frontmatter)
         '''
         self.loaded = {}
+        self.content = ''
 
         # Did the user provide a path to load?
         if infile is not None:
@@ -84,6 +86,7 @@ class YamlManager:
             # Read in html or markdown
             else:
                 self._load_frontmatter(file_path)
+                self.content = read_markdown(file_path)
             return self.loaded
 
 # Loading

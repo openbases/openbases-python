@@ -71,6 +71,7 @@ if __name__ == "__main__":
 
     INSTALL_REQUIRES = get_requirements(lookup)
     TEST_REQUIRES = get_requirements(lookup, 'TEST_REQUIRES')
+    VALIDATE_REQUIRES = get_requirements(lookup, 'VALIDATE_REQUIRES')
 
     setup(name=NAME,
           version=VERSION,
@@ -89,6 +90,11 @@ if __name__ == "__main__":
           setup_requires=["pytest-runner"],
           install_requires = INSTALL_REQUIRES,
           tests_require = TEST_REQUIRES,
+          extras_require={
+              'validate': [VALIDATE_REQUIRES],
+              'test': [TEST_REQUIRES],
+              'all': [INSTALL_REQUIRES]
+          },
           classifiers=[
               'Intended Audience :: Science/Research',
               'Intended Audience :: Developers',
