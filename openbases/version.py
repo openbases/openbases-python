@@ -2,7 +2,7 @@
 # See the LICENSE in the main repository at:
 #    https://www.github.com/openbases/openbases-python
 
-__version__ = "0.0.52"
+__version__ = "0.0.53"
 AUTHOR = 'Vanessa Sochat'
 AUTHOR_EMAIL = 'vsochat@stanford.edu'
 NAME = 'openbases'

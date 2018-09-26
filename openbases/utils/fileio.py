@@ -101,9 +101,12 @@ def write_file(filename, content, mode="w"):
 
 def write_json(json_obj, filename, mode="w", print_pretty=True):
     '''write_json will (optionally,pretty print) a json object to file
-    :param json_obj: the dict to print to json
-    :param filename: the output file to write to
-    :param pretty_print: if True, will use nicer formatting
+
+       Parameters
+       ==========
+       json_obj: the dict to print to json
+       filename: the output file to write to
+       pretty_print: if True, will use nicer formatting
     '''
     with open(filename, mode) as filey:
         if print_pretty:
@@ -121,7 +124,7 @@ def write_json(json_obj, filename, mode="w", print_pretty=True):
 
 def read_file(filename, mode="r", readlines=True):
     '''write_file will open a file, "filename" and write content, "content"
-    and properly close the file
+       and properly close the file
     '''
     with open(filename, mode) as filey:
         if readlines is True:
@@ -133,7 +136,7 @@ def read_file(filename, mode="r", readlines=True):
 
 def read_json(filename, mode='r'):
     '''read_json reads in a json file and returns
-    the data structure as dict.
+       the data structure as dict.
     '''
     with open(filename, mode) as filey:
         data = json.load(filey)
@@ -145,15 +148,35 @@ def read_json(filename, mode='r'):
 ################################################################################
 
 
-def read_yaml(filename, mode='r', quiet=False):
+def read_yaml(filename, mode='r'):
     '''read a yaml file, only including sections between dashes
     '''
-    metadata = {}
-    with open(filename, mode) as stream:
-        stream = stream.read()
+    stream = read_file(filename, mode, readlines=False)
+    return _read_yaml(stream)
 
-    # Read yaml section
-    section = stream.split('---')[1]
+def write_yaml(yaml_dict, filename, mode="w"):
+    '''write a dictionary to yaml file
+ 
+       Parameters
+       ==========
+       yaml_dict: the dict to print to yaml
+       filename: the output file to write to
+       pretty_print: if True, will use nicer formatting
+    '''
+    with open(filename, mode) as filey:
+        filey.writelines(yaml.dump(yaml_dict))
+    return filename
+
+   
+def _read_yaml(section)
+    '''read yaml from a string, either read from file (read_frontmatter) or 
+       from yml file proper (read_yaml)
+
+       Parameters
+       ==========
+       section: a string of unparsed yaml content.
+    '''
+    metadata = {}
     docs = yaml.load_all(section)
     for doc in docs:
         if isinstance(doc, dict):
@@ -163,12 +186,33 @@ def read_yaml(filename, mode='r', quiet=False):
                 metadata[k] = v
     return metadata
 
+def read_frontmatter(filename, mode='r'):
+    '''read a yaml file, only including sections between dashes
+    '''
+    stream = read_file(filename, mode, readlines=False)
 
+    # The yml section always comes after the --- of the frontmatter
+    section = stream.split('---')[1]
+    return _read_yaml(section)
 
 
 ################################################################################
 # environment / options
 ################################################################################
+
+def load_module(module_str):
+    '''load a module based on a string name.
+
+       Parameters
+       ==========
+       module_str: complete python path to module (and function). Note that this
+       MUST be a python module (module.py) and not a function in an __init__.py
+    '''
+    module_str, function = module_str.rsplit('.', 1)
+    module = __import__(module_str, fromlist=[''])
+    return getattr(module, function)
+
+
 
 def convert2boolean(arg):
     '''convert2boolean is used for environmental variables
