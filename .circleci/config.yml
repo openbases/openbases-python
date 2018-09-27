@@ -98,7 +98,7 @@ dockersave: &dockersave
         docker images | grep openbases/openbases
         mkdir -p /tmp/cache
         echo "Saving all openbases containers"
-        docker save ${OPENBASES_CONTAINER}:${SCHEMA_BUILDER_VERSION} | pigz -2 -p 3 > /tmp/cache/container1.tar.gz
+        docker save ${OPENBASES_CONTAINER}:latest | pigz -2 -p 3 > /tmp/cache/container1.tar.gz
 
 dockerdeploy: &dockerdeploy
     name: Deploy to Docker Hub
