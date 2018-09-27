@@ -3,6 +3,7 @@
 #    https://www.github.com/openbases/openbases-python
 
 from openbases.logger import bot
+import os
 
 def main(args, options=None):
 
@@ -15,9 +16,15 @@ def main(args, options=None):
         else:
             bot.warning('%s does not exist.' % args.repo)
 
+    # Ensure that paper exists
+    paper = args.infile
+    if not os.path.exists(paper):
+        bot.warning('%s does not exist.' % paper)
+    paper = os.path.abspath(paper)     
+
     if args.basic is True:
-        validator = Client.BasicValidator(infile=args.infile)
+        validator = Client.BasicValidator(infile=paper)
     else:
-        validator = Client.PaperValidator(infile=args.infile,
-                                          params=params)
-    validator.validate_criteria(criteria=args.criteria)
+        validator = Client.PaperValidator(infile=paper)
+    validator.validate_criteria(criteria=args.criteria, 
+                                params=params)

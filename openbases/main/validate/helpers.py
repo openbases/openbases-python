@@ -26,7 +26,8 @@ def update_environment(params=None, prefix='OPENBASESENV_'):
                 os.putenv(key, value)
                 os.environ[key] = value
             else:
-                bot.warning('Skipping parameter for environment' % key)
+                bot.warning('Skipping parameter %s for environment' % key)
+
 
 def validate_loads(infile):
     '''determine if a file can load without error. If yes, return manager.
@@ -73,7 +74,7 @@ def load_criteria(self, criteria=None):
     if self.criteria is None:
         self.criteria = validate_loads(default_criteria)
 
-    basename = os.path.basename(self.criteria.yml_path)
+    basename = os.path.basename(self.criteria.infile)
 
     bot.info('[criteria:%s]' % basename)
     return self.criteria.load()

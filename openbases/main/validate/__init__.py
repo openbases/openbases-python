@@ -26,6 +26,7 @@ class BasicValidator:
        We only validate that the file exists.
     '''
     default_criteria = '%s/criteria/dummy.yml' % here
+    params = {}
 
     def __str__(self):
         return '[basic-validator:%s]' % self.name
@@ -146,8 +147,9 @@ class PaperValidator:
         if self.bibfile is not None:
 
             # If we have a bibfile, export to environment for tests
-            os.environ.put(envar, self.bibfile)
+            os.putenv(envar, self.bibfile)
             os.environ[envar] = self.bibfile
+            self.params.update({'bibfile': self.bibfile})
 
             # We show error to user, but don't exit here
             from openbases.utils import read_bibtex

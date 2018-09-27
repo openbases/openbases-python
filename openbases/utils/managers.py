@@ -86,7 +86,7 @@ class YamlManager:
             # Read in html or markdown
             else:
                 self._load_frontmatter(file_path)
-                self.content = read_markdown(file_path)
+                self.content = read_markdown(file_path, quiet=True)
             return self.loaded
 
 # Loading
@@ -98,7 +98,7 @@ class YamlManager:
            ==========
            file_path: the yaml file path to read
         '''
-        self.loaded = read_yaml(file_path)
+        self.loaded = read_yaml(file_path, quiet=True)
 
         
     def _load_frontmatter(self, file_path):

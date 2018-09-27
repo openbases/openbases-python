@@ -39,7 +39,7 @@ from openbases.logger import bot
 from openbases.utils import ( find_files, read_file )
 import re
 
-def test_length(paper, header, **kwargs):
+def test_length(paper, **kwargs):
     '''the paper should be betwee 250 and 1000 characters.
 
         length:
@@ -47,6 +47,9 @@ def test_length(paper, header, **kwargs):
           - level: warning
           - function: openbases.main.papers.tests.test_length
     ''' 
+    print(paper)
+    #paper = self.content
+
     good_length = True
     min_length = int(kwargs.get('min_length', 250))
     max_length = int(kwargs.get('max_length', 1000))
@@ -72,6 +75,8 @@ def test_authors(paper, header, **kwargs):
           - level: error
           - function: openbases.main.papers.tests.test_authors
     ''' 
+    header = self.loaded
+
     if "authors" not in header:
         bot.exit('authors missing in front end paper matter.')    
     if not isinstance(header['authors'], list):
@@ -87,12 +92,12 @@ def test_authors(paper, header, **kwargs):
             bot.error('Paper is missing a required author field %s' % field)
         if field == 'orcid':
             if not re.search(regexp, header[field]):
-                bot.error('Orcid id regular expression failed %s' header[field])
+                bot.error('Orcid regular expression failed %s' % header[field])
 
     return True
 
 
-def test_license(paper, header, envar='OPENBASESENV_REPO_BASE', **kwargs):
+def test_license(paper, envar='OPENBASESENV_REPO_BASE', **kwargs):
     '''required_structure looks for a schema's required fields, and issues
        an exit if doesn't exist. To implement this in a criteria.yml:
 
@@ -154,7 +159,7 @@ def test_license(paper, header, envar='OPENBASESENV_REPO_BASE', **kwargs):
 
 
 
-def test_contributing(paper, header, envar='OPENBASESENV_REPO_BASE', **kwargs):
+def test_contributing(paper, envar='OPENBASESENV_REPO_BASE', **kwargs):
     '''look for CONTRIBUTING.md or similar
 
 
@@ -180,7 +185,7 @@ def test_contributing(paper, header, envar='OPENBASESENV_REPO_BASE', **kwargs):
     return found
 
 
-def test_references(paper, header, envar="OPENBASESENV_BIBFILE", **kwargs):
+def test_references(paper, envar="OPENBASESENV_BIBFILE", **kwargs):
     '''required_structure looks for a schema's required fields, and issues
        an exit if doesn't exist. To implement this in a criteria.yml:
  

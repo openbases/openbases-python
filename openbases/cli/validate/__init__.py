@@ -24,6 +24,10 @@ def get_parser():
                         help="repository base, if needed to check for files", 
                         default=None, type=str)
 
+    parser.add_argument('--basic', dest="basic", 
+                        help="a basic validator, for custom usage", 
+                        default=False, action='store_true')
+
     subparsers = parser.add_subparsers(help='description',
                                        title='actions',
                                        description='actions for openbases',
