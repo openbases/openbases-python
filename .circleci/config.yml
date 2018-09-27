@@ -58,7 +58,6 @@ schemaenv: &schemaenv
         fi
         # export to bash environment
         echo "export OPENBASES_CONTAINER=${OPENBASES_CONTAINER}" >> ${BASH_ENV}
-        echo "export openbases_DOCKER_USER=${openbases_DOCKER_USER}" >> ${BASH_ENV}
         echo "export REPO_NAME=${REPO_NAME}" >> ${BASH_ENV}
         cat ${BASH_ENV}
 
@@ -71,7 +70,8 @@ dockerbuild: &dockerbuild
         echo "docker build -t ${OPENBASES_CONTAINER} ."
         docker build -t ${OPENBASES_CONTAINER} .
         OPENBASES_VERSION=$(docker run ${OPENBASES_CONTAINER} ob-validate --version)
-        echo "docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${OPENBASES_VERSION}""
+        DOCKER_TAG=$(docker images | grep ${OPENBASES_CONTAINER} | awk '{print $2}')
+        echo "docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${DOCKER_TAG}""
         echo "export OPENBASES_VERSION=${OPENBASES_VERSION}" >> ${BASH_ENV}
         docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${OPENBASES_VERSION}"
 
