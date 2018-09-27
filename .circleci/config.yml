@@ -109,10 +109,11 @@ dockerdeploy: &dockerdeploy
       if [[ -n "$DOCKER_PASS" ]]; then
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker push ${OPENBASES_CONTAINER}
-            echo "Tagging latest images..."
+            echo "Tagging latest image..."
             OPENBASES_VERSION=$(docker run ${OPENBASES_CONTAINER} paper --version)
-            echo "docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${OPENBASES_VERSION}"
-            docker tag ${OPENBASES_CONTAINER}:${DOCKER_TAG} ${OPENBASES_CONTAINER}:latest
+            echo "docker tag ${OPENBASES_CONTAINER}:latest ${OPENBASES_CONTAINER}:${OPENBASES_VERSION}"
+            docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${OPENBASES_VERSION}"
+            docker push "${OPENBASES_CONTAINER}:${OPENBASES_VERSION}"
       fi
 
 ################################################################################
