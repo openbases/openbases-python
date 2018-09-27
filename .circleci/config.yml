@@ -69,7 +69,7 @@ dockerbuild: &dockerbuild
         cd /tmp/src
         echo "docker build -t ${OPENBASES_CONTAINER} ."
         docker build -t ${OPENBASES_CONTAINER} .
-        OPENBASES_VERSION=$(ob-validate --version)
+        OPENBASES_VERSION=$(docker run ${OPENBASES_CONTAINER} paper --version)
         echo "docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${OPENBASES_VERSION}"
         echo "export OPENBASES_VERSION=${OPENBASES_VERSION}" >> ${BASH_ENV}
         docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${OPENBASES_VERSION}
