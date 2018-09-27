@@ -10,6 +10,7 @@ Let's get you started!
    readme
    installation
    usage
+   docker
    modules
    contributing
    authors

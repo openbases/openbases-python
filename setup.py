@@ -107,7 +107,7 @@ if __name__ == "__main__":
           ],
 
           entry_points = { 'console_scripts': [
-                               'ob-paper=openbases.cli.paper:main',
+                               'ob-paper=openbases.cli.papers:main',
                                'ob-icons=openbases.cli.icons:main',
                                'ob-badge=openbases.cli.badges:main',
                                'ob-validate=openbases.cli.validate:main' ] })
