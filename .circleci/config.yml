@@ -31,7 +31,7 @@ testsetup: &testsetup
         python setup.py install
         pip install --upgrade pip
         pip install pytest
-        pip install .[validate]
+        pip install pybtex
 
 testrun: &testrun
     name: run tests
