@@ -23,7 +23,7 @@ install: &install
                            libffi-dev musl-dev openssl-dev
 
 # Tests
-testsetup: &testsetup
+obsetup: &obsetup
     name: install dependencies
     command: |
         python3 -m venv venv
@@ -128,7 +128,7 @@ jobs:
       - run: *schemaenv
       - run: *install
       - checkout
-      - run: *testsetup
+      - run: *obsetup
       - run: *testrun
       - persist_to_workspace:
           root: /tmp
@@ -141,6 +141,7 @@ jobs:
       - attach_workspace:
           at: /tmp
       - run: *install
+      - run: *obsetup
       - restore_cache:
           keys:
             - docker-v1-{{ .Branch }}
