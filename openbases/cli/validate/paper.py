@@ -13,8 +13,10 @@ def main(args, options=None):
     repo = args.repo
     if repo is None:
         repo = os.getcwd()
+    repo = os.path.abspath(repo)
 
     if os.path.exists(repo):
+        bot.info("repo: %s" % repo)
         os.environ['OPENBASESENV_REPO_BASE'] = repo
         os.putenv('OPENBASESENV_REPO_BASE', repo)
     else:
@@ -23,7 +25,7 @@ def main(args, options=None):
     # Ensure that paper exists
     paper = args.infile
     if not os.path.exists(paper):
-        bot.warning('%s does not exist.' % paper)
+        bot.exit('%s does not exist.' % paper)
     paper = os.path.abspath(paper)     
 
     if args.basic is True:

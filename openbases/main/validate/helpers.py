@@ -81,7 +81,7 @@ def load_criteria(self, criteria=None):
     return self.criteria.load()
 
 
-def validate_criteria(self, criteria, infile=None, params=None):
+def validate_criteria(self, criteria=None, infile=None, params=None):
     '''validate an infile (or already loaded one) against criteria.
 
        Parameters
@@ -91,8 +91,11 @@ def validate_criteria(self, criteria, infile=None, params=None):
     '''   
     from openbases.utils import load_module
 
+    # If criteria not set, use default
+    if criteria is None:
+        self.load_criteria()
+
     # Update environment with params for validation
-    print(params)
     if params is not None:
         bot.info('Updating custom params with %s' % params)
         self.params.update(params)

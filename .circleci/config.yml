@@ -1,57 +1,231 @@
 # Python CircleCI 2.0 configuration file
-#
 # Check https://circleci.com/docs/2.0/language-python/ for more details
-#
+
+# Variables you can customize (and containers that will be built)
+# OPENBASES_CONTAINER: is the container that will be built, see defaults
+# 
+
+################################################################################
+# Functions
+################################################################################
+
+# Defaults
+defaults: &defaults
+  docker:
+    - image: docker:18.01.0-ce-git
+  working_directory: /tmp/src
+
+# Installation
+install: &install
+    name: Install gzip, gettext, python3, gcc python3-dev, jq, linux-headers
+    command: |
+        apk add --no-cache pigz python3 gettext jq gcc python3-dev linux-headers \
+                           libffi-dev musl-dev openssl-dev
+
+# Tests
+testsetup: &testsetup
+    name: install dependencies
+    command: |
+        python3 -m venv venv
+        . venv/bin/activate
+        python setup.py install
+        pip install pytest
+
+testrun: &testrun
+    name: run tests
+    command: |
+        . venv/bin/activate
+        python setup.py test
+
+# Environment
+
+schemaenv: &schemaenv
+    name: Define container and open bases names
+    command: |
+        # If not set, define various container names
+        if [ ! -n "${OPENBASES_CONTAINER:-}" ]; then
+            OPENBASES_CONTAINER="openbases/openbases"
+        fi
+        if [ ! -n "${openbases_DOCKER_USER:-}" ]; then
+            openbases_DOCKER_USER="openbases"
+        fi
+        if [ ! -n "${CIRCLE_PR_REPONAME}" ]; then
+            REPO_NAME=openbases/openbases-python
+        else
+            REPO_NAME=${CIRCLE_PR_USERNAME}/${CIRCLE_PR_REPONAME}
+        fi
+        # export to bash environment
+        echo "export OPENBASES_CONTAINER=${OPENBASES_CONTAINER}" >> ${BASH_ENV}
+        echo "export openbases_DOCKER_USER=${openbases_DOCKER_USER}" >> ${BASH_ENV}
+        echo "export REPO_NAME=${REPO_NAME}" >> ${BASH_ENV}
+        cat ${BASH_ENV}
+
+# Installation
+dockerbuild: &dockerbuild
+    name: Build the openbases/openbases containers
+    command: |
+        source ${BASH_ENV}
+        cd /tmp/src
+        echo "docker build -t ${OPENBASES_CONTAINER} ."
+        docker build -t ${OPENBASES_CONTAINER} .
+        OPENBASES_VERSION=$(docker run ${OPENBASES_CONTAINER} ob-validate --version)
+        echo "docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${OPENBASES_VERSION}""
+        echo "export OPENBASES_VERSION=${OPENBASES_VERSION}" >> ${BASH_ENV}
+        docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${OPENBASES_VERSION}"
+
+# Docker
+dockerload: &dockerload
+    name: Load Docker container Image
+    no_output_timeout: 30m
+    command: | 
+      echo "Working directory is ${PWD}"
+      docker info
+      set +o pipefail
+      if [ -f /tmp/cache/container1.tar.gz ]; then
+          apk update && apk add --no-cache pigz curl curl-dev
+          pigz -d --stdout /tmp/cache/container1.tar.gz | docker load
+          docker images
+      fi
+
+dockersave: &dockersave
+    name: Docker Save
+    no_output_timeout: 40m
+    command: |
+        cat ${BASH_ENV}
+        source ${BASH_ENV}
+        echo "Saving containers to container1.tar.gz"
+        docker images | grep openbases/openbases
+        mkdir -p /tmp/cache
+        echo "Saving all openbases containers"
+        docker save ${OPENBASES_CONTAINER}:${SCHEMA_BUILDER_VERSION} | pigz -2 -p 3 > /tmp/cache/container1.tar.gz
+
+dockerdeploy: &dockerdeploy
+    name: Deploy to Docker Hub
+    no_output_timeout: 40m
+    command: |
+      source ${BASH_ENV}
+      echo "Looking for ${OPENBASES_CONTAINER}"
+      if [[ -n "$DOCKER_PASS" ]]; then
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push ${OPENBASES_CONTAINER}
+            echo "Tagging latest images..."
+            DOCKER_TAG=$(docker images | grep ${OPENBASES_CONTAINER} | awk '{print $2}')
+            echo "Found Docker Tag ${DOCKER_TAG}"
+            docker tag ${OPENBASES_CONTAINER}:${DOCKER_TAG} ${OPENBASES_CONTAINER}:latest
+            docker push ${OPENBASES_CONTAINER}:latest
+      fi
+
+################################################################################
+# Jobs
+################################################################################
+
+
 version: 2
 jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      # use `-browsers` prefix for selenium tests, e.g. `3.6.1-browsers`
-      - image: circleci/python:3.6.1
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    working_directory: ~/repo
-
+  test:
+    <<: *defaults
     steps:
+      - run: *schemaenv
+      - run: *install
       - checkout
+      - run: *testsetup
+      - run: *testrun
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - src
 
-      # Download and cache dependencies
+  build:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /tmp
+      - run: *install
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "requirements.txt" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run:
-          name: install dependencies
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install -r requirements.txt
-            pip install pytest
-
-      - save_cache:
+            - docker-v1-{{ .Branch }}
           paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
-        
-      # run tests!
-      # this example uses Django's built-in test-runner
-      # other common Python testing frameworks include pytest and nose
-      # https://pytest.org
-      # https://nose.readthedocs.io
-      - run:
-          name: run tests
-          command: |
-            . venv/bin/activate
-            python setup.py test
+            - /tmp/cache/container1.tar.gz      
 
-      - store_artifacts:
-          path: test-reports
-          destination: test-reports
-          
+      - setup_remote_docker
+      - run: *schemaenv
+      - run: *dockerbuild
+      - run: *dockersave
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - cache/container1.tar.gz
+            - src
+
+  update_cache:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /tmp
+      - save_cache:
+         key: docker-v1-{{ .Branch }}
+         paths:
+            - /tmp/cache/container1.tar.gz
+
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /tmp
+      - setup_remote_docker
+      - run: *schemaenv
+      - run: *dockerload
+      - run: *dockerdeploy
+
+
+################################################################################
+# Workflows
+################################################################################
+
+
+workflows:
+  version: 2
+  build_test_deploy:
+    jobs:
+      - test:
+          filters:
+            branches:
+              ignore: 
+                - /docs?/.*/
+                - gh-pages
+            tags:
+              only: /.*/
+
+      - build:
+          requires:
+            - test
+          filters:
+            branches:
+              ignore: 
+                - /docs?/.*/
+                - gh-pages
+            tags:
+              only: /.*/
+
+      - update_cache:
+          requires:
+            - test
+            - build
+          filters:
+            branches:
+              ignore: 
+                - /docs?/.*/
+                - gh-pages
+            tags:
+              only: /.*/
+
+      - deploy:
+          requires:
+            - test
+            - build
+            - update_cache
+          filters:
+            branches:
+              only: master
+            tags:
+              only: /.*/

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>openbases.utils package &mdash; openbases Python 0.0.51 documentation</title>
+  <title>openbases.utils package &mdash; openbases Python 0.0.53 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.51
+                0.0.53
               </div>
             
           
@@ -214,6 +214,13 @@ that must be returned as boolean</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="openbases.utils.fileio.find_files">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">find_files</code><span class="sig-paren">(</span><em>root</em>, <em>pattern</em>, <em>fullpath=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#find_files"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.find_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return files at one level specified by user
+(not recursive)</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="openbases.utils.fileio.find_subdirectories">
 <code class="descclassname">openbases.utils.fileio.</code><code class="descname">find_subdirectories</code><span class="sig-paren">(</span><em>basepath</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#find_subdirectories"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.find_subdirectories" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return directories (and sub) starting from a base</p>
@@ -235,10 +242,24 @@ is not found, None is returned.
 </dd></dl>
 
 <dl class="function">
+<dt id="openbases.utils.fileio.load_module">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">load_module</code><span class="sig-paren">(</span><em>module_str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#load_module"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.load_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>load a module based on a string name.</p>
+<p>module_str: complete python path to module (and function). Note that this
+MUST be a python module (module.py) and not a function in an __init__.py</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="openbases.utils.fileio.mkdir_p">
 <code class="descclassname">openbases.utils.fileio.</code><code class="descname">mkdir_p</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#mkdir_p"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.mkdir_p" title="Permalink to this definition">¶</a></dt>
 <dd><p>mkdir_p attempts to get the same functionality as mkdir -p
 :param path: the path to create.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.fileio.read_bibtex">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">read_bibtex</code><span class="sig-paren">(</span><em>filename</em>, <em>mode='r'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#read_bibtex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.read_bibtex" title="Permalink to this definition">¶</a></dt>
+<dd><p>read a yaml file, only including sections between dashes</p>
 </dd></dl>
 
 <dl class="function">
@@ -249,10 +270,22 @@ and properly close the file</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="openbases.utils.fileio.read_frontmatter">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">read_frontmatter</code><span class="sig-paren">(</span><em>filename</em>, <em>mode='r'</em>, <em>quiet=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#read_frontmatter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.read_frontmatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>read a yaml file, only including sections between dashes</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="openbases.utils.fileio.read_json">
 <code class="descclassname">openbases.utils.fileio.</code><code class="descname">read_json</code><span class="sig-paren">(</span><em>filename</em>, <em>mode='r'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#read_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.read_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>read_json reads in a json file and returns
 the data structure as dict.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.fileio.read_markdown">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">read_markdown</code><span class="sig-paren">(</span><em>filename</em>, <em>mode='r'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#read_markdown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.read_markdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>read the OTHER part of the markdown file (remove the frontend matter)</p>
 </dd></dl>
 
 <dl class="function">
@@ -271,10 +304,19 @@ and properly close the file</p>
 <dl class="function">
 <dt id="openbases.utils.fileio.write_json">
 <code class="descclassname">openbases.utils.fileio.</code><code class="descname">write_json</code><span class="sig-paren">(</span><em>json_obj</em>, <em>filename</em>, <em>mode='w'</em>, <em>print_pretty=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#write_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.write_json" title="Permalink to this definition">¶</a></dt>
-<dd><p>write_json will (optionally,pretty print) a json object to file
-:param json_obj: the dict to print to json
-:param filename: the output file to write to
-:param pretty_print: if True, will use nicer formatting</p>
+<dd><p>write_json will (optionally,pretty print) a json object to file</p>
+<p>json_obj: the dict to print to json
+filename: the output file to write to
+pretty_print: if True, will use nicer formatting</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="openbases.utils.fileio.write_yaml">
+<code class="descclassname">openbases.utils.fileio.</code><code class="descname">write_yaml</code><span class="sig-paren">(</span><em>yaml_dict</em>, <em>filename</em>, <em>mode='w'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/utils/fileio.html#write_yaml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.utils.fileio.write_yaml" title="Permalink to this definition">¶</a></dt>
+<dd><p>write a dictionary to yaml file</p>
+<p>yaml_dict: the dict to print to yaml
+filename: the output file to write to
+pretty_print: if True, will use nicer formatting</p>
 </dd></dl>
 
 </div>
@@ -394,7 +436,7 @@ newline. Defaults to finding Progress</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.51',
+            VERSION:'0.0.53',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
