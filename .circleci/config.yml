@@ -69,12 +69,11 @@ dockerbuild: &dockerbuild
         cd /tmp/src
         echo "docker build -t ${OPENBASES_CONTAINER} ."
         docker build -t ${OPENBASES_CONTAINER} .
-        OPENBASES_VERSION=$(docker run ${OPENBASES_CONTAINER} ob-validate --version)
-        DOCKER_TAG=$(docker images | grep ${OPENBASES_CONTAINER} | awk '{print $2}')
-        echo "docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${DOCKER_TAG}""
+        OPENBASES_VERSION=$(ob-validate --version)
+        echo "docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${OPENBASES_VERSION}"
         echo "export OPENBASES_VERSION=${OPENBASES_VERSION}" >> ${BASH_ENV}
-        docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${OPENBASES_VERSION}"
-
+        docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${OPENBASES_VERSION}
+        
 # Docker
 dockerload: &dockerload
     name: Load Docker container Image
@@ -111,10 +110,9 @@ dockerdeploy: &dockerdeploy
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker push ${OPENBASES_CONTAINER}
             echo "Tagging latest images..."
-            DOCKER_TAG=$(docker images | grep ${OPENBASES_CONTAINER} | awk '{print $2}')
-            echo "Found Docker Tag ${DOCKER_TAG}"
+            OPENBASES_VERSION=$(ob-validate --version)
+            echo "docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${OPENBASES_VERSION}"
             docker tag ${OPENBASES_CONTAINER}:${DOCKER_TAG} ${OPENBASES_CONTAINER}:latest
-            docker push ${OPENBASES_CONTAINER}:latest
       fi
 
 ################################################################################
