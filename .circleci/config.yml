@@ -30,6 +30,7 @@ testsetup: &testsetup
         . venv/bin/activate
         python setup.py install
         pip install pytest
+        pip install .[validate]
 
 testrun: &testrun
     name: run tests
