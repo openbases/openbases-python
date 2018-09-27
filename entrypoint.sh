@@ -48,25 +48,21 @@ while true; do
         ;;
         paper)
             shift
-            echo "$@"
             exec ob-paper "$@"
             exit 0
         ;;
         validate)
             shift
-            echo "$@"
             exec ob-validate paper "$@"
             exit 0
         ;;
         icons)
             shift
-            echo "$@"
             exec ob-icons "$@"
             exit 0
         ;;
         badges|badge)
             shift
-            echo "$@"
             exec ob-badge "$@"
             exit 0
         ;;

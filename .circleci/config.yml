@@ -110,7 +110,7 @@ dockerdeploy: &dockerdeploy
             docker login -u $DOCKER_USER -p $DOCKER_PASS
             docker push ${OPENBASES_CONTAINER}
             echo "Tagging latest images..."
-            OPENBASES_VERSION=$(ob-validate --version)
+            OPENBASES_VERSION=$(docker run ${OPENBASES_CONTAINER} paper --version)
             echo "docker tag "${OPENBASES_CONTAINER}:latest" "${OPENBASES_CONTAINER}:${OPENBASES_VERSION}"
             docker tag ${OPENBASES_CONTAINER}:${DOCKER_TAG} ${OPENBASES_CONTAINER}:latest
       fi
@@ -141,7 +141,6 @@ jobs:
       - attach_workspace:
           at: /tmp
       - run: *install
-      - run: *obsetup
       - restore_cache:
           keys:
             - docker-v1-{{ .Branch }}
