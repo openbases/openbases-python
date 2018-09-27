@@ -65,6 +65,21 @@ def find_directories(root,fullpath=True):
                     directories.append(item)
     return directories
 
+
+def find_files(root, pattern, fullpath=True):
+    '''
+    Return files at one level specified by user
+    (not recursive)
+    '''
+    files = []
+    for root, dirnames, filenames in os.walk(root):
+        new_files = [f for f in filenames if f not in files]
+        new_files = [ os.path.join(root, f) 
+                      for f in new_files if re.search(pattern, f)]
+        files = files + new_files
+    return files
+
+
  
 def copy_directory(src, dest, force=False):
     ''' Copy an entire directory recursively

@@ -85,6 +85,7 @@ class PaperValidator:
     '''
 
     default_criteria = '%s/criteria/paper.yml' % here
+    params = {}
     folder = None
     name = None
 
@@ -127,7 +128,7 @@ class PaperValidator:
             if self.spec is not None:
                 return self.spec.load()
 
-    def load_bib(self, bibfile):
+    def load_bib(self, bibfile, envar="OPENBASESENV_BIBFILE"):
         '''load the bibfile, and derive from the paper file if it was loaded
            first. This means checking for the file's existence,
            that it has a default extension, and loading it into the "spec"
@@ -143,6 +144,10 @@ class PaperValidator:
     
         self.bibfile = self.validate_exists(bibfile, extensions=['bib'])
         if self.bibfile is not None:
+
+            # If we have a bibfile, export to environment for tests
+            os.environ.put(envar, self.bibfile)
+            os.environ[envar] = self.bibfile
 
             # We show error to user, but don't exit here
             from openbases.utils import read_bibtex

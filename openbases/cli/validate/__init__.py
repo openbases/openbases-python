@@ -20,6 +20,10 @@ def get_parser():
                         help="show openbases python version", 
                         default=False, action='store_true')
 
+    parser.add_argument('--repo', nargs='?',
+                        help="repository base, if needed to check for files", 
+                        default=None, type=str)
+
     subparsers = parser.add_subparsers(help='description',
                                        title='actions',
                                        description='actions for openbases',

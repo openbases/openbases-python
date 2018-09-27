@@ -14,6 +14,19 @@ here = os.path.abspath(os.path.dirname(__file__))
 # Supporting (shared) functions ################################################
 ################################################################################
 
+def update_environment(params=None, prefix='OPENBASESENV_'):
+    '''update environment will put any environment variables found in the 
+       params (dictionary) into the environment, expected to be found by
+       the various functions. The variables must start with OPENBASESENV_
+    '''
+    if params is not None:
+        for key,value in params.items():
+            if key.startswith(prefix):
+                bot.debug('Exporting %s=%s' %(key, value))
+                os.putenv(key, value)
+                os.environ[key] = value
+            else:
+                bot.warning('Skipping parameter for environment' % key)
 
 def validate_loads(infile):
     '''determine if a file can load without error. If yes, return manager.
@@ -66,7 +79,7 @@ def load_criteria(self, criteria=None):
     return self.criteria.load()
 
 
-def validate_criteria(self, criteria, infile=None):
+def validate_criteria(self, criteria, infile=None, params=None):
     '''validate an infile (or already loaded one) against criteria.
 
        Parameters
@@ -75,7 +88,15 @@ def validate_criteria(self, criteria, infile=None):
        criteria: a loaded (json/dict) or criteria, or html/yml file
     '''   
     from openbases.utils import load_module
-        
+
+    # Update environment with params for validation
+    if params is not None:
+        bot.info('Updating custom params with %s' % params)
+        self.params.update(params)
+
+    # Update the environment
+    update_environment(params=self.params, prefix='OPENBASESENV_')
+
     # Read in the criteria - any errors will fall back to default
     if not isinstance(criteria, dict):
         criteria = self.load_criteria(criteria)
@@ -111,6 +132,11 @@ def validate_criteria(self, criteria, infile=None):
         level = values.get('level', 'warning').upper()
         function = values.get('function', missing_function)
         kwargs = values.get('kwargs')
+        envars = values.get('environment')
+
+        # If we have environment vars from criteria, export them
+        if envars is not None:
+            update_environment(params=envars)
 
         # If we have a function provided in the configuration yaml
         function_name = function

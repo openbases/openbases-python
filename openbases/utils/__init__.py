@@ -1,5 +1,6 @@
 from .fileio import ( 
     mkdir_p, 
+    find_files,
     read_bibtex,
     read_file, 
     read_frontmatter,

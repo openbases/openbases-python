@@ -13,6 +13,10 @@
 # - level: is the python logger level to emit.
 # - the subsuections underneath are also different named (individual) checks
 # - args: should be a list of named (or not named) arguments.
+# - environment: should be a list of environment variables to grab, and
+#   it will issue a warning / error (level) depending on if not found. You
+#   can optionally put a default, it will be skipped if NULL. It MUST
+#   begin with OPENBASESENV_ to be found.
 
 # It's helpful to look at the example below and then reference the above!
 
@@ -31,34 +35,35 @@
 
 version: 1
 checks:
+
     length:
       - name: Check that the paper is between 250-1000 characters
-      - level: error
+      - level: warning
       - function: openbases.main.papers.tests.test_length
+      - kwargs:
+        - min_length: 250
+        - max_length: 1000
+
     authors:
-      - name: Submission must include a list of authors, well formatted
+      - name: Submission must include a list of authors with associated metadata
       - level: error
       - function: openbases.main.papers.tests.test_authors
-    affiliations:
-      - name: Submission must include author affiliations
-      - level: error
-      - function: openbases.main.papers.tests.test_affiliations
-    summary:
-      - name: Check for spelling for the high-level summary
-      - level: warning
-      - function: openbases.main.papers.tests.test_summary
+
+    # The OPENBASES_REPO_BASE is an envar for repository base to check
     license:
       - name: An OSI license is included in the repository
       - level: error
       - function: openbases.main.papers.tests.test_license
+      - environment:
+        - OPENBASESENV_REPO_BASE: null
+
     references:
       - name: References are included and complete
       - level: warning
       - function: openbases.main.papers.tests.test_references
-    software:
-      - name: Link to software archive
-      - level: warning
-      - function: openbases.main.papers.tests.test_archive
+      - environment:
+        - OPENBASESENV_REPO_BASE: null
+
     contributing:
       - name: Software has CONTRIBUTING.md
       - level: error
