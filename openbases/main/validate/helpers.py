@@ -22,9 +22,10 @@ def update_environment(params=None, prefix='OPENBASESENV_'):
     if params is not None:
         for key,value in params.items():
             if key.startswith(prefix):
-                bot.debug('Exporting %s=%s' %(key, value))
-                os.putenv(key, value)
-                os.environ[key] = value
+                if value:
+                    bot.debug('Exporting %s=%s' %(key, value))
+                    os.putenv(key, value)
+                    os.environ[key] = value
             else:
                 bot.warning('Skipping parameter %s for environment' % key)
 
@@ -91,6 +92,7 @@ def validate_criteria(self, criteria, infile=None, params=None):
     from openbases.utils import load_module
 
     # Update environment with params for validation
+    print(params)
     if params is not None:
         bot.info('Updating custom params with %s' % params)
         self.params.update(params)
@@ -102,15 +104,18 @@ def validate_criteria(self, criteria, infile=None, params=None):
     if not isinstance(criteria, dict):
         criteria = self.load_criteria(criteria)
 
-    # Also need an input file, load
-    if infile is None:
-        if not self.infile:
-            bot.error('Please provide an infile to function, or load()')
-        infile = self.infile
+    # Case 1: input file provided at runtime
+    if infile is not None:
+        self.load(infile)
+ 
+    # Case 2: Didn't successfully load, fall back to previously loaded
+    if not hasattr(self, 'spec'): # infile didn't load successfully
+        if hasattr(self, 'infile'):
+            self.load(infile)
 
-    # Same for infile, user can provide already loaded
-    if not isinstance(infile, dict):
-        infile = self.load(infile)
+    # Case 3: Still no infile! Exit
+    if not hasattr(self, 'spec'):
+        bot.error('Please provide an infile to function, or load()')
 
     if "checks" not in criteria:
         bot.error('criteria is missing "checks" section, exiting.')
@@ -133,22 +138,23 @@ def validate_criteria(self, criteria, infile=None, params=None):
         level = values.get('level', 'warning').upper()
         function = values.get('function', missing_function)
         kwargs = values.get('kwargs')
-        envars = values.get('environment')
+        envars_list = values.get('environment')
+        envars = dict()
 
         # If we have environment vars from criteria, export them
-        if envars is not None:
-            update_environment(params=envars)
+        if envars_list is not None:
+            [update_environment(e) for e in envars_list]
 
         # If we have a function provided in the configuration yaml
         function_name = function
         function = load_module(function)
 
         if kwargs is None:
-            valid = function(infile)
+            valid = function(self.spec)
         else:
             values = dict()
             [values.update(dict(kwarg)) for kwarg in kwargs]
-            valid = function(infile, **values)
+            valid = function(self.spec, **values)
 
         print('[check:%s]' % name)
         print(' test:function %s' % function_name)

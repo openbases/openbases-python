@@ -38,8 +38,9 @@
 from openbases.logger import bot
 from openbases.utils import ( find_files, read_file )
 import re
+import os
 
-def test_length(paper, **kwargs):
+def test_length(spec, **kwargs):
     '''the paper should be betwee 250 and 1000 characters.
 
         length:
@@ -47,26 +48,23 @@ def test_length(paper, **kwargs):
           - level: warning
           - function: openbases.main.papers.tests.test_length
     ''' 
-    print(paper)
-    #paper = self.content
+    paper = spec.content
 
-    good_length = True
     min_length = int(kwargs.get('min_length', 250))
     max_length = int(kwargs.get('max_length', 1000))
 
     # This currently includes all markdown, additional text, etc.
+    bot.warning('Length of paper is approximately %s chars.' % len(paper))
     if len(paper) < min_length:
         bot.warning("Paper (including markdown) is < %s chars" % min_length)
-        good_length = False
 
     elif len(paper) > max_length:
         bot.warning("Paper estimated > %s characters" % max_length)
-        good_length = False
 
-    return good_length
+    return True
 
 
-def test_authors(paper, header, **kwargs):
+def test_authors(spec, **kwargs):
     '''the paper header should have a list of authors, each with affiliation,
        name, and orcid.
 
@@ -75,7 +73,7 @@ def test_authors(paper, header, **kwargs):
           - level: error
           - function: openbases.main.papers.tests.test_authors
     ''' 
-    header = self.loaded
+    header = spec.loaded
 
     if "authors" not in header:
         bot.exit('authors missing in front end paper matter.')    
@@ -87,17 +85,19 @@ def test_authors(paper, header, **kwargs):
 
                        # key           type has_regexp  regexp 
     required_fields = ('affiliation', 'orcid', 'name')
-    for field in required_field:
-        if field not in header:
-            bot.error('Paper is missing a required author field %s' % field)
-        if field == 'orcid':
-            if not re.search(regexp, header[field]):
-                bot.error('Orcid regular expression failed %s' % header[field])
-
+    for field in required_fields:
+        for author in header['authors']:
+            if field not in author:
+                bot.exit('Paper is missing a required author field %s' % field)
+                print(author)
+            if field == 'orcid':
+                if not re.search(regexp, author[field]):
+                    bot.error('Orcid regular expression failed %s' % author[field])
+                    print(author)
     return True
 
 
-def test_license(paper, envar='OPENBASESENV_REPO_BASE', **kwargs):
+def test_license(spec, envar='OPENBASESENV_REPO_BASE', **kwargs):
     '''required_structure looks for a schema's required fields, and issues
        an exit if doesn't exist. To implement this in a criteria.yml:
 
@@ -159,7 +159,7 @@ def test_license(paper, envar='OPENBASESENV_REPO_BASE', **kwargs):
 
 
 
-def test_contributing(paper, envar='OPENBASESENV_REPO_BASE', **kwargs):
+def test_contributing(spec, envar='OPENBASESENV_REPO_BASE', **kwargs):
     '''look for CONTRIBUTING.md or similar
 
 
@@ -185,7 +185,7 @@ def test_contributing(paper, envar='OPENBASESENV_REPO_BASE', **kwargs):
     return found
 
 
-def test_references(paper, envar="OPENBASESENV_BIBFILE", **kwargs):
+def test_references(spec, envar="OPENBASESENV_BIBFILE", **kwargs):
     '''required_structure looks for a schema's required fields, and issues
        an exit if doesn't exist. To implement this in a criteria.yml:
  

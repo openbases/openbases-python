@@ -80,35 +80,35 @@ class YamlManager:
         if self._validate_exists(file_path):
 
             # Read in standard yaml
-            if re.search('([.]yml$|[.]yaml$)', file_path):
+            if re.search('[.](yml|yaml)$', file_path):
                 self._load_yaml(file_path)
 
             # Read in html or markdown
             else:
                 self._load_frontmatter(file_path)
-                self.content = read_markdown(file_path, quiet=True)
+                self.content = read_markdown(file_path)
             return self.loaded
 
 # Loading
 
-    def _load_yaml(self, file_path):
+    def _load_yaml(self, file_path, quiet=True):
         '''load the yaml file
 
            Parameters
            ==========
            file_path: the yaml file path to read
         '''
-        self.loaded = read_yaml(file_path, quiet=True)
+        self.loaded = read_yaml(file_path, quiet=quiet)
 
         
-    def _load_frontmatter(self, file_path):
+    def _load_frontmatter(self, file_path, quiet=True):
         '''load the yaml as frontend matter from an html file
 
            Parameters
            ==========
            file_path: an html or markdown file path to read
         '''
-        self.loaded = read_frontmatter(file_path)
+        self.loaded = read_frontmatter(file_path, quiet=quiet)
 
 
 # Saving

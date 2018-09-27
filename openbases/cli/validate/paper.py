@@ -10,11 +10,15 @@ def main(args, options=None):
     from openbases.main import Client
 
     params = None
-    if args.repo is not None:
-        if os.path.exists(args.repo):
-            params = {'repo', args.repo}
-        else:
-            bot.warning('%s does not exist.' % args.repo)
+    repo = args.repo
+    if repo is None:
+        repo = os.getcwd()
+
+    if os.path.exists(repo):
+        os.environ['OPENBASESENV_REPO_BASE'] = repo
+        os.putenv('OPENBASESENV_REPO_BASE', repo)
+    else:
+        bot.warning('%s does not exist.' % repo)
 
     # Ensure that paper exists
     paper = args.infile
