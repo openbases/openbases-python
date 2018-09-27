@@ -23,6 +23,15 @@ you through the process.
 .. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
 
 
+To install extra modules and functionality (e.g., testing and validation functions)
+then you need to issue the following:
+
+.. code-block:: console
+
+    $ pip install openbases[test]
+    $ pip install openbases[validate]
+
+
 From sources
 ------------
 

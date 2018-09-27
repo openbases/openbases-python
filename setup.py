@@ -71,6 +71,7 @@ if __name__ == "__main__":
 
     INSTALL_REQUIRES = get_requirements(lookup)
     TEST_REQUIRES = get_requirements(lookup, 'TEST_REQUIRES')
+    VALIDATE_REQUIRES = get_requirements(lookup, 'VALIDATE_REQUIRES')
 
     setup(name=NAME,
           version=VERSION,
@@ -89,6 +90,11 @@ if __name__ == "__main__":
           setup_requires=["pytest-runner"],
           install_requires = INSTALL_REQUIRES,
           tests_require = TEST_REQUIRES,
+          extras_require={
+              'validate': [VALIDATE_REQUIRES],
+              'test': [TEST_REQUIRES],
+              'all': [INSTALL_REQUIRES]
+          },
           classifiers=[
               'Intended Audience :: Science/Research',
               'Intended Audience :: Developers',
@@ -100,6 +106,8 @@ if __name__ == "__main__":
               'Programming Language :: Python :: 3',
           ],
 
-          entry_points = {'console_scripts': [ 'ob-paper=openbases.cli.paper:main',
-                                               'ob-icons=openbases.cli.icons:main',
-                                               'ob-badge=openbases.cli.badges:main'] })
+          entry_points = { 'console_scripts': [
+                               'ob-paper=openbases.cli.papers:main',
+                               'ob-icons=openbases.cli.icons:main',
+                               'ob-badge=openbases.cli.badges:main',
+                               'ob-validate=openbases.cli.validate:main' ] })

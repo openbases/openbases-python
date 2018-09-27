@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>openbases.utils.fileio &mdash; openbases Python 0.0.51 documentation</title>
+  <title>openbases.utils.fileio &mdash; openbases Python 0.0.53 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.0.51
+                0.0.53
               </div>
             
           
@@ -89,6 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../readme.html#quick-start">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../modules.html">openbases-python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributor’s Agreement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributing.html#contributing">Contributing</a></li>
@@ -231,6 +232,21 @@
                     <span class="n">directories</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">directories</span></div>
 
+
+<div class="viewcode-block" id="find_files"><a class="viewcode-back" href="../../../openbases.utils.html#openbases.utils.fileio.find_files">[docs]</a><span class="k">def</span> <span class="nf">find_files</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">fullpath</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Return files at one level specified by user</span>
+<span class="sd">    (not recursive)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirnames</span><span class="p">,</span> <span class="n">filenames</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+        <span class="n">new_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filenames</span> <span class="k">if</span> <span class="n">f</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
+        <span class="n">new_files</span> <span class="o">=</span> <span class="p">[</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> 
+                      <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">new_files</span> <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">f</span><span class="p">)]</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">files</span> <span class="o">+</span> <span class="n">new_files</span>
+    <span class="k">return</span> <span class="n">files</span></div>
+
+
  
 <div class="viewcode-block" id="copy_directory"><a class="viewcode-back" href="../../../openbases.utils.html#openbases.utils.fileio.copy_directory">[docs]</a><span class="k">def</span> <span class="nf">copy_directory</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dest</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39; Copy an entire directory recursively</span>
@@ -267,9 +283,12 @@
 
 <div class="viewcode-block" id="write_json"><a class="viewcode-back" href="../../../openbases.utils.html#openbases.utils.fileio.write_json">[docs]</a><span class="k">def</span> <span class="nf">write_json</span><span class="p">(</span><span class="n">json_obj</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">print_pretty</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;write_json will (optionally,pretty print) a json object to file</span>
-<span class="sd">    :param json_obj: the dict to print to json</span>
-<span class="sd">    :param filename: the output file to write to</span>
-<span class="sd">    :param pretty_print: if True, will use nicer formatting</span>
+
+<span class="sd">       Parameters</span>
+<span class="sd">       ==========</span>
+<span class="sd">       json_obj: the dict to print to json</span>
+<span class="sd">       filename: the output file to write to</span>
+<span class="sd">       pretty_print: if True, will use nicer formatting</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">filey</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">print_pretty</span><span class="p">:</span>
@@ -287,7 +306,7 @@
 
 <div class="viewcode-block" id="read_file"><a class="viewcode-back" href="../../../openbases.utils.html#openbases.utils.fileio.read_file">[docs]</a><span class="k">def</span> <span class="nf">read_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">readlines</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;write_file will open a file, &quot;filename&quot; and write content, &quot;content&quot;</span>
-<span class="sd">    and properly close the file</span>
+<span class="sd">       and properly close the file</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">filey</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">readlines</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
@@ -299,7 +318,7 @@
 
 <div class="viewcode-block" id="read_json"><a class="viewcode-back" href="../../../openbases.utils.html#openbases.utils.fileio.read_json">[docs]</a><span class="k">def</span> <span class="nf">read_json</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;read_json reads in a json file and returns</span>
-<span class="sd">    the data structure as dict.</span>
+<span class="sd">       the data structure as dict.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">filey</span><span class="p">:</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filey</span><span class="p">)</span>
@@ -314,12 +333,32 @@
 <div class="viewcode-block" id="read_yaml"><a class="viewcode-back" href="../../../openbases.utils.html#openbases.utils.fileio.read_yaml">[docs]</a><span class="k">def</span> <span class="nf">read_yaml</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;read a yaml file, only including sections between dashes</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
-        <span class="n">stream</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">stream</span> <span class="o">=</span> <span class="n">read_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">readlines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_read_yaml</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">)</span></div>
 
-    <span class="c1"># Read yaml section</span>
-    <span class="n">section</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<div class="viewcode-block" id="write_yaml"><a class="viewcode-back" href="../../../openbases.utils.html#openbases.utils.fileio.write_yaml">[docs]</a><span class="k">def</span> <span class="nf">write_yaml</span><span class="p">(</span><span class="n">yaml_dict</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;w&quot;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;write a dictionary to yaml file</span>
+<span class="sd"> </span>
+<span class="sd">       Parameters</span>
+<span class="sd">       ==========</span>
+<span class="sd">       yaml_dict: the dict to print to yaml</span>
+<span class="sd">       filename: the output file to write to</span>
+<span class="sd">       pretty_print: if True, will use nicer formatting</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">filey</span><span class="p">:</span>
+        <span class="n">filey</span><span class="o">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">yaml</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">yaml_dict</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">filename</span></div>
+
+   
+<span class="k">def</span> <span class="nf">_read_yaml</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;read yaml from a string, either read from file (read_frontmatter) or </span>
+<span class="sd">       from yml file proper (read_yaml)</span>
+
+<span class="sd">       Parameters</span>
+<span class="sd">       ==========</span>
+<span class="sd">       section: a string of unparsed yaml content.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">docs</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">load_all</span><span class="p">(</span><span class="n">section</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
@@ -327,14 +366,61 @@
                 <span class="k">if</span> <span class="ow">not</span> <span class="n">quiet</span><span class="p">:</span>
                     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">))</span>
                 <span class="n">metadata</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
-    <span class="k">return</span> <span class="n">metadata</span></div>
+    <span class="k">return</span> <span class="n">metadata</span>
 
 
+<div class="viewcode-block" id="read_frontmatter"><a class="viewcode-back" href="../../../openbases.utils.html#openbases.utils.fileio.read_frontmatter">[docs]</a><span class="k">def</span> <span class="nf">read_frontmatter</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;read a yaml file, only including sections between dashes</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">stream</span> <span class="o">=</span> <span class="n">read_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">readlines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># The yml section always comes after the --- of the frontmatter</span>
+    <span class="n">section</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">_read_yaml</span><span class="p">(</span><span class="n">section</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="n">quiet</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="read_markdown"><a class="viewcode-back" href="../../../openbases.utils.html#openbases.utils.fileio.read_markdown">[docs]</a><span class="k">def</span> <span class="nf">read_markdown</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;read the OTHER part of the markdown file (remove the frontend matter)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">stream</span> <span class="o">=</span> <span class="n">read_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">readlines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># The yml section always comes after the --- of the frontmatter</span>
+    <span class="k">return</span> <span class="n">stream</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;---&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
+
+
+<span class="c1">################################################################################</span>
+<span class="c1"># bibtex</span>
+<span class="c1">################################################################################</span>
+
+<div class="viewcode-block" id="read_bibtex"><a class="viewcode-back" href="../../../openbases.utils.html#openbases.utils.fileio.read_bibtex">[docs]</a><span class="k">def</span> <span class="nf">read_bibtex</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;read a yaml file, only including sections between dashes</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="kn">from</span> <span class="nn">pybtex.database.input</span> <span class="k">import</span> <span class="n">bibtex</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">bibtex</span><span class="o">.</span><span class="n">Parser</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_file</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span><span class="o">.</span><span class="n">entries</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">bot</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
 
 
 <span class="c1">################################################################################</span>
 <span class="c1"># environment / options</span>
 <span class="c1">################################################################################</span>
+
+<div class="viewcode-block" id="load_module"><a class="viewcode-back" href="../../../openbases.utils.html#openbases.utils.fileio.load_module">[docs]</a><span class="k">def</span> <span class="nf">load_module</span><span class="p">(</span><span class="n">module_str</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;load a module based on a string name.</span>
+
+<span class="sd">       Parameters</span>
+<span class="sd">       ==========</span>
+<span class="sd">       module_str: complete python path to module (and function). Note that this</span>
+<span class="sd">       MUST be a python module (module.py) and not a function in an __init__.py</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">module_str</span><span class="p">,</span> <span class="n">function</span> <span class="o">=</span> <span class="n">module_str</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="n">module_str</span><span class="p">,</span> <span class="n">fromlist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">function</span><span class="p">)</span></div>
+
+
 
 <div class="viewcode-block" id="convert2boolean"><a class="viewcode-back" href="../../../openbases.utils.html#openbases.utils.fileio.convert2boolean">[docs]</a><span class="k">def</span> <span class="nf">convert2boolean</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;convert2boolean is used for environmental variables</span>
@@ -397,7 +483,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.51',
+            VERSION:'0.0.53',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

@@ -1,0 +1,70 @@
+# The format of this file is based on levels, messages, and functions.
+# It is intended to be run against a single yml file loaded as json. The
+# intention is to make it easy to write and understand these criteria. The
+# format is the following:
+
+# SECTION DEFINITIONS
+# - the version of the criteria format is under version
+# - checks: is the group that is run for validation
+# - the first field under checks is for a group of checks. You can name it
+#   whatever is appropriate for your need (e.g., titles)
+# - name: corresponds to the name of the subsection (a check)
+# - function: is the python module --> function that is run
+# - level: is the python logger level to emit.
+# - the subsuections underneath are also different named (individual) checks
+# - args: should be a list of named (or not named) arguments.
+# - environment: should be a list of environment variables to grab, and
+#   it will issue a warning / error (level) depending on if not found. You
+#   can optionally put a default, it will be skipped if NULL. It MUST
+#   begin with OPENBASESENV_ to be found.
+
+# It's helpful to look at the example below and then reference the above!
+
+# WRITING FUNCTIONS
+
+# Each function should have the first variable be the file being checked, or
+# the loaded specification as a json-derivative (python dictionary). If 
+# running from the command line, you would need to provide the path to this
+# criteria and the file. If you want to save the redundant loads, you can run
+# the validations from within python (and provide the data structure as 
+# variable.
+
+# Each of the checks (the functions that you write and provide) should return
+# True (passed) or False (failed). You can print output to help the user to
+# your heart's content.
+
+version: 1
+checks:
+
+    length:
+      - name: Check that the paper is between 250-1000 characters
+      - level: warning
+      - function: openbases.main.papers.tests.test_length
+      - kwargs:
+        - min_length: 250
+        - max_length: 1000
+
+    authors:
+      - name: Submission must include a list of authors with associated metadata
+      - level: error
+      - function: openbases.main.papers.tests.test_authors
+
+    # The OPENBASES_REPO_BASE is an envar for repository base to check
+    license:
+      - name: An OSI license is included in the repository
+      - level: error
+      - function: openbases.main.papers.tests.test_license
+      - environment:
+        - OPENBASESENV_REPO_BASE: null
+
+    references:
+      - name: References are included and complete
+      - level: warning
+      - function: openbases.main.papers.tests.test_references
+      - environment:
+        - OPENBASESENV_REPO_BASE: null
+
+    contributing:
+      - name: Software has CONTRIBUTING.md
+      - level: error
+      - function: openbases.main.papers.tests.test_contributing

@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; openbases Python 0.0.51 documentation</title>
+  <title>Index &mdash; openbases Python 0.0.53 documentation</title>
   
 
   
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.0.51
+                0.0.53
               </div>
             
           
@@ -90,6 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="readme.html#quick-start">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">openbases-python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributor’s Agreement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html#contributing">Contributing</a></li>
@@ -212,11 +213,13 @@
 </li>
       <li><a href="openbases.main.base.html#openbases.main.base.Client.badge">badge (openbases.main.base.Client attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="openbases.logger.html#openbases.logger.spinner.Spinner.balloons_cursor">balloons_cursor() (openbases.logger.spinner.Spinner static method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="openbases.logger.html#openbases.logger.progress.bar">bar() (in module openbases.logger.progress)</a>
+</li>
+      <li><a href="openbases.main.validate.html#openbases.main.validate.BasicValidator">BasicValidator (class in openbases.main.validate)</a>
 </li>
       <li><a href="openbases.cli.papers.html#openbases.cli.papers.shell.bpython">bpython() (in module openbases.cli.papers.shell)</a>
 </li>
@@ -232,10 +235,14 @@
 </li>
       <li><a href="openbases.main.base.html#openbases.main.base.Client">Client (class in openbases.main.base)</a>
 </li>
-      <li><a href="openbases.utils.html#openbases.utils.web.clone">clone() (in module openbases.utils.web)</a>
+      <li><a href="openbases.main.base.html#openbases.main.base.Client.BasicValidator">Client.BasicValidator (class in openbases.main.base)</a>
+</li>
+      <li><a href="openbases.main.base.html#openbases.main.base.Client.PaperValidator">Client.PaperValidator (class in openbases.main.base)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="openbases.utils.html#openbases.utils.web.clone">clone() (in module openbases.utils.web)</a>
+</li>
       <li><a href="openbases.logger.html#openbases.logger.message.convert2boolean">convert2boolean() (in module openbases.logger.message)</a>
 
       <ul>
@@ -258,6 +265,16 @@
 </li>
       <li><a href="openbases.logger.html#openbases.logger.message.OpenBasesMessage.debug">debug() (openbases.logger.message.OpenBasesMessage method)</a>
 </li>
+      <li><a href="openbases.main.base.html#openbases.main.base.Client.BasicValidator.default_criteria">default_criteria (openbases.main.base.Client.BasicValidator attribute)</a>
+
+      <ul>
+        <li><a href="openbases.main.base.html#openbases.main.base.Client.PaperValidator.default_criteria">(openbases.main.base.Client.PaperValidator attribute)</a>
+</li>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.BasicValidator.default_criteria">(openbases.main.validate.BasicValidator attribute)</a>
+</li>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.PaperValidator.default_criteria">(openbases.main.validate.PaperValidator attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="openbases.logger.html#openbases.logger.spinner.Spinner.delay">delay (openbases.logger.spinner.Spinner attribute)</a>
@@ -290,10 +307,18 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="openbases.utils.html#openbases.utils.fileio.find_directories">find_directories() (in module openbases.utils.fileio)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="openbases.utils.html#openbases.utils.fileio.find_files">find_files() (in module openbases.utils.fileio)</a>
+</li>
       <li><a href="openbases.utils.html#openbases.utils.fileio.find_subdirectories">find_subdirectories() (in module openbases.utils.fileio)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="openbases.main.base.html#openbases.main.base.Client.PaperValidator.folder">folder (openbases.main.base.Client.PaperValidator attribute)</a>
+
+      <ul>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.PaperValidator.folder">(openbases.main.validate.PaperValidator attribute)</a>
+</li>
+      </ul></li>
       <li><a href="openbases.logger.html#openbases.logger.progress.ProgressBar.format_time">format_time() (openbases.logger.progress.ProgressBar method)</a>
 </li>
   </ul></td>
@@ -326,8 +351,6 @@
 </li>
       <li><a href="openbases.main.badges.html#openbases.main.badges.Badge.get_markdown">get_markdown() (openbases.main.badges.Badge method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="openbases.cli.badges.html#openbases.cli.badges.get_parser">get_parser() (in module openbases.cli.badges)</a>
 
       <ul>
@@ -335,7 +358,11 @@
 </li>
         <li><a href="openbases.cli.papers.html#openbases.cli.papers.get_parser">(in module openbases.cli.papers)</a>
 </li>
+        <li><a href="openbases.cli.validate.html#openbases.cli.validate.get_parser">(in module openbases.cli.validate)</a>
+</li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="openbases.utils.html#openbases.utils.web.get_post_fields">get_post_fields() (in module openbases.utils.web)</a>
 </li>
       <li><a href="openbases.main.badges.html#openbases.main.badges.Badge.get_style">get_style() (openbases.main.badges.Badge method)</a>
@@ -344,6 +371,8 @@
 
       <ul>
         <li><a href="openbases.cli.papers.html#openbases.cli.papers.get_subparsers">(in module openbases.cli.papers)</a>
+</li>
+        <li><a href="openbases.cli.validate.html#openbases.cli.validate.get_subparsers">(in module openbases.cli.validate)</a>
 </li>
       </ul></li>
       <li><a href="openbases.main.badges.html#openbases.main.badges.Badge.get_svg">get_svg() (openbases.main.badges.Badge method)</a>
@@ -392,6 +421,38 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="openbases.main.base.html#openbases.main.base.Client.BasicValidator.load">load() (openbases.main.base.Client.BasicValidator method)</a>
+
+      <ul>
+        <li><a href="openbases.main.base.html#openbases.main.base.Client.PaperValidator.load">(openbases.main.base.Client.PaperValidator method)</a>
+</li>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.BasicValidator.load">(openbases.main.validate.BasicValidator method)</a>
+</li>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.PaperValidator.load">(openbases.main.validate.PaperValidator method)</a>
+</li>
+      </ul></li>
+      <li><a href="openbases.main.base.html#openbases.main.base.Client.PaperValidator.load_bib">load_bib() (openbases.main.base.Client.PaperValidator method)</a>
+
+      <ul>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.PaperValidator.load_bib">(openbases.main.validate.PaperValidator method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="openbases.main.validate.html#openbases.main.validate.helpers.load_criteria">load_criteria() (in module openbases.main.validate.helpers)</a>
+
+      <ul>
+        <li><a href="openbases.main.base.html#openbases.main.base.Client.BasicValidator.load_criteria">(openbases.main.base.Client.BasicValidator method)</a>
+</li>
+        <li><a href="openbases.main.base.html#openbases.main.base.Client.PaperValidator.load_criteria">(openbases.main.base.Client.PaperValidator method)</a>
+</li>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.BasicValidator.load_criteria">(openbases.main.validate.BasicValidator method)</a>
+</li>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.PaperValidator.load_criteria">(openbases.main.validate.PaperValidator method)</a>
+</li>
+      </ul></li>
+      <li><a href="openbases.utils.html#openbases.utils.fileio.load_module">load_module() (in module openbases.utils.fileio)</a>
+</li>
       <li><a href="openbases.logger.html#openbases.logger.message.OpenBasesMessage.log">log() (openbases.logger.message.OpenBasesMessage method)</a>
 </li>
   </ul></td>
@@ -413,6 +474,10 @@
 </li>
         <li><a href="openbases.cli.papers.html#openbases.cli.papers.shell.main">(in module openbases.cli.papers.shell)</a>
 </li>
+        <li><a href="openbases.cli.validate.html#openbases.cli.validate.main">(in module openbases.cli.validate)</a>
+</li>
+        <li><a href="openbases.cli.validate.html#openbases.cli.validate.paper.main">(in module openbases.cli.validate.paper)</a>
+</li>
         <li><a href="openbases.main.base.html#openbases.main.base.generate.main">(in module openbases.main.base.generate)</a>
 </li>
       </ul></li>
@@ -426,6 +491,16 @@
 <h2 id="N">N</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="openbases.main.base.html#openbases.main.base.Client.PaperValidator.name">name (openbases.main.base.Client.PaperValidator attribute)</a>
+
+      <ul>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.PaperValidator.name">(openbases.main.validate.PaperValidator attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="openbases.logger.html#openbases.logger.message.OpenBasesMessage.named">named() (openbases.logger.message.OpenBasesMessage method)</a>
+</li>
       <li><a href="openbases.logger.html#openbases.logger.message.OpenBasesMessage.newline">newline() (openbases.logger.message.OpenBasesMessage method)</a>
 </li>
   </ul></td>
@@ -449,6 +524,10 @@
       <li><a href="openbases.cli.papers.html#module-openbases.cli.papers.get">openbases.cli.papers.get (module)</a>
 </li>
       <li><a href="openbases.cli.papers.html#module-openbases.cli.papers.shell">openbases.cli.papers.shell (module)</a>
+</li>
+      <li><a href="openbases.cli.validate.html#module-openbases.cli.validate">openbases.cli.validate (module)</a>
+</li>
+      <li><a href="openbases.cli.validate.html#module-openbases.cli.validate.paper">openbases.cli.validate.paper (module)</a>
 </li>
       <li><a href="openbases.logger.html#module-openbases.logger">openbases.logger (module)</a>
 </li>
@@ -480,6 +559,10 @@
 </li>
       <li><a href="openbases.main.papers.html#module-openbases.main.papers">openbases.main.papers (module)</a>
 </li>
+      <li><a href="openbases.main.validate.html#module-openbases.main.validate">openbases.main.validate (module)</a>
+</li>
+      <li><a href="openbases.main.validate.html#module-openbases.main.validate.helpers">openbases.main.validate.helpers (module)</a>
+</li>
       <li><a href="openbases.utils.html#module-openbases.utils">openbases.utils (module)</a>
 </li>
       <li><a href="openbases.utils.html#module-openbases.utils.fileio">openbases.utils.fileio (module)</a>
@@ -502,10 +585,22 @@
 </li>
       <li><a href="openbases.main.base.html#openbases.main.base.Client.paper">paper (openbases.main.base.Client attribute)</a>
 </li>
-      <li><a href="openbases.main.base.html#openbases.main.base.flags.parse_verbosity">parse_verbosity() (in module openbases.main.base.flags)</a>
+      <li><a href="openbases.main.validate.html#openbases.main.validate.PaperValidator">PaperValidator (class in openbases.main.validate)</a>
 </li>
+      <li><a href="openbases.main.base.html#openbases.main.base.Client.BasicValidator.params">params (openbases.main.base.Client.BasicValidator attribute)</a>
+
+      <ul>
+        <li><a href="openbases.main.base.html#openbases.main.base.Client.PaperValidator.params">(openbases.main.base.Client.PaperValidator attribute)</a>
+</li>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.BasicValidator.params">(openbases.main.validate.BasicValidator attribute)</a>
+</li>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.PaperValidator.params">(openbases.main.validate.PaperValidator attribute)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="openbases.main.base.html#openbases.main.base.flags.parse_verbosity">parse_verbosity() (in module openbases.main.base.flags)</a>
+</li>
       <li><a href="openbases.main.base.html#openbases.main.base.logger.println">println() (in module openbases.main.base.logger)</a>
 </li>
       <li><a href="openbases.logger.html#openbases.logger.progress.ProgressBar">ProgressBar (class in openbases.logger.progress)</a>
@@ -526,20 +621,26 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="openbases.utils.html#openbases.utils.fileio.read_bibtex">read_bibtex() (in module openbases.utils.fileio)</a>
+</li>
       <li><a href="openbases.utils.html#openbases.utils.fileio.read_file">read_file() (in module openbases.utils.fileio)</a>
+</li>
+      <li><a href="openbases.utils.html#openbases.utils.fileio.read_frontmatter">read_frontmatter() (in module openbases.utils.fileio)</a>
 </li>
       <li><a href="openbases.utils.html#openbases.utils.fileio.read_json">read_json() (in module openbases.utils.fileio)</a>
 </li>
+      <li><a href="openbases.utils.html#openbases.utils.fileio.read_markdown">read_markdown() (in module openbases.utils.fileio)</a>
+</li>
       <li><a href="openbases.utils.html#openbases.utils.fileio.read_yaml">read_yaml() (in module openbases.utils.fileio)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="openbases.main.base.html#openbases.main.base.generate.RobotNamer">RobotNamer (class in openbases.main.base.generate)</a>
 
       <ul>
         <li><a href="openbases.main.base.html#openbases.main.base.Client.RobotNamer">(openbases.main.base.Client attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="openbases.main.papers.html#openbases.main.papers.Journal.rse">rse (openbases.main.papers.Journal attribute)</a>
 </li>
       <li><a href="openbases.logger.html#openbases.logger.spinner.Spinner.run">run() (openbases.logger.spinner.Spinner method)</a>
@@ -597,10 +698,18 @@
       <li><a href="openbases.logger.html#openbases.logger.message.OpenBasesMessage.table">table() (openbases.logger.message.OpenBasesMessage method)</a>
 </li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="openbases.logger.html#openbases.logger.message.OpenBasesMessage.test">test() (openbases.logger.message.OpenBasesMessage method)</a>
+</li>
+  </ul></td>
 </tr></table>
 
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="openbases.main.validate.html#openbases.main.validate.helpers.update_environment">update_environment() (in module openbases.main.validate.helpers)</a>
+</li>
+  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="openbases.logger.html#openbases.logger.message.OpenBasesMessage.useColor">useColor() (openbases.logger.message.OpenBasesMessage method)</a>
 </li>
@@ -610,6 +719,32 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="openbases.main.validate.html#openbases.main.validate.helpers.validate_criteria">validate_criteria() (in module openbases.main.validate.helpers)</a>
+
+      <ul>
+        <li><a href="openbases.main.base.html#openbases.main.base.Client.BasicValidator.validate_criteria">(openbases.main.base.Client.BasicValidator method)</a>
+</li>
+        <li><a href="openbases.main.base.html#openbases.main.base.Client.PaperValidator.validate_criteria">(openbases.main.base.Client.PaperValidator method)</a>
+</li>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.BasicValidator.validate_criteria">(openbases.main.validate.BasicValidator method)</a>
+</li>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.PaperValidator.validate_criteria">(openbases.main.validate.PaperValidator method)</a>
+</li>
+      </ul></li>
+      <li><a href="openbases.main.base.html#openbases.main.base.Client.BasicValidator.validate_exists">validate_exists() (openbases.main.base.Client.BasicValidator method)</a>
+
+      <ul>
+        <li><a href="openbases.main.base.html#openbases.main.base.Client.PaperValidator.validate_exists">(openbases.main.base.Client.PaperValidator method)</a>
+</li>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.BasicValidator.validate_exists">(openbases.main.validate.BasicValidator method)</a>
+</li>
+        <li><a href="openbases.main.validate.html#openbases.main.validate.PaperValidator.validate_exists">(openbases.main.validate.PaperValidator method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="openbases.main.validate.html#openbases.main.validate.helpers.validate_loads">validate_loads() (in module openbases.main.validate.helpers)</a>
+</li>
       <li><a href="openbases.logger.html#openbases.logger.message.OpenBasesMessage.verbose">verbose() (openbases.logger.message.OpenBasesMessage method)</a>
 </li>
       <li><a href="openbases.logger.html#openbases.logger.message.OpenBasesMessage.verbose1">verbose1() (openbases.logger.message.OpenBasesMessage method)</a>
@@ -618,14 +753,14 @@
 </li>
       <li><a href="openbases.logger.html#openbases.logger.message.OpenBasesMessage.verbose3">verbose3() (openbases.logger.message.OpenBasesMessage method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="openbases.cli.badges.html#openbases.cli.badges.version">version() (in module openbases.cli.badges)</a>
 
       <ul>
         <li><a href="openbases.cli.icons.html#openbases.cli.icons.version">(in module openbases.cli.icons)</a>
 </li>
         <li><a href="openbases.cli.papers.html#openbases.cli.papers.version">(in module openbases.cli.papers)</a>
+</li>
+        <li><a href="openbases.cli.validate.html#openbases.cli.validate.version">(in module openbases.cli.validate)</a>
 </li>
         <li><a href="openbases.main.base.html#openbases.main.base.Client.version">(openbases.main.base.Client method)</a>
 </li>
@@ -645,6 +780,8 @@
       <li><a href="openbases.utils.html#openbases.utils.fileio.write_file">write_file() (in module openbases.utils.fileio)</a>
 </li>
       <li><a href="openbases.utils.html#openbases.utils.fileio.write_json">write_json() (in module openbases.utils.fileio)</a>
+</li>
+      <li><a href="openbases.utils.html#openbases.utils.fileio.write_yaml">write_yaml() (in module openbases.utils.fileio)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -683,7 +820,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.51',
+            VERSION:'0.0.53',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

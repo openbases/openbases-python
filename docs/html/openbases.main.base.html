@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>openbases.main.base package &mdash; openbases Python 0.0.51 documentation</title>
+  <title>openbases.main.base package &mdash; openbases Python 0.0.53 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.51
+                0.0.53
               </div>
             
           
@@ -282,6 +282,144 @@ quiet: a runtime variable to over-ride the default.</p>
 <dt id="openbases.main.base.Client">
 <em class="property">class </em><code class="descclassname">openbases.main.base.</code><code class="descname">Client</code><a class="reference internal" href="_modules/openbases/main/base.html#Client"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.main.base.Client" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="class">
+<dt id="openbases.main.base.Client.BasicValidator">
+<em class="property">class </em><code class="descname">BasicValidator</code><span class="sig-paren">(</span><em>infile</em><span class="sig-paren">)</span><a class="headerlink" href="#openbases.main.base.Client.BasicValidator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>the basic validator doesn’t care about the input file extensions,
+and gives the user more freedom to write custom validators using it. 
+We only validate that the file exists.</p>
+<dl class="attribute">
+<dt id="openbases.main.base.Client.BasicValidator.default_criteria">
+<code class="descname">default_criteria</code><em class="property"> = '/home/vanessa/Documents/Dropbox/Code/openbases/openbases-python/openbases/main/validate/criteria/dummy.yml'</em><a class="headerlink" href="#openbases.main.base.Client.BasicValidator.default_criteria" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openbases.main.base.Client.BasicValidator.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>infile</em><span class="sig-paren">)</span><a class="headerlink" href="#openbases.main.base.Client.BasicValidator.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>load an input file, meaning checking for the file’s existence.
+It’s up to the user (if desired) to load the file in their 
+validation functions, or write a custom _load() function.</p>
+<p>infile: the input file to load</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openbases.main.base.Client.BasicValidator.load_criteria">
+<code class="descname">load_criteria</code><span class="sig-paren">(</span><em>criteria=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openbases.main.base.Client.BasicValidator.load_criteria" title="Permalink to this definition">¶</a></dt>
+<dd><p>load a criteria.yml file. If not specified, load (or reload)
+default provided by package.</p>
+<dl class="docutils">
+<dt>criteria: a yml specification for criteria. If not provided, use</dt>
+<dd>default at criteria/specification.yml. If you need help creating</dd>
+</dl>
+<p>a new criteria (that might be added to defaults) please open an issue</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="openbases.main.base.Client.BasicValidator.params">
+<code class="descname">params</code><em class="property"> = {}</em><a class="headerlink" href="#openbases.main.base.Client.BasicValidator.params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openbases.main.base.Client.BasicValidator.validate_criteria">
+<code class="descname">validate_criteria</code><span class="sig-paren">(</span><em>criteria=None</em>, <em>infile=None</em>, <em>params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openbases.main.base.Client.BasicValidator.validate_criteria" title="Permalink to this definition">¶</a></dt>
+<dd><p>validate an infile (or already loaded one) against criteria.</p>
+<p>infile: an input specification file
+criteria: a loaded (json/dict) or criteria, or html/yml file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openbases.main.base.Client.BasicValidator.validate_exists">
+<code class="descname">validate_exists</code><span class="sig-paren">(</span><em>infile</em><span class="sig-paren">)</span><a class="headerlink" href="#openbases.main.base.Client.BasicValidator.validate_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>determine filename of infile, validate that exists.</p>
+<p>infile: the name of the specification / yaml file
+extensions: a list of valid extensions</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="openbases.main.base.Client.PaperValidator">
+<em class="property">class </em><code class="descname">PaperValidator</code><span class="sig-paren">(</span><em>infile</em>, <em>bibfile=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openbases.main.base.Client.PaperValidator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>the spec validator can “sniff” a file based on extension, and validate
+the file based on the extension, or have one of the specific type 
+validators (html, yaml) called directly. There are two steps.</p>
+<p>Step 0. validates the file itself. Does it exist? Load without error?
+Step 1. validates the file against a criteria.yml, default is provided</p>
+<dl class="attribute">
+<dt id="openbases.main.base.Client.PaperValidator.default_criteria">
+<code class="descname">default_criteria</code><em class="property"> = '/home/vanessa/Documents/Dropbox/Code/openbases/openbases-python/openbases/main/validate/criteria/paper.yml'</em><a class="headerlink" href="#openbases.main.base.Client.PaperValidator.default_criteria" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openbases.main.base.Client.PaperValidator.folder">
+<code class="descname">folder</code><em class="property"> = None</em><a class="headerlink" href="#openbases.main.base.Client.PaperValidator.folder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openbases.main.base.Client.PaperValidator.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>infile</em><span class="sig-paren">)</span><a class="headerlink" href="#openbases.main.base.Client.PaperValidator.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>load an input file, meaning checking for the file’s existence,
+that it has a default extension, and loading it into the “spec”
+via the YamlManager (that can handle frontmatter in a html or
+standard yml/yaml</p>
+<p>infile: the input file to load</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openbases.main.base.Client.PaperValidator.load_bib">
+<code class="descname">load_bib</code><span class="sig-paren">(</span><em>bibfile</em>, <em>envar='OPENBASESENV_BIBFILE'</em><span class="sig-paren">)</span><a class="headerlink" href="#openbases.main.base.Client.PaperValidator.load_bib" title="Permalink to this definition">¶</a></dt>
+<dd><p>load the bibfile, and derive from the paper file if it was loaded
+first. This means checking for the file’s existence,
+that it has a default extension, and loading it into the “spec”</p>
+<p>infile: the input file to load</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openbases.main.base.Client.PaperValidator.load_criteria">
+<code class="descname">load_criteria</code><span class="sig-paren">(</span><em>criteria=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openbases.main.base.Client.PaperValidator.load_criteria" title="Permalink to this definition">¶</a></dt>
+<dd><p>load a criteria.yml file. If not specified, load (or reload)
+default provided by package.</p>
+<dl class="docutils">
+<dt>criteria: a yml specification for criteria. If not provided, use</dt>
+<dd>default at criteria/specification.yml. If you need help creating</dd>
+</dl>
+<p>a new criteria (that might be added to defaults) please open an issue</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="openbases.main.base.Client.PaperValidator.name">
+<code class="descname">name</code><em class="property"> = None</em><a class="headerlink" href="#openbases.main.base.Client.PaperValidator.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="openbases.main.base.Client.PaperValidator.params">
+<code class="descname">params</code><em class="property"> = {}</em><a class="headerlink" href="#openbases.main.base.Client.PaperValidator.params" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="openbases.main.base.Client.PaperValidator.validate_criteria">
+<code class="descname">validate_criteria</code><span class="sig-paren">(</span><em>criteria=None</em>, <em>infile=None</em>, <em>params=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openbases.main.base.Client.PaperValidator.validate_criteria" title="Permalink to this definition">¶</a></dt>
+<dd><p>validate an infile (or already loaded one) against criteria.</p>
+<p>infile: an input specification file
+criteria: a loaded (json/dict) or criteria, or html/yml file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="openbases.main.base.Client.PaperValidator.validate_exists">
+<code class="descname">validate_exists</code><span class="sig-paren">(</span><em>infile</em>, <em>extensions=None</em><span class="sig-paren">)</span><a class="headerlink" href="#openbases.main.base.Client.PaperValidator.validate_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>determine filename of infile 
+based on Specification Name (and extension). If the extension
+doesn’t end in yml/yaml or html, it’s not valid (and note
+we will need to add support for reading json). If valid,
+return the filename. If not, return None.</p>
+<p>infile: the name of the specification / yaml file
+extensions: a list of valid extensions</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="attribute">
 <dt id="openbases.main.base.Client.RobotNamer">
 <code class="descname">RobotNamer</code><em class="property"> = &lt;openbases.main.base.generate.RobotNamer object&gt;</em><a class="headerlink" href="#openbases.main.base.Client.RobotNamer" title="Permalink to this definition">¶</a></dt>
@@ -362,7 +500,7 @@ quiet: a runtime variable to over-ride the default.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.51',
+            VERSION:'0.0.53',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

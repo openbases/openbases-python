@@ -16,6 +16,7 @@ Critical items to know are:
 versions here coincide with releases on pypi.
 
 ## [master](https://github.com/openbases/openbases-python/tree/master)
+ - papers module validation functions (0.0.53)
  - adding color for "spec" (specification) to match schema.org (0.0.52)
  - adding custom color specification (0.0.51)
  - bug with name needing dashes replaced with underscores (0.0.5)

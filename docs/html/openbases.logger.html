@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>openbases.logger package &mdash; openbases Python 0.0.51 documentation</title>
+  <title>openbases.logger package &mdash; openbases Python 0.0.53 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.51
+                0.0.53
               </div>
             
           
@@ -288,6 +288,12 @@ only includes INFO</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="openbases.logger.message.OpenBasesMessage.named">
+<code class="descname">named</code><span class="sig-paren">(</span><em>level</em>, <em>message</em>, <em>return_code=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/logger/message.html#OpenBasesMessage.named"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.logger.message.OpenBasesMessage.named" title="Permalink to this definition">¶</a></dt>
+<dd><p>exits if -3 or lower (error or below)</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="openbases.logger.message.OpenBasesMessage.newline">
 <code class="descname">newline</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/logger/message.html#OpenBasesMessage.newline"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.logger.message.OpenBasesMessage.newline" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -313,6 +319,11 @@ only includes INFO</p>
 a dictionary, the keys are interpreted as column names. if
 not, a numbered list is used.</p>
 </dd></dl>
+
+<dl class="method">
+<dt id="openbases.logger.message.OpenBasesMessage.test">
+<code class="descname">test</code><span class="sig-paren">(</span><em>message</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/logger/message.html#OpenBasesMessage.test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.logger.message.OpenBasesMessage.test" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="openbases.logger.message.OpenBasesMessage.useColor">
@@ -365,7 +376,7 @@ returned as boolean</p>
 
 <dl class="function">
 <dt id="openbases.logger.message.get_logging_level">
-<code class="descclassname">openbases.logger.message.</code><code class="descname">get_logging_level</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/logger/message.html#get_logging_level"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.logger.message.get_logging_level" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">openbases.logger.message.</code><code class="descname">get_logging_level</code><span class="sig-paren">(</span><em>level=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/openbases/logger/message.html#get_logging_level"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#openbases.logger.message.get_logging_level" title="Permalink to this definition">¶</a></dt>
 <dd><p>configure a logging to standard out based on the user’s
 selected level, which should be in an environment variable called
 MESSAGELEVEL. if MESSAGELEVEL is not set, the info level
@@ -509,7 +520,7 @@ MESSAGELEVEL. if MESSAGELEVEL is not set, the info level
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.51',
+            VERSION:'0.0.53',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

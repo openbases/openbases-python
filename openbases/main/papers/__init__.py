@@ -3,7 +3,7 @@
 #    https://www.github.com/openbases/openbases-python
 
 from openbases.logger import bot
-from openbases.utils import read_yaml
+from openbases.utils import read_frontmatter
 import os
 import re
 import sys
@@ -28,7 +28,7 @@ class Paper:
     def __init__(self, filename, quiet=False):
 
         self._check_inputs(filename)
-        self.metadata = read_yaml(filename, quiet=quiet)
+        self.metadata = read_frontmatter(filename, quiet=quiet)
 
     def __str__(self):
         return "<paper.md: %s>" % self.filename

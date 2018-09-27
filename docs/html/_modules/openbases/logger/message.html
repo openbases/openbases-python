@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>openbases.logger.message &mdash; openbases Python 0.0.51 documentation</title>
+  <title>openbases.logger.message &mdash; openbases Python 0.0.53 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.0.51
+                0.0.53
               </div>
             
           
@@ -89,6 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../readme.html#quick-start">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../modules.html">openbases-python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributor’s Agreement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../contributing.html#contributing">Contributing</a></li>
@@ -180,6 +181,7 @@
 <span class="n">INFO</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">CUSTOM</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">QUIET</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">TEST</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">VERBOSE</span> <span class="o">=</span> <span class="n">VERBOSE1</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">VERBOSE2</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">VERBOSE3</span> <span class="o">=</span> <span class="mi">4</span>
@@ -203,6 +205,7 @@
                        <span class="n">CRITICAL</span><span class="p">:</span> <span class="n">RED</span><span class="p">,</span>
                        <span class="n">ERROR</span><span class="p">:</span> <span class="n">RED</span><span class="p">,</span>    
                        <span class="n">WARNING</span><span class="p">:</span> <span class="n">YELLOW</span><span class="p">,</span>  
+                       <span class="n">TEST</span><span class="p">:</span> <span class="n">YELLOW</span><span class="p">,</span>
                        <span class="n">LOG</span><span class="p">:</span> <span class="n">PURPLE</span><span class="p">,</span>      
                        <span class="n">CUSTOM</span><span class="p">:</span> <span class="n">PURPLE</span><span class="p">,</span>       
                        <span class="n">DEBUG</span><span class="p">:</span> <span class="n">CYAN</span><span class="p">,</span>      
@@ -373,6 +376,12 @@
 
     <span class="c1"># Logging ------------------------------------------</span>
 
+<div class="viewcode-block" id="OpenBasesMessage.named"><a class="viewcode-back" href="../../../openbases.logger.html#openbases.logger.message.OpenBasesMessage.named">[docs]</a>    <span class="k">def</span> <span class="nf">named</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">return_code</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&#39;&#39;&#39;exits if -3 or lower (error or below)&#39;&#39;&#39;</span>
+        <span class="n">level_int</span> <span class="o">=</span> <span class="n">get_logging_level</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">level_int</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">level</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">level_int</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="mi">3</span><span class="p">:</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">return_code</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="OpenBasesMessage.abort"><a class="viewcode-back" href="../../../openbases.logger.html#openbases.logger.message.OpenBasesMessage.abort">[docs]</a>    <span class="k">def</span> <span class="nf">abort</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">ABORT</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="s1">&#39;ABORT&#39;</span><span class="p">)</span></div>
@@ -401,6 +410,9 @@
 
 <div class="viewcode-block" id="OpenBasesMessage.newline"><a class="viewcode-back" href="../../../openbases.logger.html#openbases.logger.message.OpenBasesMessage.newline">[docs]</a>    <span class="k">def</span> <span class="nf">newline</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="OpenBasesMessage.test"><a class="viewcode-back" href="../../../openbases.logger.html#openbases.logger.message.OpenBasesMessage.test">[docs]</a>    <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">TEST</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="s2">&quot;TEST&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="OpenBasesMessage.verbose"><a class="viewcode-back" href="../../../openbases.logger.html#openbases.logger.message.OpenBasesMessage.verbose">[docs]</a>    <span class="k">def</span> <span class="nf">verbose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">VERBOSE</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="s2">&quot;VERBOSE&quot;</span><span class="p">)</span></div>
@@ -447,38 +459,37 @@
         
 
 
-<div class="viewcode-block" id="get_logging_level"><a class="viewcode-back" href="../../../openbases.logger.html#openbases.logger.message.get_logging_level">[docs]</a><span class="k">def</span> <span class="nf">get_logging_level</span><span class="p">():</span>
+<div class="viewcode-block" id="get_logging_level"><a class="viewcode-back" href="../../../openbases.logger.html#openbases.logger.message.get_logging_level">[docs]</a><span class="k">def</span> <span class="nf">get_logging_level</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;configure a logging to standard out based on the user&#39;s</span>
 <span class="sd">    selected level, which should be in an environment variable called</span>
 <span class="sd">    MESSAGELEVEL. if MESSAGELEVEL is not set, the info level</span>
 <span class="sd">    (1) is assumed (all informational messages).</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">level</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;MESSAGELEVEL&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)</span> <span class="c1"># INFO</span>
+    <span class="k">if</span> <span class="n">level</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">level</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;MESSAGELEVEL&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)</span> <span class="c1"># INFO</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="n">level</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 
-    <span class="k">if</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;CRITICAL&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">CRITICAL</span>
-    <span class="k">elif</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;ABORT&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">ABORT</span>
-    <span class="k">elif</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">ERROR</span>
-    <span class="k">elif</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;WARNING&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">WARNING</span>
-    <span class="k">elif</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;LOG&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">LOG</span>
-    <span class="k">elif</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;INFO&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">INFO</span>
-    <span class="k">elif</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;QUIET&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">QUIET</span>
-    <span class="k">elif</span> <span class="n">level</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;VERBOSE&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">level</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;VERBOSE&quot;</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">VERBOSE3</span>
-    <span class="k">elif</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;LOG&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">LOG</span>
-    <span class="k">elif</span> <span class="n">level</span> <span class="o">==</span> <span class="s2">&quot;DEBUG&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">DEBUG</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">level</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">level</span></div>
+    <span class="n">levels</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;CRITICAL&#39;</span><span class="p">:</span> <span class="n">CRITICAL</span><span class="p">,</span>
+              <span class="s1">&#39;ABORT&#39;</span><span class="p">:</span> <span class="n">ABORT</span><span class="p">,</span>
+              <span class="s1">&#39;ERROR&#39;</span><span class="p">:</span> <span class="n">ERROR</span><span class="p">,</span>
+              <span class="s1">&#39;WARNING&#39;</span><span class="p">:</span> <span class="n">WARNING</span><span class="p">,</span>
+              <span class="s1">&#39;LOG&#39;</span><span class="p">:</span> <span class="n">LOG</span><span class="p">,</span>
+              <span class="s1">&#39;INFO&#39;</span><span class="p">:</span> <span class="n">INFO</span><span class="p">,</span>
+              <span class="s1">&#39;TEST&#39;</span><span class="p">:</span> <span class="n">TEST</span><span class="p">,</span>
+              <span class="s1">&#39;QUIET&#39;</span><span class="p">:</span> <span class="n">QUIET</span><span class="p">,</span>
+              <span class="s1">&#39;DEBUG&#39;</span><span class="p">:</span> <span class="n">DEBUG</span><span class="p">}</span>
+
+    <span class="c1"># Get a logging level (int) if it&#39;s in the lookup</span>
+    <span class="n">logging_level</span> <span class="o">=</span> <span class="n">levels</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+
+    <span class="c1"># Otherwise, return custom level for user</span>
+    <span class="k">if</span> <span class="n">logging_level</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logging_level</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">logging_level</span></div>
 
 
 <div class="viewcode-block" id="get_user_color_preference"><a class="viewcode-back" href="../../../openbases.logger.html#openbases.logger.message.get_user_color_preference">[docs]</a><span class="k">def</span> <span class="nf">get_user_color_preference</span><span class="p">():</span>
@@ -532,7 +543,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'0.0.51',
+            VERSION:'0.0.53',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

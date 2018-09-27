@@ -13,7 +13,8 @@ def get_client(quiet=False, debug=False):
        debug: turn on debugging mode
 
     '''
-    from .base import Client
+    from openbases.main.base import Client
+    from openbases.main.validate import ( PaperValidator, BasicValidator )
 
     Client.quiet = quiet
     Client.debug = debug
@@ -21,6 +22,10 @@ def get_client(quiet=False, debug=False):
     # Paper
     from openbases.main.papers import Paper
     Client.paper = Paper
+
+    # Validation
+    Client.BasicValidator = BasicValidator
+    Client.PaperValidator = PaperValidator
 
     # Badge
     from openbases.main.badges import Badge

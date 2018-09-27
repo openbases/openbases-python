@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; openbases Python 0.0.51 documentation</title>
+  <title>Usage &mdash; openbases Python 0.0.53 documentation</title>
   
 
   
@@ -61,7 +61,7 @@
             
             
               <div class="version">
-                0.0.51
+                0.0.53
               </div>
             
           
@@ -95,11 +95,20 @@
 <li class="toctree-l3"><a class="reference internal" href="#icons">Icons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#badges">Badges</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#papers">Papers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#validation">Validation</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#python-client">Python Client</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">Icons</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">Papers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Validation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#loading-the-paper">1. Loading the Paper</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loading-the-criteria">2. Loading the Criteria</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-the-validation">3: Run the Validation!</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#write-your-own-criteria">4. Write your Own Criteria</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-write-a-test">5. How to write a test</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -324,6 +333,90 @@ The Experiment Factory: Reproducible Experiment Containers
 </pre></div>
 </div>
 </div>
+<div class="section" id="validation">
+<h3>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h3>
+<p>The validation functions are provided via the <code class="docutils literal"><span class="pre">ob-validate</span></code> client. Note that you
+need to install dependencies first:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install openbases<span class="o">[</span>validate<span class="o">]</span>
+</pre></div>
+</div>
+<p>For using it, the simplest use case it to provide the path to the paper with the
+<code class="docutils literal"><span class="pre">--infile</span></code> variable. By default:</p>
+<ul class="simple">
+<li>the <code class="docutils literal"><span class="pre">paper.bib</span></code> will be looked for in the same directory as the paper</li>
+<li>the repository base (with an open source LICENSE and CONTRIBUTING.md) is assumed to be $PWD</li>
+<li>the default criteria provided by the library are used.</li>
+</ul>
+<p>Here we are running from the root of the
+<a class="reference external" href="https://www.github.com/openbases/openbases-python">openbases-python</a>  repository,
+so the paper.md file is located under <code class="docutils literal"><span class="pre">tests/paper/paper.md</span></code></p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-validate paper --infile tests/paper/paper.md
+Found /home/vanessa/Documents/Dropbox/Code/openbases/openbases-python/tests/paper/paper.md, valid name
+Found /home/vanessa/Documents/Dropbox/Code/openbases/openbases-python/tests/paper/paper.bib, valid name
+<span class="o">[</span>criteria:paper.yml<span class="o">]</span>
+WARNING Skipping parameter bibfile <span class="k">for</span> environment
+<span class="o">[</span>criteria:paper.yml<span class="o">]</span>
+<span class="o">[</span>group<span class="p">|</span>start:length<span class="o">]</span>
+WARNING Length of paper is approximately <span class="m">5277</span> chars.
+WARNING Paper estimated &gt; <span class="m">1000</span> characters
+<span class="o">[</span>check:Check that the paper is between <span class="m">250</span>-1000 characters<span class="o">]</span>
+ test:function openbases.main.papers.tests.test_length
+ test:result pass
+<span class="o">[</span>group<span class="p">|</span>end:length<span class="o">]</span>
+<span class="o">[</span>group<span class="p">|</span>start:authors<span class="o">]</span>
+<span class="o">[</span>check:Submission must include a list of authors with associated metadata<span class="o">]</span>
+ test:function openbases.main.papers.tests.test_authors
+ test:result pass
+<span class="o">[</span>group<span class="p">|</span>end:authors<span class="o">]</span>
+<span class="o">[</span>group<span class="p">|</span>start:license<span class="o">]</span>
+Found Open Source license flags! <span class="s2">&quot;AS IS&quot;</span>
+BSD License
+
+Copyright <span class="o">(</span>c<span class="o">)</span> <span class="m">2018</span>, Vanessa Sochat
+All rights reserved.
+
+Redistribution and use in <span class="nb">source</span> and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+...
+<span class="o">[</span>check:An OSI license is included in the repository<span class="o">]</span>
+ test:function openbases.main.papers.tests.test_license
+ test:result pass
+<span class="o">[</span>group<span class="p">|</span>end:license<span class="o">]</span>
+<span class="o">[</span>group<span class="p">|</span>start:references<span class="o">]</span>
+Testing bibliography entry Stodden2010-cu
+  type: article
+  title: The Scientific Method in Practice: Reproducibility in the Computational Sciences
+Testing bibliography entry Ram2013-km
+  type: article
+  title: Git can facilitate greater reproducibility and increased transparency in science
+...
+Testing bibliography entry Santana-Perez2015-wo
+  type: article
+  title: Towards Reproducibility in Scientific Workflows: An <span class="o">{</span>Infrastructure-Based<span class="o">}</span> Approach
+Testing bibliography entry Wandell2015-yt
+  type: article
+  title: Data management to support reproducible research
+<span class="o">[</span>check:References are included and complete<span class="o">]</span>
+ test:function openbases.main.papers.tests.test_references
+ test:result pass
+<span class="o">[</span>group<span class="p">|</span>end:references<span class="o">]</span>
+<span class="o">[</span>group<span class="p">|</span>start:contributing<span class="o">]</span>
+Found CONTRIBUTING file<span class="o">(</span>s<span class="o">)</span> in repository!
+<span class="o">[</span>check:Software has CONTRIBUTING.md<span class="o">]</span>
+ test:function openbases.main.papers.tests.test_contributing
+ test:result pass
+<span class="o">[</span>group<span class="p">|</span>end:contributing<span class="o">]</span>
+ALL TESTS PASSING
+</pre></div>
+</div>
+<p>Let’s say we moved out of this repository base, and wanted to define custom
+paths to the repo base and the paper.bib. Let’s do that.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ ob-validate --repo ../../ paper --infile paper.md --bib paper.bib
+</pre></div>
+</div>
+<p>Note that the <code class="docutils literal"><span class="pre">--repo</span></code> argument comes before paper (because potentially we will
+have other kinds of validators that also need a repo!)</p>
+</div>
 </div>
 <div class="section" id="python-client">
 <h2>Python Client<a class="headerlink" href="#python-client" title="Permalink to this headline">¶</a></h2>
@@ -372,7 +465,282 @@ paper.get(&#39;authors&#39;, field=&#39;name&#39;)
 Vanessa Sochat
 </pre></div>
 </div>
-<p>Command line will probably look like this</p>
+</div>
+<div class="section" id="id3">
+<h3>Validation<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Firstly, if you want to install the extra validation functions (namely the library
+to read in bibtex) you need to do that first:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install openbases<span class="o">[</span>validate<span class="o">]</span>
+</pre></div>
+</div>
+<p>For the easiest use case, you should have your paper.md and paper.bib in the same folder.
+This is likely the Github repository that you would submit your paper to! I like to keep
+these files in another directory called “paper”:</p>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ paper/
+    paper.md
+    paper.bib
+</pre></div>
+</div>
+<p>In an interactive Python session, import the <code class="docutils literal"><span class="pre">PaperValidator</span></code></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openbases.main</span> <span class="kn">import</span> <span class="n">Client</span>
+</pre></div>
+</div>
+<div class="section" id="loading-the-paper">
+<h4>1. Loading the Paper<a class="headerlink" href="#loading-the-paper" title="Permalink to this headline">¶</a></h4>
+<p>Define our input file to be <code class="docutils literal"><span class="pre">paper.md</span></code> in the present working directory. If you
+have downloaded the <a class="reference external" href="https://www.github.com/openbases/openbases-python">openbases-python</a>
+repository, this file is located under <code class="docutils literal"><span class="pre">tests/paper/paper.md</span></code></p>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>infile = &#39;tests/paper/paper.md&#39;
+validator = Client.PaperValidator(infile)
+Found paper.md, valid name
+Found /home/vanessa/Documents/Dropbox/Code/openbases/openbases-python/tests/paper/paper.bib, valid name
+</pre></div>
+</div>
+<p>Notice that this first step just ensures that your fileis there, and it also checks for the bibliography
+file. With the defaults above, we check for the <code class="docutils literal"><span class="pre">paper.bib</span></code> in the same folder. Our
+validator is ready to go!</p>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ validator
+$ <span class="o">[</span>paper-validator:paper.md<span class="o">]</span>
+</pre></div>
+</div>
+<p>You can consider these files now loaded into the validator. For the remainder of function
+calls you <em>could</em> specify new paths, but if you don’t, these that are loaded will be used.</p>
+</div>
+<div class="section" id="loading-the-criteria">
+<h4>2. Loading the Criteria<a class="headerlink" href="#loading-the-criteria" title="Permalink to this headline">¶</a></h4>
+<p>If you want to take a look at your criteria, just (re) load it. Note that you
+can skip this step (and section) if you just want to use defaults and run the validation.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>validator.load_criteria<span class="o">()</span>
+</pre></div>
+</div>
+<p>Again, not specifying a <code class="docutils literal"><span class="pre">criteria=</span></code> variable to this function uses the default!
+Now we can see the checks that are to be run:</p>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>{&#39;checks&#39;: {&#39;authors&#39;: [{&#39;name&#39;: &#39;Submission must include a list of authors with associated metadata&#39;},
+   {&#39;level&#39;: &#39;error&#39;},
+   {&#39;function&#39;: &#39;openbases.main.papers.tests.test_authors&#39;}],
+  &#39;contributing&#39;: [{&#39;name&#39;: &#39;Software has CONTRIBUTING.md&#39;},
+   {&#39;level&#39;: &#39;error&#39;},
+   {&#39;function&#39;: &#39;openbases.main.papers.tests.test_contributing&#39;}],
+  &#39;length&#39;: [{&#39;name&#39;: &#39;Check that the paper is between 250-1000 characters&#39;},
+   {&#39;level&#39;: &#39;warning&#39;},
+   {&#39;function&#39;: &#39;openbases.main.papers.tests.test_length&#39;},
+   {&#39;kwargs&#39;: [{&#39;min_length&#39;: 250}, {&#39;max_length&#39;: 1000}]}],
+  &#39;license&#39;: [{&#39;name&#39;: &#39;An OSI license is included in the repository&#39;},
+   {&#39;level&#39;: &#39;error&#39;},
+   {&#39;function&#39;: &#39;openbases.main.papers.tests.test_license&#39;},
+   {&#39;environment&#39;: [{&#39;OPENBASESENV_REPO_BASE&#39;: None}]}],
+  &#39;references&#39;: [{&#39;name&#39;: &#39;References are included and complete&#39;},
+   {&#39;level&#39;: &#39;warning&#39;},
+   {&#39;function&#39;: &#39;openbases.main.papers.tests.test_references&#39;},
+   {&#39;environment&#39;: [{&#39;OPENBASESENV_REPO_BASE&#39;: None}]}]},
+ &#39;version&#39;: 1}
+</pre></div>
+</div>
+<p>I’m glad I looked, Notice that two of the validation functions require an
+environment variable, <code class="docutils literal"><span class="pre">OPENBASESENV_REPO_BASE</span></code> that normally I’d set on the
+command line <strong>or</strong> would be discovered by running the executable from
+the base of my repository (with an open source license, for example).
+Since we are running from the root (and we have a LICENSE!) we will be OK.
+If you werent, you would need to make sure the variable is
+in the environment like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;OPENBASESENV_REPO_BASE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;/path/to/repo&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You could also load your own custom criteria, and copy the format of the criteria flie
+<a class="reference external" href="https://www.github.com/openbases/openbases-python/tree/master/openbases/main/validator/criteria/paper.yml">here</a>
+(more on this later).</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>validator.load_criteria<span class="o">(</span><span class="nv">criteria</span><span class="o">=</span><span class="s1">&#39;mypaper.yml&#39;</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-validation">
+<h4>3: Run the Validation!<a class="headerlink" href="#run-the-validation" title="Permalink to this headline">¶</a></h4>
+<p>To perform the validation, just ask to do that! We are validating based on criteria, so
+that’s the function that we call. Note that you don’t necessarily need to call
+the <code class="docutils literal"><span class="pre">load_criteria</span></code> above - you could just call this and it would load the default for
+you. You could also provide the <code class="docutils literal"><span class="pre">criteria</span></code> directly to this function.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>validator.validate_criteria()
+[criteria:paper.yml]
+WARNING Skipping parameter bibfile for environment
+[criteria:paper.yml]
+[group|start:length]
+WARNING Length of paper is approximately 5277 chars.
+WARNING Paper estimated &gt; 1000 characters
+[check:Check that the paper is between 250-1000 characters]
+ test:function openbases.main.papers.tests.test_length
+ test:result pass
+[group|end:length]
+[group|start:authors]
+[check:Submission must include a list of authors with associated metadata]
+ test:function openbases.main.papers.tests.test_authors
+ test:result pass
+[group|end:authors]
+[group|start:license]
+Found Open Source license flags! &quot;AS IS&quot;
+BSD License
+
+Copyright (c) 2018, Vanessa Sochat
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice, this
+  list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice, this
+  list of conditions and the following disclaimer in the documentation and/or
+  other materials provided with the distribution.
+
+* Neither the name of the copyright holder nor the names of its
+  contributors may be used to endorse or promote products derived from this
+  software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Found Open Source license flags! &quot;AS IS&quot;
+Copyright Jason R. Coombs
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[check:An OSI license is included in the repository]
+ test:function openbases.main.papers.tests.test_license
+ test:result pass
+[group|end:license]
+[group|start:references]
+Testing bibliography entry Stodden2010-cu
+  type: article
+  title: The Scientific Method in Practice: Reproducibility in the Computational Sciences
+Testing bibliography entry Ram2013-km
+  type: article
+  title: Git can facilitate greater reproducibility and increased transparency in science
+Testing bibliography entry noauthor_2015-ig
+  type: misc
+  title: Docker-based solutions to reproducibility in science - Seven Bridges
+...
+Testing bibliography entry Boettiger2014-cz
+  type: article
+  title: An introduction to Docker for reproducible research, with examples from the {R} environment
+Testing bibliography entry Santana-Perez2015-wo
+  type: article
+  title: Towards Reproducibility in Scientific Workflows: An {Infrastructure-Based} Approach
+Testing bibliography entry Wandell2015-yt
+  type: article
+  title: Data management to support reproducible research
+[check:References are included and complete]
+ test:function openbases.main.papers.tests.test_references
+ test:result pass
+[group|end:references]
+[group|start:contributing]
+Found CONTRIBUTING file(s) in repository!
+[check:Software has CONTRIBUTING.md]
+ test:function openbases.main.papers.tests.test_contributing
+ test:result pass
+[group|end:contributing]
+ALL TESTS PASSING
+</pre></div>
+</div>
+<p>Here is a quick demo of the above!</p>
+<script src="https://asciinema.org/a/203355.js" id="asciicast-203355" async data-speed="2"></script></div>
+<div class="section" id="write-your-own-criteria">
+<h4>4. Write your Own Criteria<a class="headerlink" href="#write-your-own-criteria" title="Permalink to this headline">¶</a></h4>
+<p>If you look at the default criteria, which is provided for you
+<a class="reference external" href="https://www.github.com/openbases/openbases-python/tree/master/openbases/main/validator/criteria/paper.yml">here</a>.
+it’s really quite trivial to write a criteria file, and use your own functions!
+The first thing you should do is create some <code class="docutils literal"><span class="pre">criteria.yml</span></code>
+(or similarly named) file, and create chunks that look
+like this:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">version</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="l l-Scalar l-Scalar-Plain">checks</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">mycheck</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">This check will always print a message and pass</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">level</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">log</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">function</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">openschemas.main.validate.criteria.base.dummy</span>
+</pre></div>
+</div>
+<p>The function itself can be anywhere, as long as you provide the full path
+to the python module (a <code class="docutils literal"><span class="pre">module.py</span></code> file, not an <strong>init</strong>.py file)
+as shown above. In the example above, the function “dummy” would be
+defined in the file <code class="docutils literal"><span class="pre">base.py</span></code>.</p>
+<p>Once you write this file, you can use it with the same <code class="docutils literal"><span class="pre">paper.md</span></code> and
+openbases validator, as shown above. Remember that you should first
+load your criteria, or the default will be used.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">openschemas.main</span> <span class="kn">import</span> <span class="n">Client</span>
+<span class="n">validator</span> <span class="o">=</span> <span class="n">Client</span><span class="o">.</span><span class="n">PaperValidator</span><span class="p">(</span><span class="n">infile</span><span class="o">=</span><span class="s2">&quot;paper.md&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Either of these would work</p>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>validator.load_criteria(criteria=&quot;dummy.yml&quot;)
+validator.validate_criteria()
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>validator.validate_criteria(criteria=&quot;dummy.yml&quot;)
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-write-a-test">
+<h4>5. How to write a test<a class="headerlink" href="#how-to-write-a-test" title="Permalink to this headline">¶</a></h4>
+<p>Any test that goes into the critria.yml is expected to take a <code class="docutils literal"><span class="pre">YamlManager</span></code>
+as the first argument, followed by a general set of <code class="docutils literal"><span class="pre">kwargs</span></code>. This means that:</p>
+<ul class="simple">
+<li>The first argument should refer to the YamlManager, call it “manager,” but it’s positional so it’s up to you.</li>
+<li><code class="docutils literal"><span class="pre">manager.loaded</span></code> will have the loaded yaml frontend matter</li>
+<li><code class="docutils literal"><span class="pre">manager.content</span></code> will have the remainder of the markdown file (the paper content)</li>
+<li><code class="docutils literal"><span class="pre">manager.infile</span></code> will have the path to the file.</li>
+<li>You can either handle exiting in the function, or return False if a test fails. Return True if it passes.</li>
+<li>You are free to use whatever logging or printing you desire! Generally, it’s a good idea to provide a user with enough information to see what is being tested, and any requirements to debug if a test is not passing.</li>
+</ul>
+<p>If you need to see what a manager provides you, do this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>from openbases.utils.managers import YamlManager
+$ manager = YamlManager(&#39;paper.md&#39;)
+
+manager
+{&#39;affiliations&#39;: [{&#39;index&#39;: 1,
+   &#39;name&#39;: &#39;Stanford University Research Computing&#39;}],
+ &#39;authors&#39;: [{&#39;affiliation&#39;: 1,
+   &#39;name&#39;: &#39;Vanessa Sochat&#39;,
+   &#39;orcid&#39;: &#39;0000-0002-4387-3819&#39;}],
+ &#39;bibliography&#39;: &#39;paper.bib&#39;,
+ &#39;date&#39;: &#39;28 November 2017&#39;,
+ &#39;tags&#39;: [&#39;containers&#39;, &#39;docker&#39;, &#39;psychology&#39;, &#39;reproducibility&#39;, &#39;Docker&#39;],
+ &#39;title&#39;: &#39;The Experiment Factory: Reproducible Experiment Containers&#39;}
+</pre></div>
+</div>
+<p>And the content we discussed above:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ manager.content
+&#39;\n\n# Summary\n\nThe Experiment Factory [@vanessa_sochat_2017_1059119] is Open Source ...
+</pre></div>
+</div>
+<p>And the frontend matter</p>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>: manager.loaded
+Out[31]:
+{&#39;affiliations&#39;: [{&#39;index&#39;: 1,
+   &#39;name&#39;: &#39;Stanford University Research Computing&#39;}],
+ &#39;authors&#39;: [{&#39;affiliation&#39;: 1,
+   &#39;name&#39;: &#39;Vanessa Sochat&#39;,
+   &#39;orcid&#39;: &#39;0000-0002-4387-3819&#39;}],
+ &#39;bibliography&#39;: &#39;paper.bib&#39;,
+ &#39;date&#39;: &#39;28 November 2017&#39;,
+ &#39;tags&#39;: [&#39;containers&#39;, &#39;docker&#39;, &#39;psychology&#39;, &#39;reproducibility&#39;, &#39;Docker&#39;],
+ &#39;title&#39;: &#39;The Experiment Factory: Reproducible Experiment Containers&#39;}
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -419,7 +787,7 @@ Vanessa Sochat
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.0.51',
+            VERSION:'0.0.53',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

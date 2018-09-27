@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>openbases.main &mdash; openbases Python 0.0.51 documentation</title>
+  <title>openbases.main &mdash; openbases Python 0.0.53 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.0.51
+                0.0.53
               </div>
             
           
@@ -89,6 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../readme.html#quick-start">Quick Start</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docker.html">Docker</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../modules.html">openbases-python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributor’s Agreement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing.html#contributing">Contributing</a></li>
@@ -179,7 +180,8 @@
 <span class="sd">       debug: turn on debugging mode</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="kn">from</span> <span class="nn">.base</span> <span class="k">import</span> <span class="n">Client</span>
+    <span class="kn">from</span> <span class="nn">openbases.main.base</span> <span class="k">import</span> <span class="n">Client</span>
+    <span class="kn">from</span> <span class="nn">openbases.main.validate</span> <span class="k">import</span> <span class="p">(</span> <span class="n">PaperValidator</span><span class="p">,</span> <span class="n">BasicValidator</span> <span class="p">)</span>
 
     <span class="n">Client</span><span class="o">.</span><span class="n">quiet</span> <span class="o">=</span> <span class="n">quiet</span>
     <span class="n">Client</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="n">debug</span>
@@ -187,6 +189,10 @@
     <span class="c1"># Paper</span>
     <span class="kn">from</span> <span class="nn">openbases.main.papers</span> <span class="k">import</span> <span class="n">Paper</span>
     <span class="n">Client</span><span class="o">.</span><span class="n">paper</span> <span class="o">=</span> <span class="n">Paper</span>
+
+    <span class="c1"># Validation</span>
+    <span class="n">Client</span><span class="o">.</span><span class="n">BasicValidator</span> <span class="o">=</span> <span class="n">BasicValidator</span>
+    <span class="n">Client</span><span class="o">.</span><span class="n">PaperValidator</span> <span class="o">=</span> <span class="n">PaperValidator</span>
 
     <span class="c1"># Badge</span>
     <span class="kn">from</span> <span class="nn">openbases.main.badges</span> <span class="k">import</span> <span class="n">Badge</span>
@@ -231,7 +237,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
-            VERSION:'0.0.51',
+            VERSION:'0.0.53',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',

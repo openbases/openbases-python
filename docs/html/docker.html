@@ -1,0 +1,460 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Docker &mdash; openbases Python 0.0.53 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="openbases-python" href="modules.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> openbases Python
+          
+
+          
+            
+            <img src="_static/logo.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.53
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">OpenBases Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="readme.html#quick-start">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Docker</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#validate">Validate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#paper">Paper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#icons">Icons</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#badges">Badges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#development">Development</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">openbases-python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributor’s Agreement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html#contributing">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Links:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://www.github.com/openbases/openbases-python">Github</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://openbases.github.io">Open Bases</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://www.github.com/openbases/openbases-python/issues">Issues</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">openbases Python</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Docker</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/docker.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="docker">
+<h1>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal"><span class="pre">openbases</span></code> python module is also available as a
+<a class="reference external" href="https://hub.docker.com/r/openbases/openbases/">Docker Image</a>, meaning you don’t
+need to install anything locally (other than having Docker). Hooray!</p>
+<p>Running the container shows it’s entrypoints. It basically will direct you to
+the various modules provided by openbases:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run openbases/openbases
+Usage:
+
+    This entrypoint connects you to the executables provided by openbases
+    Python within the container. You could just as easily <span class="nb">exec</span> one of these
+    commands to the container, but this entrypoint makes this easy to <span class="k">do</span>
+    with just <span class="s1">&#39;run&#39;</span>:
+
+         ob-validate: validate a paper.md <span class="k">for</span> an Open Journals submission
+           docker run &lt;container&gt; validate --help
+           docker run &lt;container&gt; validate
+
+         ob-icons: produce
+           docker run &lt;container&gt; icons --help
+           docker run &lt;container&gt; icons
+
+         ob-paper: generate a paper.pdf <span class="k">for</span> an Open Journals submission
+           docker run &lt;container&gt; paper --help
+           docker run &lt;container&gt; paper
+
+         ob-badges: generate markdown badges!
+           docker run &lt;container&gt; badges --help
+           docker run &lt;container&gt; badges
+
+         or just ask to see this global help!
+         docker run &lt;container&gt; <span class="nb">help</span>
+</pre></div>
+</div>
+<p>For each of the above, note that you can run the module and ask for additional <code class="docutils literal"><span class="pre">--help</span></code>
+to get usage, and see more detailed usage on the <a class="reference external" href="https://openbases.github.io/html/usage.html">usage page</a>.</p>
+<div class="section" id="validate">
+<h2>Validate<a class="headerlink" href="#validate" title="Permalink to this headline">¶</a></h2>
+<p>What options do we have?</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run openbases/openbases validate --help
+Open Bases Validator Python <span class="o">[</span>v0.0.53<span class="o">]</span>
+
+usage: ob-validate <span class="o">[</span>--version<span class="o">]</span> <span class="o">[</span>--repo <span class="o">[</span>REPO<span class="o">]]</span> <span class="o">[</span>--basic<span class="o">]</span> general usage ...
+
+OpenBases Python Validator
+
+optional arguments:
+  --version      show openbases python version
+  --repo <span class="o">[</span>REPO<span class="o">]</span>  repository base, <span class="k">if</span> needed to check <span class="k">for</span> files
+  --basic        a basic validator, <span class="k">for</span> custom usage
+
+actions:
+  actions <span class="k">for</span> openbases
+
+  general usage  description
+    paper        validate a paper.md
+</pre></div>
+</div>
+<p>To validate a paper, we need to bind the entire repository directory to data,
+and then specify paths relative to it.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run -it -v <span class="nv">$PWD</span>/:/data openbases/openbases validate paper --infile /data/paper.md
+</pre></div>
+</div>
+<p>For more detailed usage, see the <a class="reference external" href="https://openbases.github.io/html/usage.html">usage page</a>.</p>
+</div>
+<div class="section" id="paper">
+<h2>Paper<a class="headerlink" href="#paper" title="Permalink to this headline">¶</a></h2>
+<p>What options do we have?</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run openbases/openbases validate --help
+
+Open Bases Paper Python <span class="o">[</span>v0.0.53<span class="o">]</span>
+
+usage: ob-paper <span class="o">[</span>--debug<span class="o">]</span> <span class="o">[</span>--quiet<span class="o">]</span> <span class="o">[</span>--version<span class="o">]</span> general usage ...
+
+OpenBases Python Paper
+
+optional arguments:
+  --debug, -d    use verbose logging to debug.
+  --quiet, -q    suppress all normal output
+  --version      show openbases python version
+
+actions:
+  actions <span class="k">for</span> openbases
+
+  general usage  description
+    get          extract values from a paper.md
+    shell        start an interactive shell with openbases paper
+</pre></div>
+</div>
+<p>Here are a bunch of examples to try:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run -it -v <span class="nv">$PWD</span>:/data openbases/openbases paper get /data/paper.md
+title: The Experiment Factory: Reproducible Experiment Containers
+tags: <span class="o">[</span><span class="s1">&#39;containers&#39;</span>, <span class="s1">&#39;docker&#39;</span>, <span class="s1">&#39;psychology&#39;</span>, <span class="s1">&#39;reproducibility&#39;</span>, <span class="s1">&#39;Docker&#39;</span><span class="o">]</span>
+authors: <span class="o">[{</span><span class="s1">&#39;name&#39;</span>: <span class="s1">&#39;Vanessa Sochat&#39;</span>, <span class="s1">&#39;orcid&#39;</span>: <span class="s1">&#39;0000-0002-4387-3819&#39;</span>, <span class="s1">&#39;affiliation&#39;</span>: <span class="m">1</span><span class="o">}]</span>
+affiliations: <span class="o">[{</span><span class="s1">&#39;name&#39;</span>: <span class="s1">&#39;Stanford University Research Computing&#39;</span>, <span class="s1">&#39;index&#39;</span>: <span class="m">1</span><span class="o">}]</span>
+date: <span class="m">28</span> November <span class="m">2017</span>
+bibliography: paper.bib
+</pre></div>
+</div>
+<p>Get a specific field</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run -it -v <span class="nv">$PWD</span>:/data openbases/openbases paper get /data/paper.md title
+The Experiment Factory: Reproducible Experiment Containers
+</pre></div>
+</div>
+<p>Get a list, render in comma separated list</p>
+<div class="highlight-guess"><div class="highlight"><pre><span></span>$ docker run -it -v <span class="nv">$PWD</span>:/data openbases/openbases paper get /data/paper.md tags
+containers,docker,psychology,reproducibility,Docker
+</pre></div>
+</div>
+<p>Get more than one at once:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run -it -v <span class="nv">$PWD</span>:/data openbases/openbases paper get /data/paper.md title tags
+The Experiment Factory: Reproducible Experiment Containers
+containers,docker,psychology,reproducibility,Docker
+</pre></div>
+</div>
+<p>Look up a subfield (e.g., authors –&gt; name)</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run -it -v <span class="nv">$PWD</span>:/data openbases/openbases paper get /data/paper.md authors:name
+Vanessa Sochat
+
+$ docker run -it -v <span class="nv">$PWD</span>:/data openbases/openbases paper get /data/paper.md authors:orcid
+<span class="m">0000</span>-0002-4387-3819
+</pre></div>
+</div>
+<p>All together now!</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run -it -v <span class="nv">$PWD</span>:/data openbases/openbases paper get /data/paper.md tags authors:name title
+</pre></div>
+</div>
+</div>
+<div class="section" id="icons">
+<h2>Icons<a class="headerlink" href="#icons" title="Permalink to this headline">¶</a></h2>
+<p>What options do we have?</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run openbases/openbases icons --help
+
+Open Bases Icons <span class="o">[</span>v0.0.53<span class="o">]</span>
+
+usage: ob-icons <span class="o">[</span>--version<span class="o">]</span> <span class="o">[</span>--regexp REGEXP<span class="o">]</span> <span class="o">[</span>--help<span class="o">]</span> <span class="o">[</span>--url URL<span class="o">]</span> <span class="o">[</span>--n N<span class="o">]</span>
+                <span class="o">[</span>--sep SEP<span class="o">]</span>
+
+OpenBases Python Icons
+
+optional arguments:
+  --version        show openbases python version
+  --regexp REGEXP  regular expression filter <span class="k">for</span> icon name
+  --help           show openbases icons <span class="nb">help</span>
+  --url URL        <span class="nb">complete</span> url <span class="k">for</span> json list of icons
+  --n N, --N N     number of icons to <span class="k">return</span>
+  --sep SEP        separator to print icons to screen <span class="o">(</span>default newline<span class="o">)</span>
+</pre></div>
+</div>
+<p>Examples!</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run openbases/openbases icons
+https://openbases.github.io/openbases-icons/ic/flaticon/sea-life-collection/grampus.png
+</pre></div>
+</div>
+<p>You can ask for more than 1, of course:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run openbases/openbases icons --n <span class="m">2</span>
+https://openbases.github.io/openbases-icons/ic/flaticon/in-the-zoo/butterfly.png
+https://openbases.github.io/openbases-icons/ic/flaticon/in-the-zoo/penguin.png
+</pre></div>
+</div>
+<p>You can also filter the search to some term you like (regular expression):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run openbases/openbases icons --n <span class="m">2</span> --regexp fish
+https://openbases.github.io/openbases-icons/ic/flaticon/sea-life-collection/fish.png
+https://openbases.github.io/openbases-icons/ic/flaticon/sea-life-collection/fish1.png
+</pre></div>
+</div>
+<p>If you know the name of your logo, that would be how to find it!</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>docker run openbases/openbases icons --regexp joss
+https://openbases.github.io/openbases-icons/ic/openjournals/joss-logo.png
+</pre></div>
+</div>
+</div>
+<div class="section" id="badges">
+<h2>Badges<a class="headerlink" href="#badges" title="Permalink to this headline">¶</a></h2>
+<p>What options do we have?</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run openbases/openbases badges --help
+
+Open Bases Badges Python <span class="o">[</span>v0.0.53<span class="o">]</span>
+
+usage: ob-badge <span class="o">[</span>--version<span class="o">]</span> general usage ...
+
+OpenBases Python Badges
+
+optional arguments:
+  --version      show openbases python version
+
+actions:
+  actions <span class="k">for</span> openbases
+
+  general usage  description
+    view         view options <span class="k">for</span> style, labels, etc.
+    create       extract values from a paper.md
+</pre></div>
+</div>
+<p>Here are examples to get you started.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run openbases/openbases badges create experiment labjs
+!<span class="o">[</span>https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style<span class="o">=</span>flat<span class="p">&amp;</span><span class="nv">link</span><span class="o">=</span>https%3A%2F%2Fopenbases.github.io<span class="o">](</span>https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style<span class="o">=</span>flat<span class="p">&amp;</span><span class="nv">link</span><span class="o">=</span>https%3A%2F%2Fopenbases.github.io<span class="o">)</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io"><img alt="https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io" src="https://img.shields.io/badge/experiment-labjs-%23eaab1b.svg?style=flat&amp;link=https%3A%2F%2Fopenbases.github.io" /></a>
+<p>Notice if we change the base type, we get a different color:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>$ docker run openbases/openbases badges create submission labjs
+</pre></div>
+</div>
+<p>See the <a class="reference external" href="https://openbases.github.io/html/usage.html">usage page</a>
+for more details on how to see colors, badge types, and other settings.</p>
+</div>
+<div class="section" id="development">
+<h2>Development<a class="headerlink" href="#development" title="Permalink to this headline">¶</a></h2>
+<p>If you want to develop, you can build the container locally too.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>docker build -t openbases/openbases .
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="modules.html" class="btn btn-neutral float-right" title="openbases-python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usage.html" class="btn btn-neutral" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Vanessa Sochat.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.53',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
