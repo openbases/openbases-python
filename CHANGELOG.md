@@ -16,6 +16,7 @@ Critical items to know are:
 versions here coincide with releases on pypi.
 
 ## [master](https://github.com/openbases/openbases-python/tree/master)
+ - validation shouldn't continue if paper doesn't exist (0.0.54)
  - papers module validation functions (0.0.53)
  - adding color for "spec" (specification) to match schema.org (0.0.52)
  - adding custom color specification (0.0.51)

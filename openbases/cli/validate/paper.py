@@ -24,6 +24,8 @@ def main(args, options=None):
 
     # Ensure that paper exists
     paper = args.infile
+    if not paper:
+        bot.exit('You must specify a paper with --infile')
     if not os.path.exists(paper):
         bot.exit('%s does not exist.' % paper)
     paper = os.path.abspath(paper)     
