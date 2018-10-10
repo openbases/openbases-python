@@ -13,23 +13,23 @@ Here is how to get one randomly selected icon:
 
 ```bash
 $ ob-icons
-https://openbases.github.io/openbases-icons/ic/flaticon/sea-life-collection/grampus.png
+https://openbases.github.io/openbases-icons/ic/iconarchive/tuxlets/testdummytux2.svg.png
 ```
 
 You can ask for more than 1, of course:
 
 ```bash
 $ ob-icons --n 2
-https://openbases.github.io/openbases-icons/ic/flaticon/in-the-zoo/butterfly.png
-https://openbases.github.io/openbases-icons/ic/flaticon/in-the-zoo/penguin.png
+https://openbases.github.io/openbases-icons/ic/iconarchive/tuxlets/surgeontux2.svg.png
+https://openbases.github.io/openbases-icons/ic/iconarchive/tuxlets/clowntux.svg.png
 ```
 
 You can also filter the search to some term you like (regular expression):
 
 ```bash
-$ ob-icons --n 2 --regexp fish
-https://openbases.github.io/openbases-icons/ic/flaticon/sea-life-collection/fish.png
-https://openbases.github.io/openbases-icons/ic/flaticon/sea-life-collection/fish1.png
+$ ob-icons --n 2 --regexp pencil
+https://openbases.github.io/openbases-icons/ic/iconarchive/office-set/pencil-blue-icon.png
+https://openbases.github.io/openbases-icons/ic/iconarchive/office-set/colorful-pencil-icon.png
 ```
 
 If you know the name of your logo, that would be how to find it!
