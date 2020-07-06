@@ -1,8 +1,8 @@
-# Copyright (c) 2018, Vanessa Sochat All rights reserved.
+# Copyright (c) 2018-2020, Vanessa Sochat All rights reserved.
 # See the LICENSE in the main repository at:
 #    https://www.github.com/openbases/openbases-python
 
-__version__ = "0.0.54"
+__version__ = "0.0.55"
 AUTHOR = 'Vanessa Sochat'
 AUTHOR_EMAIL = 'vsochat@stanford.edu'
 NAME = 'openbases'

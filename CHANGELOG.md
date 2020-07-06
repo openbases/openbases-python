@@ -16,6 +16,7 @@ Critical items to know are:
 versions here coincide with releases on pypi.
 
 ## [master](https://github.com/openbases/openbases-python/tree/master)
+ - updating yaml to use Loader (0.0.55)
  - validation shouldn't continue if paper doesn't exist (0.0.54)
  - papers module validation functions (0.0.53)
  - adding color for "spec" (specification) to match schema.org (0.0.52)
