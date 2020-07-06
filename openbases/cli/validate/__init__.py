@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Copyright (c) 2018, Vanessa Sochat All rights reserved.
+# Copyright (c) 2018-2020, Vanessa Sochat All rights reserved.
 # This code was originally written *by same author* for openschemas and shared
 # See the LICENSE in the main repository at:
 #    https://www.github.com/openbases/openbases-python

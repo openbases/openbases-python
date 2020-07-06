@@ -1,4 +1,4 @@
-# Copyright (c) 2018, Vanessa Sochat All rights reserved.
+# Copyright (c) 2018-2020, Vanessa Sochat All rights reserved.
 # See the LICENSE in the main repository at:
 #    https://www.github.com/openbases/openbases-python
 
@@ -192,7 +192,7 @@ def _read_yaml(section, quiet=False):
        section: a string of unparsed yaml content.
     '''
     metadata = {}
-    docs = yaml.load_all(section)
+    docs = yaml.load(section, Loader=yaml.SafeLoader)
     for doc in docs:
         if isinstance(doc, dict):
             for k,v in doc.items():
