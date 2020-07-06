@@ -86,6 +86,7 @@ if __name__ == "__main__":
           license=LICENSE,
           description=DESCRIPTION,
           long_description=LONG_DESCRIPTION,
+          long_description_content_type="text/markdown",
           keywords=KEYWORDS,
           setup_requires=["pytest-runner"],
           install_requires = INSTALL_REQUIRES,
