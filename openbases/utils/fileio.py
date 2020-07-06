@@ -181,7 +181,6 @@ def write_yaml(yaml_dict, filename, mode="w"):
     with open(filename, mode) as filey:
         filey.writelines(yaml.dump(yaml_dict))
     return filename
-
    
 def _read_yaml(section, quiet=False):
     '''read yaml from a string, either read from file (read_frontmatter) or 
@@ -191,16 +190,7 @@ def _read_yaml(section, quiet=False):
        ==========
        section: a string of unparsed yaml content.
     '''
-    metadata = {}
-    docs = yaml.load(section, Loader=yaml.SafeLoader)
-    for doc in docs:
-        if isinstance(doc, dict):
-            for k,v in doc.items():
-                if not quiet:
-                    print('%s: %s' %(k,v))
-                metadata[k] = v
-    return metadata
-
+    return yaml.load(section, Loader=yaml.SafeLoader)
 
 def read_frontmatter(filename, mode='r', quiet=False):
     '''read a yaml file, only including sections between dashes
