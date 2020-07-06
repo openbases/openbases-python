@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  pull_request:
+    branches_ignore: []
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 
+      - name: Setup testing environment
+        run: conda create --quiet --name testing pytest     
+      - name: Install Dependencies and Library
+        run: |
+            export PATH="/usr/share/miniconda/bin:$PATH"
+            source activate testing
+            pip install .
+            pip install pytest
+            pip install pybtex        
+      - name: Run tests
+        run: |
+          export PATH="/usr/share/miniconda/bin:$PATH"
+          source activate testing
+          python setup.py test
