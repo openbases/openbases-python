@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  pull_request:
+    branches_ignore: []
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup Python Environment
+        run: |
+          export PATH="/usr/share/miniconda/bin:$PATH"
+          conda install -c conda-forge -q mamba
+          mamba env create -q --name openbases pytest
+
+      - name: Install Dependencies and Library
+        run: sudo apt install -y singularity-container stress
+            python setup.py install
+            pip install --upgrade pip
+            pip install pytest
+            pip install pybtex
+        
+      - name: Run tests
+        run: |
+          export PATH="/usr/share/miniconda/bin:$PATH"
+          source activate openbases
+          python setup.py test
